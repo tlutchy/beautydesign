@@ -1,6 +1,9 @@
 <?php
 include_once "conexao_beauty.php";
-$comandoSql="select * from agenda";
+$comandoSql="select * from agenda
+as A inner join cliente as C on
+a.id_cliente = c.id_cliente inner join
+servico as s on s.id_servico = a.id_servico";
 $resultado=mysqli_query($con,$comandoSql);
 ?>
 
@@ -50,7 +53,7 @@ $resultado=mysqli_query($con,$comandoSql);
                 ?>
                 {
                 id: '<?php echo $dados['id_agenda']; ?>',
-                title: '<?php echo $dados['titulo_agenda']; ?>',
+                title: '<?php echo $dados['nome_cliente'] . " - " . $dados['nome_servico']; ?>',
                 color: '<?php echo $dados['corstatus_agenda']; ?>',
                 start: '<?php echo $dados['data_agenda']; ?>',                
                 },<?php
