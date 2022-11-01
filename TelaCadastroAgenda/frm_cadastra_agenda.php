@@ -62,7 +62,7 @@
             <span class="fa fa-user-o"></span>
           </div>
           <h3 class="text-center mb-4">Agendamento</h3>
-          <form action="" class="form" id="form" method="post">
+          <form action="cadastra_agenda_beauty.php" class="form" id="form" method="post">
             <div class="form-group" id="form-nome">
               <?php
               include "funcoes_agenda.php";
@@ -72,6 +72,16 @@
               <i class="fas fa-check-circle"></i>
               <small>Mensagem de erro</small>
             </div>
+
+            <div class="form-group" id="form-funcionario">
+              <?php
+              funcionarioSelect();
+              ?>
+              <i class="fas fa-exclamation-circle"></i>
+              <i class="fas fa-check-circle"></i>
+              <small>Mensagem de erro</small>
+            </div>
+
             <div class="form-group" id="form-servico">
               <?php
               servicoSelect();
@@ -80,20 +90,23 @@
               <i class="fas fa-check-circle"></i>
               <small>Mensagem de erro</small>
             </div>
-            <div class="form-group" id="form-fone">
-              <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
+            
+            <div class="form-group" id="form-data">
+              <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data">
               <i class="fas fa-exclamation-circle"></i>
               <i class="fas fa-check-circle"></i>
               <small>Mensagem de erro</small>
             </div>
-            <div class="form-group" id="form-senha">
-              <input type="password" name="senha" id="senha" class="form-control rounded-left" placeholder="Senha">
+
+            <div class="form-group" id="form-horario">
+              <input type="time" name="horario" id="horario" class="form-control rounded-left" placeholder="Horário">
               <i class="fas fa-exclamation-circle"></i>
               <i class="fas fa-check-circle"></i>
               <small>Mensagem de erro</small>
             </div>
-            <div class="form-group" id="form-senhaconf">
-              <input type="password" id="senhaconf" class="form-control rounded-left" placeholder="Confirmar senha">
+
+            <div class="form-group" id="form-obs">
+              <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observações">
               <i class="fas fa-exclamation-circle"></i>
               <i class="fas fa-check-circle"></i>
               <small>Mensagem de erro</small>

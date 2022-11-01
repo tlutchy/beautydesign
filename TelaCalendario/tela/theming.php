@@ -52,8 +52,7 @@ $resultado=mysqli_query($con,$comandoSql);
                 id: '<?php echo $dados['id_agenda']; ?>',
                 title: '<?php echo $dados['titulo_agenda']; ?>',
                 color: '<?php echo $dados['corstatus_agenda']; ?>',
-                start: '<?php echo $dados['datainicio_agenda']; ?>',
-                end: '<?php echo $dados['datafim_agenda']; ?>',
+                start: '<?php echo $dados['data_agenda']; ?>',                
                 },<?php
               }
             ?>

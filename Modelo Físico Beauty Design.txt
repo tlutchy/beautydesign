@@ -10,6 +10,7 @@ create table tiposervico(
 
 create table servico(
 	id_servico int primary key auto_increment,
+	nome_servico varchar(45),
 	valor decimal (10,2),
 	id_tiposervico int,	
 	constraint servico_tipo foreign key (id_tiposervico) references tiposervico (id_tiposervico)
@@ -34,8 +35,9 @@ create table funcionario(
 create table agenda(
 	id_agenda int primary key auto_increment,
 	titulo_agenda varchar(45),
-	datainicio_agenda datetime,
-	datafim_agenda datetime,
+	data_agenda date,
+	horainicio_agenda time,
+	horafim_agenda time,
 	status_agenda varchar(45),
 	corstatus_agenda varchar(45),
 	obs_agenda varchar(255),

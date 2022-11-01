@@ -7,7 +7,7 @@ echo "<h3>  Listagem de Funcionários </h3>";
   
   /*2- criando o comando sql para consulta  dos registros*/
   
-    $comandoSql="select * from funcionario";
+    $comandoSql="select a.*, c.nome_cliente, f.nome_funcionario, s.nome_servico from agenda as a inner join cliente as c on a.id_cliente = c.id_cliente inner join funcionario as f on a.id_funcionario = f.id_funcionario inner join servico as s on a.id_servico = s.id_servico";
 
   /*3- executando o comando sql */
     $resultado=mysqli_query($con,$comandoSql);
@@ -15,24 +15,25 @@ echo "<h3>  Listagem de Funcionários </h3>";
 
   /*4- pegando os dados da consulta criada e exibindo */
      while($dados=mysqli_fetch_assoc($resultado)){
-       $id=$dados["id_funcionario"];
-       $nome=$dados["nome_funcionario"];
-       $cpf=$dados["cpf_funcionario"];
-       $fone=$dados["fone_funcionario"];
-       $senha=$dados["senha"];
+       $id=$dados["id_agenda"];
+       $cliente=$dados["nome_cliente"];
+       $servico=$dados["nome_servico"];
+       $funcionario=$dados["nome_funcionario"];
+       $data=$dados["data_agenda"];
+       $obs=$dados["obs_agenda"];
        
     
      echo" Id: $id";
-     echo"</br> Nome: $nome";
-     echo"</br>CPF: $cpf";
-     echo"</br>Telefone: $fone";
-     echo"</br>Senha: $senha (Eu sei que a senha não pode aparececer. Ainda não está totalmente pronto. É só um teste)" ;
-     echo"<br><a href=exclui_funcionario_beauty.php?id=$id> Excluir</a>";
-     echo"<br><a href=frm_altera_funcionario_beauty.php?id=$id> Alterar</a>";
+     echo"</br> Cliente: $cliente";
+     echo"</br> Funcionário: $funcionario";
+     echo"</br> Serviço: $servico";
+     echo"</br> Data: $data";
+     echo"<br><a href=exclui_agenda_beauty.php?id=$id> Excluir</a>";
+     echo"<br><a href=frm_altera_agenda_beauty.php?id=$id> Alterar</a>";
     echo"<hr>";
     }
 
-    echo" <a href=index.html> Novo </a>";
+    echo" <a href=frm_cadastra_agenda.php> Novo </a>";
     
 
 

@@ -3,21 +3,25 @@
 include "conexao_beauty.php";
 
 $cliente=$_POST["nome"];
-$cpf=$_POST["cpf"];
-$fone=$_POST["fone"];
-$senha=$_POST["senha"];
+$funcionario=$_POST["funcionario"];
+$servico=$_POST["servico"];
+$data=$_POST["data"];
+$horario=$_POST["horario"];
+$obs=$_POST["obs"];
+$titulo=$_POST["nome"]." ".$_POST["servico"];
 
-$comandoSql = "insert into funcionario (nome_funcionario, cpf_funcionario, fone_funcionario, senha)
+
+$comandoSql = "insert into agenda (titulo_agenda, id_cliente, id_funcionario, id_servico, data_agenda, horainicio_agenda, obs_agenda)
 values
-('$nome', '$cpf', '$fone', '$senha')";
+('$titulo', '$cliente', '$funcionario', '$servico', '$data', '$horario', '$obs')";
 
 $resultado=mysqli_query($con, $comandoSql);
 
 //verificando se o comando sql foi executado
 if($resultado==true){
     echo "Cadastrado com sucesso!";
-    echo "<br><a href=index.html>Voltar</a>";
-    echo "<br><a href=lista_funcionario_beauty.php>Listagem de funcionário</a>";
+    echo "<br><a href=frm_cadastra_agenda.php>Voltar</a>";
+    echo "<br><a href=lista_agenda_beauty.php>Listagem de agendamentos</a>";
     //echo "<br><a href=lista_funcionario_beauty_tabela.php>Listagem de funcionário em Tabela</a>";
 }else
     echo "Erro no cadastro";
