@@ -1,0 +1,44 @@
+create database beautydesign
+
+use beautydesign
+
+create table tipoDeServico(
+	id_tipoDeServico int primary key auto_increment,
+	nome_tipoDeServico varchar(45),
+	descricao_tipoDeServico varchar (255)
+	);
+
+create table agenda(
+	id_agenda int primary key auto_increment,
+	data_agenda date,
+	hora_agenda time,
+	observacao_agenda varchar(255)
+	);
+
+create table servico(
+	id_servico int primary key auto_increment,
+	valor decimal (10,2),
+	id_tipoDeServico int,
+	id_agenda int,
+	constraint servico_agenda foreign key (id_agenda) references agenda (id_agenda),
+	constraint servico_tipo foreign key (id_tipoDeServico) references tipoDeServico (id_tipoDeServico)
+	);
+
+create table cliente(
+	id_cliente int primary key auto_increment,
+	nome_cliente varchar(45),
+	telefone_cliente varchar(45),
+	cpf_cliente varchar(45),
+	id_agenda int,
+	constraint cliente_agenda foreign key (id_agenda) references agenda (id_agenda)
+	);
+
+create table funcionario(
+	id_funcionario int primary key auto_increment,
+	nome_funcionario varchar(45),
+	telefone_funcionario varchar(45),
+	cpf_funcionario varchar(45),
+	senha varchar(45),
+	id_agenda int,
+	constraint funcionario_agenda foreign key (id_agenda) references agenda (id_agenda)
+	);
