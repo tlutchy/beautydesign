@@ -1,0 +1,15 @@
+ [
+              <?php
+              while ($dados = mysqli_fetch_array($resultado)) {
+              ?> {
+                  id: '<?php echo $dados['id_agenda']; ?>',
+                  title: '<?php echo $dados['nome_cliente'] . " - " . $dados['nome_servico']; ?>',
+                  color: '<?php echo $dados['corstatus_agenda']; ?>',
+                  start: '<?php echo $dados['data_agenda']; ?>',
+                  description: 'teste',
+                },
+              <?php
+              }
+              ?>
+
+            ],
