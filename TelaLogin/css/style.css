@@ -1,38 +1,5 @@
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 :root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -43,7 +10,7 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Raleway", sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -63,15 +30,12 @@ section {
 }
 
 body {
-  margin: 0;
-  font-family: 'Lora', serif;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  text-align: left;
-  background-color: #fff;
+  font-family: "Raleway", sans-serif;
+  color: #181818;
+  background-color: rgb(250, 250, 250);
+  line-height: 1.8;
+  font-weight: normal;
+  align-items: center;
 }
 
 [tabindex="-1"]:focus {
@@ -83,16 +47,6 @@ hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
 }
 
 p {
@@ -114,20 +68,6 @@ address {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
-}
-
-ol,
-ul,
-dl {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-ol ol,
-ul ul,
-ol ul,
-ul ol {
-  margin-bottom: 0;
 }
 
 dt {
@@ -169,14 +109,23 @@ sup {
 }
 
 a {
-  color: #007bff;
   text-decoration: none;
-  background-color: transparent;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif !important;
 }
 
 a:not([href]):not([tabindex]) {
@@ -198,7 +147,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: "Raleway", sans-serif;
   font-size: 1em;
 }
 
@@ -258,7 +207,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  font-family: "Raleway", sans-serif;
   font-size: inherit;
   line-height: inherit;
 }
@@ -2282,6 +2231,21 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
+.form-control {
+  height: 48px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+  font-size: 16px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .form-control {
     -webkit-transition: none;
@@ -2409,6 +2373,7 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .form-text {
@@ -6842,7 +6807,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Raleway", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6967,7 +6932,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Raleway", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -11362,7 +11327,7 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family: "Raleway", sans-serif;
 }
 
 .text-justify {
@@ -11709,22 +11674,6 @@ a.text-dark:focus {
   }
 }
 
-body {
-  font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  line-height: 1.8;
-  font-weight: normal;
-  background-color: #1D1D1D;
-  color: gray;
-}
-
-a {
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease;
-  color: #8d448b;
-}
-
 a:hover,
 a:focus {
   text-decoration: none !important;
@@ -11739,15 +11688,16 @@ h2,
 h3,
 h4,
 h5,
+h6,
 .h1,
 .h2,
 .h3,
 .h4,
-.h5 {
-  line-height: 1.5;
-  font-weight: 400;
-  font-family: 'Lora', serif;
-  color: #fff;
+.h5,
+.h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .bg-primary {
@@ -11778,46 +11728,22 @@ h5,
 }
 
 .login-wrap {
-  position: relative;
-  background-color: #3b3b3b;
+  background: #fff;
   border-radius: 10px;
-  -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 30%);
+  -webkit-box-shadow: 0px 0px 20px -15px rgba(0, 0, 0, 0.24); /*navegador diferente*/
+  -moz-box-shadow: 0px 0px 20px -15px rgba(0, 0, 0, 0.24); /*navegador diferente*/
+  box-shadow: 0px 0px 40px -25px rgb(0 0 0 / 24%);
+  padding-bottom: 20px;
 }
 
 .login-wrap h3 {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 25px;
+  color: #141414;
 }
 
 .login-wrap .icon {
-  width: 80px;
-  height: 80px;
-  background: #8d448b;
-  border-radius: 50%;
-  font-size: 30px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
-.login-wrap .icon span {
-  color: #fff;
-}
-
-.form-control {
-  height: 48px;
-  background-color: #565656;
-  color: #fff !important;
-  font-size: 16px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border: 1px solid transparent;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  margin-bottom: 15px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -11880,6 +11806,14 @@ h5,
   width: 0;
 }
 
+.color-a-login{
+  color: #141414 !important;
+}
+
+.color-a-login:hover{
+  color: #444444 !important;
+}
+
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
@@ -11892,7 +11826,7 @@ h5,
   content: "\f0c8";
   font-family: "FontAwesome";
   position: absolute;
-  color: rgba(0, 0, 0, 0.1);
+  color: rgb(217 217 217);
   font-size: 20px;
   margin-top: -4px;
   -webkit-transition: 0.3s;
@@ -11918,11 +11852,11 @@ h5,
 
 /* Style the checkmark/indicator */
 .checkbox-primary {
-  color: #8d448b;
+  color: #141414;
 }
 
 .checkbox-primary input:checked~.checkmark:after {
-  color: #8d448b;
+  color: #DEABC5;
 }
 
 .btn {
@@ -11940,13 +11874,19 @@ h5,
 }
 
 .btn.btn-primary {
-  background: #E89DE8 !important;
-  color: #fff !important;
+  font-size: 16px!important;
+  background: #F7BEDB !important;
+  border: 1px solid #F7BEDB !important;
+  color: #141414 !important;
+  font-weight: 600!important;
 }
 
 .btn.btn-primary:hover {
-  background: transparent;
-  color: #BF6EBF;
+  border: 1px solid #DEABC5!important;
+  background: #DEABC5!important;
+  color: #141414!important;
+  font-weight: 600!important;
+  font-size: 16px!important;
 }
 
 .btn.btn-primary.btn-outline-primary {
@@ -11959,8 +11899,9 @@ h5,
   color: #fff;
 }
 
-.form-group {
-  position: relative;
+.form-group input {
+  display: block;
+  border-color: #d3d3d3;
 }
 
 .form-group .submit {
@@ -12361,47 +12302,17 @@ h5,
 }
 
 /*--------------------------------------------------------------
-        # Footer
-        --------------------------------------------------------------*/
+# Footer
+--------------------------------------------------------------*/
 .footer {
-  background: #2e2e2e;
+  background: #362825;
   padding: 0 0 20px 0;
   font-size: 14px;
-}
-
-.footer .footer-newsletter {
-  padding: 50px 0;
-  background: #f6f9ff;
-  border-top: 1px solid #e1ecff;
-}
-
-.footer .footer-newsletter h4 {
-  font-size: 24px;
-  margin: 0 0 10px 0;
-  padding: 0;
-  line-height: 1;
-  font-weight: 700;
-  color: #012970;
-}
-
-.footer .footer-newsletter form {
-  margin-top: 20px;
-  background: #fff;
-  padding: 6px 10px;
-  position: relative;
-  border-radius: 4px;
-  border: 1px solid #e1ecff;
-}
-
-.footer .footer-newsletter form input[type=email] {
-  border: 0;
-  padding: 8px;
-  width: calc(100% - 140px);
+  box-shadow: 0px 5px 20px #0000002c;
 }
 
 .footer .footer-top {
-  background: #3b3b3b;
-  border-top: 1px solid #5c5c5c;
+  background: #ffffff;
   padding: 60px 0 30px 0;
 }
 
@@ -12432,37 +12343,27 @@ h5,
   margin-right: 6px;
 }
 
-.footer .footer-top .footer-info .logo span {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #ffff;
-  font-family: "Nunito", sans-serif;
-  margin-top: 3px;
-}
-
 .footer .footer-top .footer-info p {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .footer .footer-top .social-links a {
   font-size: 20px;
   display: inline-block;
-  color: #E89DE8;
+  color: #F7BEDB;
   line-height: 0;
   margin-right: 10px;
   transition: 0.3s;
 }
 
 .footer .footer-top .social-links a:hover {
-  color: #BF6EBF;
+  color: #DEABC5;
 }
 
 .footer .footer-top h4 {
-  color: #fff;
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
@@ -12482,7 +12383,7 @@ h5,
 
 .footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #E89DE8;
+  color: #DEABC5;
   font-size: 12px;
   line-height: 0;
 }
@@ -12498,14 +12399,14 @@ h5,
 }
 
 .footer .footer-top .footer-links ul a {
-  color: #ffff;
+  color: rgb(0, 0, 0);
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
 }
 
 .footer .footer-top .footer-links ul a:hover {
-  color: #c9c9c9;
+  transform: translateX(5px);
 }
 
 .footer .footer-top .footer-contact p {
@@ -12526,9 +12427,9 @@ h5,
 }
 
 .footer a {
-  color: #E89DE8;
+  color: #F7BEDB;
 }
 
 .footer a:hover {
-  color: #BF6EBF;
+  color: #DEABC5;
 }
