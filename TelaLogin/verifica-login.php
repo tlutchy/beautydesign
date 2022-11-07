@@ -29,7 +29,7 @@ $senha=$_POST["senha"];
     $_SESSION['id'] = $id;
     $_SESSION['nome'] = $nome;
 
-    header("Location: painel.php");
+    header("Location: /tcc/TelaPainelAdmin/index.php");
 
 
   }else{
