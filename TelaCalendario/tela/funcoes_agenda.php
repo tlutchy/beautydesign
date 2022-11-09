@@ -9,7 +9,7 @@ include "conexao_beauty.php";
 /*3- executando o comando sql */
  $resultado=mysqli_query($con,$comandoSql);
 
-echo "<select name='nome' id='nome' class='form-control rounded-left'";
+echo "<select name='nome' id='nome' class='form-control rounded-left'>";
 
 
 /*4- pegando os dados da consulta criada e exibindo */

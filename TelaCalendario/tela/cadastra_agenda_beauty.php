@@ -35,7 +35,7 @@ $resultado=mysqli_query($con, $comandoSql);
 if($resultado==true){
 
 
-header("Location: calendario_beauty.php");
+header("Location: frm_calendario_beauty.php");
 
 }else
     echo "Erro no cadastro";
