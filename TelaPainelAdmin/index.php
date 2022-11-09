@@ -234,7 +234,7 @@
 
 
                                         echo "<tr>
-                <th scope='col'><input class='form-check-input' type='checkbox'></th>                        
+                <td><input class='form-check-input' type='checkbox'></td>                       
                 <td>$data</td>
                 <td>$cliente</td>
                 <td>$servico</td>
