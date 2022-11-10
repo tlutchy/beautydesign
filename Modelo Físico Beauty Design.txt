@@ -1,6 +1,6 @@
-create database beautydesign
+create database beautydesign;
 
-use beautydesign
+use beautydesign;
 
 create table tiposervico(
 	id_tiposervico int primary key auto_increment,

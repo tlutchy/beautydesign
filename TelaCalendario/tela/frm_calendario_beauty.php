@@ -65,23 +65,21 @@ $resultado = mysqli_query($con, $comandoSql);
                   id: '<?php echo $dados['id_agenda']; ?>',
                   title: '<?php echo $dados['nome_cliente'] . " - " . $dados['nome_servico']; ?>',
                   color: '<?php echo $dados['corstatus_agenda']; ?>',
-                  start: '<?php echo $dados['data_agenda']; ?>',
-                  description: 'teste',
+                  start: '<?php echo $dados['data_agenda'] . " " . $dados['horainicio_agenda']; ?>',
+                  
                 },
               <?php
               }
               ?>
 
             ],
-
-
-
+            
             eventClick: function(info) {
 
               info.jsEvent.preventDefault();
               $('#janelamodal #cliente').text(info.event.title);
-              $('#janelamodal #servico').text(info.event.description);
-              $('#janelamodal #horario').text(info.event.start);
+              $('#janelamodal #servico').text(info.event.color);
+              $('#janelamodal #horario').text(info.event.start.toLocaleString());
               $('#janelamodal').modal('show')
             }
           });

@@ -189,7 +189,7 @@
                     </div>
                     <div class="table-responsive">
                         <table id="tablesorter" class="tablesorter table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
+                            <thead class="tablesorter">
                                 <tr class="text-white">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">Data</th>
@@ -214,7 +214,7 @@
                                     as A inner join cliente as C on
                                     a.id_cliente = c.id_cliente inner join
                                     servico as s on s.id_servico = a.id_servico inner join
-                                    funcionario as f on f.id_funcionario = a.id_funcionario";
+                                    funcionario as f on f.id_funcionario = a.id_funcionario where data_agenda=current_date()";
 
 
                                     /*3- executando o comando sql */
@@ -231,6 +231,8 @@
                                         $status = $dados["status_agenda"];
                                         $funcionario = $dados["nome_funcionario"];
                                         $obs = $dados["obs_agenda"];
+                                        
+                                        
 
 
                                         echo "<tr>
@@ -446,9 +448,9 @@
 
     <!-- Template Javascript -->
     <script src="paineljs/painelmain.js"></script>
-    <script src="/TelaPainelAdmin/tablejs/jquery-latest.js"></script>
-    <script src="/TelaPainelAdmin/tablejs/jquery.tablesorter.min.js"></script>
-    <script src="/TelaPainelAdmin/tablejs/tablescripts.js"></script>
+    <script src="tablejs/jquery-latest.js"></script>
+    <script src="tablejs/jquery.tablesorter.min.js"></script>
+    <script src="tablejs/tablescripts.js"></script>
 
     
 </body>

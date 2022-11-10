@@ -19,11 +19,11 @@ $(function(){
         // Envia os cabeçalhos 
         headers: { 
             // A sgunda coluna (começa do zero) 
-            1: { 
+            0: { 
                 // Desativa a ordenação para essa coluna 
                 sorter: false 
             },
-			4: {
+			1: {
                 // Ativa o parser de data na coluna 4 (começa do 0) 
                 sorter: 'datetime' 
 			}

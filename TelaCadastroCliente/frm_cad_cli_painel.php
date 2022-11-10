@@ -80,10 +80,10 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link active"><i
+                    <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i
                             class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
-                    <a href="frm_cad_cli_painel.php" class="nav-item nav-link"><i
+                    <a href="frm_cad_cli_painel.php" class="nav-item nav-link active"><i
                             class="fa fa-keyboard me-2"></i>Clientes</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>

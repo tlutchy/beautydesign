@@ -207,7 +207,7 @@
         }
     });
 
-    $('.tablesorter').tablesorter();
+    
 
     
 })(jQuery);
