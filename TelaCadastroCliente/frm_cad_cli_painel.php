@@ -13,47 +13,33 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="../global-assets/favicon.png" rel="icon">
-    <link href="../global-assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="../global-assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="../global-assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../global-assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../global-assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../global-assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="../global-assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Template Main CSS File -->
-    <link href="../TelaCadastroCliente/assets/css/style.css" rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
-    <link href="../TelaPainelAdmin/painellib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
-    <link href="../TelaPainelAdmin/painellib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="../global-assets/css-tela-admin/painellib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
+    <link href="../global-assets/css-tela-admin/painellib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../TelaPainelAdmin/painelcss/painelbootstrap.min.css" rel="stylesheet">
+    <link href="../global-assets/css-tela-admin/painelcss/painelbootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="../TelaPainelAdmin/painelcss/painelstyle.css" rel="stylesheet">
+    <link href="../global-assets/css-tela-admin/painelcss/painelstyle.css" rel="stylesheet">
+
 </head>
 
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner"
-            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -64,14 +50,13 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="../TelaPainelAdmin/index.php" class="navbar-brand mx-4 mb-3">
-                    <img src="../global-assets/Logo Inteira BD Horizontal.png" class="fa fa-user-edit" width="150px">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px">Beauty Design</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
                         <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div
-                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                         </div>
                     </div>
                     <div class="ms-3">
@@ -80,16 +65,13 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i
-                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
-                    <a href="frm_cad_cli_painel.php" class="nav-item nav-link active"><i
-                            class="fa fa-keyboard me-2"></i>Clientes</a>
+                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Clientes</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="far fa-file-alt me-2"></i>Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
                             <a href="signup.html" class="dropdown-item">Sign Up</a>
@@ -107,14 +89,13 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="../TelaPainelAdmin/index.php" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><img src="../global-assets/icone-formulario.png"
-                            class="fa fa-user-edit" width="40px"></h2>
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px"></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                
+
                 <div class="navbar-nav align-items-center ms-auto">
                     <!--div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -142,12 +123,11 @@
                     </div-->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-                                style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex">John Doe</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
+                            <!--a href="#" class="dropdown-item">My Profile</a-->
                             <a href="#" class="dropdown-item">Settings</a>
                             <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Log Out</a>
                         </div>
@@ -158,187 +138,393 @@
 
 
             <!-- Sale & Revenue Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-line fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Today Sale</p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
+            <form action="exclui_clientes.php" method="POST">
+                <div class="container-fluid pt-4 px-4">
+                    <div class="row g-4">
+                        <div class="col-sm-6 col-xl-3">
+                            <button type="button" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4" data-bs-toggle="modal" data-bs-target="#modalNovo">
+                                <i class="fa fa-chart-line fa-3x text-primary"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Novo</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
+                            </button>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Sale</p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <button type="submit" id="multi-delete" name="multi-delete" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Deletar</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
+                            </button>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-area fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Today Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <button type="button" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4" data-bs-toggle="modal" data-bs-target="#modalAlterar">
+                                <i class="fa fa-chart-area fa-3x text-primary"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Alterar</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
+                            </button>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
-                            </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <button type="button" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Log Out</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Sale & Revenue End -->
+                <!-- Sale & Revenue End -->
 
-            <!-- Recent Sales Start -->
-            <!--div class="container-fluid pt-4 px-4">
-                <div class="col-md-6 col-lg-5">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Cadastro de Cliente</h6>
-                        <a href="">Mostrar Tudo</a>
-                    </div>
-                    <div class="login-wrap p-4 p-md-5">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <img src="../global-assets/icone-formulario.png">
+                <!-- Recent Sales Start -->
+                <div class="container-fluid pt-4 px-4">
+                    <div class="bg-secondary text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Serviços Recentes</h6>
+                            <!--a href="">Mostrar Tudo</a-->
                         </div>
-                        <h3 class="text-center mb-4">CADASTRAR CLIENTE</h3>
-                        <form action="cadastra_cliente_beauty.php" class="form align-middle mb-0" id="form"
-                            method="post">
-                            <div class="form-group" id="form-nome">
-                                <input type="text" name="nome" id="nome" class="form-control rounded-left"
-                                    placeholder="Nome">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <i class="fas fa-check-circle"></i>
-                                <small>Mensagem de erro</small>
-                            </div>
-                            <div class="form-group" id="form-cpf">
-                                <input type="text" name="cpf" id="cpf" class="form-control rounded-left"
-                                    placeholder="CPF">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <i class="fas fa-check-circle"></i>
-                                <small>Mensagem de erro</small>
-                            </div>
-                            <div class="form-group" id="form-fone">
-                                <input type="text" name="fone" id="fone" class="form-control rounded-left"
-                                    placeholder="Telefone">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <i class="fas fa-check-circle"></i>
-                                <small>Mensagem de erro</small>
-                            </div>
-                            <div class="form-group" id="form-obs">
-                                <input type="text" name="obs" id="obs" class="form-control rounded-left"
-                                    placeholder="Observação">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <i class="fas fa-check-circle"></i>
-                                <small>Mensagem de erro</small>
-                            </div>
+                        <div class="table-responsive">
+                            <table id="tablesorter" class="tablesorter table text-start align-middle table-bordered table-hover mb-0">
+                                <thead class="tablesorter">
+                                    <tr class="text-white">
+                                        <th scope="col"><input class="form-check-input" type="checkbox" onchange="habilitaDelete()"></th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Telefone</th>
+                                        <th scope="col">Cpf</th>
+                                        <th scope="col">Observações</th>
 
-                            <div class="botaosubmit">
-                                <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
-                            </div>
 
-                        </form>
+                                    </tr>
+                                </thead>
+                                <tbody><?php
+                                        echo "<h3>  Listagem de cliente </h3>";
+                                        //1- realizando a conexao com o banco de dados(local,usuario,senha,nomeBanco)
+
+                                        //$con=mysqli_connect("localhost","root","","bd_lavarapido");
+                                        include "conexao_beauty.php";
+
+                                        /*2- criando o comando sql para consulta  dos registros*/
+
+                                        $comandoSql = "select * from cliente";
+
+
+                                        /*3- executando o comando sql */
+                                        $resultado = mysqli_query($con, $comandoSql);
+
+
+                                        /*4- pegando os dados da consulta criada e exibindo */
+                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                            $id = $dados["id_cliente"];
+                                            $nome = $dados["nome_cliente"];
+                                            $fone = $dados["fone_cliente"];
+                                            $cpf = $dados["cpf_cliente"];
+                                            $obs = $dados["obs_cliente"];
+
+
+
+
+                                            echo "<tr>
+                <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox_id[]'></td>                       
+                <td>$nome</td>
+                <td>$fone</td>
+                <td>$cpf</td>
+                <td>$obs</td>
+                
+                
+            </tr>";
+                                        }
+
+                                        ?>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div-->
-            <!-- Recent Sales End -->
+                <!-- Recent Sales End -->
 
 
-            <!-- Sales Chart Start -->
-            <div class="container-fluid pt-4 px-4">
+                <!-- Sales Chart Start -->
+                <!--div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
-                        <div class="d-flex align-items-center justify-content-between mb-4 ">
-                            <h6 class="mb-0">Cadastro de Cliente</h6>
-                            <a href="">Mostrar Tudo</a>
-                        </div>
-                        <div class="login-wrap p-4 p-md-5">
-                            <div class="icon d-flex align-items-center justify-content-center">
-                                <img src="../global-assets/icone-formulario.png">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Worldwide Sales</h6>
+                                <a href="">Show All</a>
                             </div>
-                            <!--h3 class="text-center mb-4">CADASTRAR CLIENTE</h3-->
-                            <form action="cadastra_cliente_beauty.php" class="form align-middle mb-0" id="form"
-                                method="post">
-                                <div class="form-group" id="form-nome">
-                                    <input type="text" name="nome" id="nome" class="form-control rounded-left"
-                                        placeholder="Nome">
-                                    <i class="fas fa-exclamation-circle"></i>
-                                    <i class="fas fa-check-circle"></i>
-                                    <small>Mensagem de erro</small>
-                                </div>
-                                <div class="form-group" id="form-cpf">
-                                    <input type="text" name="cpf" id="cpf" class="form-control rounded-left"
-                                        placeholder="CPF">
-                                    <i class="fas fa-exclamation-circle"></i>
-                                    <i class="fas fa-check-circle"></i>
-                                    <small>Mensagem de erro</small>
-                                </div>
-                                <div class="form-group" id="form-fone">
-                                    <input type="text" name="fone" id="fone" class="form-control rounded-left"
-                                        placeholder="Telefone">
-                                    <i class="fas fa-exclamation-circle"></i>
-                                    <i class="fas fa-check-circle"></i>
-                                    <small>Mensagem de erro</small>
-                                </div>
-                                <div class="form-group" id="form-obs">
-                                    <input type="text" name="obs" id="obs" class="form-control rounded-left"
-                                        placeholder="Observação">
-                                    <i class="fas fa-exclamation-circle"></i>
-                                    <i class="fas fa-check-circle"></i>
-                                    <small>Mensagem de erro</small>
-                                </div>
-    
-                                <div class="botaosubmit">
-                                    <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
-                                </div>
-    
-                            </form>
+                            <canvas id="worldwide-sales"></canvas>
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Lista de Clientes</h6>
-                                <a href="">Mostrar Tudo</a>
+                                <h6 class="mb-0">Salse & Revenue</h6>
+                                <a href="">Show All</a>
                             </div>
                             <canvas id="salse-revenue"></canvas>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Sales Chart End -->
+            </div-->
+                <!-- Sales Chart End -->
 
 
 
 
 
-            <!-- Widgets Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    
-                    <div class="col-sm-12 col-md-6 col-xl-4">
-                        <div class="login-wrap p-4 p-md-5">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Calender</h6>
+                <!-- Widgets Start -->
+                <div class="container-fluid pt-4 px-4">
+                    <div class="row g-4">
+                        <!--div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-secondary rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <h6 class="mb-0">Messages</h6>
                                 <a href="">Show All</a>
                             </div>
-                            <div id="calender"></div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pt-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div-->
+                        <div class="col-sm-12 col-md-6 col-xl-4">
+                            <div class="h-100 bg-secondary rounded p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Calender</h6>
+                                    <a href="">Show All</a>
+                                </div>
+                                <div id="calender"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-4">
+                            <div class="h-100 bg-secondary rounded p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">To Do List</h6>
+                                    <a href="">Show All</a>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
+                                    <button type="button" class="btn btn-primary ms-2">Add</button>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom py-2">
+                                    <input class="form-check-input m-0" type="checkbox">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                            <span>Short task goes here...</span>
+                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom py-2">
+                                    <input class="form-check-input m-0" type="checkbox">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                            <span>Short task goes here...</span>
+                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom py-2">
+                                    <input class="form-check-input m-0" type="checkbox" checked>
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                            <span><del>Short task goes here...</del></span>
+                                            <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center border-bottom py-2">
+                                    <input class="form-check-input m-0" type="checkbox">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                            <span>Short task goes here...</span>
+                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center pt-2">
+                                    <input class="form-check-input m-0" type="checkbox">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                            <span>Short task goes here...</span>
+                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-4">
+                            <div class="bg-secondary rounded h-100 p-4">
+                                <h6 class="mb-4">Multiple Bar Chart</h6>
+                                <canvas id="worldwide-sales"></canvas>
+                            </div>
                         </div>
                     </div>
-                    
+                </div>
+                <!-- Widgets End -->
+            </form>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalNovo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="login-wrap p-4 p-md-5">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="../global-assets/icone-formulario.png">
+                                </div>
+                                <h3 class="text-center mb-4">CADASTRAR CLIENTE</h3>
+                                <form action="cadastra_cliente_beauty.php" class="form" id="form" method="post">
+                                    <div class="form-group" id="form-nome">
+                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-cpf">
+                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-fone">
+                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-obs">
+                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+
+                                    <div class="botaosubmit">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
+                                    </div>
+
+                                    <!--div class="botaosubmit">
+                                        <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
+                                    </div-->
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-            <!-- Widgets End -->
+            <!-- End Modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="modalAlterar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="login-wrap p-4 p-md-5">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="../global-assets/icone-formulario.png">
+                                </div>
+                                <h3 class="text-center mb-4">ALTERAR CLIENTE</h3>
+                                <?php
+                                    
+
+                                ?>
+                                <form action="altera_cliente.php" class="form" id="form" method="post">
+                                    <div class="form-group" id="form-nome">
+                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-cpf">
+                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-fone">
+                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-obs">
+                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+
+                                    <div class="botaosubmit">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
+                                    </div>
+
+                                    <!--div class="botaosubmit">
+                                        <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
+                                    </div-->
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
 
 
             <!-- Footer Start -->
@@ -361,30 +547,40 @@
         <!-- Content End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../TelaPainelAdmin/painellib/chart/chart.min.js"></script>
-    <script src="../TelaPainelAdmin/painellib/easing/easing.min.js"></script>
-    <script src="../TelaPainelAdmin/painellib/waypoints/waypoints.min.js"></script>
-    <script src="../TelaPainelAdmin/painellib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="../TelaPainelAdmin/painellib/tempusdominus/js/moment.min.js"></script>
-    <script src="../TelaPainelAdmin/painellib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="../TelaPainelAdmin/painellib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/chart/chart.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/easing/easing.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/waypoints/waypoints.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/tempusdominus/js/moment.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../TelaPainelAdmin/paineljs/painelmain.js"></script>
-
-    <!-- Vendor JS Files -->
+    <script src="../global-assets/js-tela-admin/paineljs/painelmain.js"></script>
+    <script src="../global-assets/js-tela-admin/tablejs/jquery-latest.js"></script>
+    <script src="../global-assets/js-tela-admin/tablejs/jquery.tablesorter.min.js"></script>
+    <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
     <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
-    
 
-    <!-- Template Main JS File -->
-    <script src="https://kit.fontawesome.com/f9e19193d6.js" crossorigin="anonymous"></script>
+    <script>
+        var botao = document.querySelector("#multi-delete");
+        botao.disabled = true;
+
+        var isCheck = document.querySelector("checkbox_id").checked;
+
+        if (isCheck) {
+            botao.disabled = false;
+        } else {
+            botao.disabled = true;
+        }
+    </script>
+
 </body>
 
 </html>

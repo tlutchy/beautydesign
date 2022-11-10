@@ -25,14 +25,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="painellib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="painellib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="../global-assets/css-tela-admin/painellib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
+    <link href="../global-assets/css-tela-admin/painellib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="painelcss/painelbootstrap.min.css" rel="stylesheet">
+    <link href="../global-assets/css-tela-admin/painelcss/painelbootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="painelcss/painelstyle.css" rel="stylesheet"> 
+    <link href="../global-assets/css-tela-admin/painelcss/painelstyle.css" rel="stylesheet"> 
       
 </head>
 
@@ -406,6 +406,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Multiple Bar Chart</h6>
+                            <canvas id="worldwide-sales"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Widgets End -->
@@ -438,19 +444,19 @@
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="painellib/"></script>
-    <script src="painellib/easing/easing.min.js"></script>
-    <script src="painellib/waypoints/waypoints.min.js"></script>
-    <script src="painellib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="painellib/tempusdominus/js/moment.min.js"></script>
-    <script src="painellib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="painellib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/chart/chart.min.js"></script>   
+    <script src="../global-assets/css-tela-admin/painellib/easing/easing.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/waypoints/waypoints.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/tempusdominus/js/moment.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../global-assets/css-tela-admin/painellib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="paineljs/painelmain.js"></script>
-    <script src="tablejs/jquery-latest.js"></script>
-    <script src="tablejs/jquery.tablesorter.min.js"></script>
-    <script src="tablejs/tablescripts.js"></script>
+    <script src="../global-assets/js-tela-admin/paineljs/painelmain.js"></script>
+    <script src="../global-assets/js-tela-admin/tablejs/jquery-latest.js"></script>
+    <script src="../global-assets/js-tela-admin/tablejs/jquery.tablesorter.min.js"></script>
+    <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
 
     
 </body>
