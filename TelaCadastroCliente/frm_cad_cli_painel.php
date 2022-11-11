@@ -3,7 +3,7 @@
 ?-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -34,6 +34,37 @@
     <!-- Template Stylesheet -->
     <link href="../global-assets/css-tela-admin/painelcss/painelstyle.css" rel="stylesheet">
 
+    <script>
+        var habilitaDelete = () => {
+            var disabled = true;
+            var inputs = document.getElementById("tablesorter").querySelectorAll("input[name=checkbox-table]");
+
+            inputs.forEach((check) => {
+                if (check.checked == true) {
+                    disabled = false;
+                }
+            });
+
+            document.getElementById("multi-delete").disabled = disabled;
+        };
+
+        var handleChange = (obj) => {            
+            var inputs = document.getElementById("tablesorter").querySelectorAll("input[name=checkbox-table]");
+            inputs.forEach((check) => {
+                check.checked = obj.checked;
+            });
+
+            habilitaDelete();
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("input[name=checkbox-table]").forEach((element, index, array) => {
+                element.addEventListener("change", (obj) => {
+                    habilitaDelete();
+                })
+            })
+        })
+    </script>
 </head>
 
 <body>
@@ -151,7 +182,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6 col-xl-3">
-                            <button type="submit" id="multi-delete" name="multi-delete" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <button disabled type="submit" id="multi-delete" name="multi-delete" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Deletar</p>
@@ -192,7 +223,7 @@
                             <table id="tablesorter" class="tablesorter table text-start align-middle table-bordered table-hover mb-0">
                                 <thead class="tablesorter">
                                     <tr class="text-white">
-                                        <th scope="col"><input class="form-check-input" type="checkbox" onchange="habilitaDelete()"></th>
+                                        <th scope="col"><input class="form-check-input" type="checkbox" onclick="handleChange(this)"></th>
                                         <th scope="col">Nome</th>
                                         <th scope="col">Telefone</th>
                                         <th scope="col">Cpf</th>
@@ -229,7 +260,7 @@
 
 
                                             echo "<tr>
-                <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox_id[]'></td>                       
+                <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox-table' id='checkbox_id[]'></td>                       
                 <td>$nome</td>
                 <td>$fone</td>
                 <td>$cpf</td>
@@ -479,7 +510,7 @@
                                 </div>
                                 <h3 class="text-center mb-4">ALTERAR CLIENTE</h3>
                                 <?php
-                                    
+
 
                                 ?>
                                 <form action="altera_cliente.php" class="form" id="form" method="post">
@@ -569,7 +600,7 @@
     <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
 
     <script>
-        var botao = document.querySelector("#multi-delete");
+        /**var botao = document.querySelector("#multi-delete");
         botao.disabled = true;
 
         var isCheck = document.querySelector("checkbox_id").checked;
@@ -578,7 +609,7 @@
             botao.disabled = false;
         } else {
             botao.disabled = true;
-        }
+        } */
     </script>
 
 </body>
