@@ -124,8 +124,8 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
-                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Clientes</a>
+                    <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Agendamentos</a>
+                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clientes</a>
                     <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
                     <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
                     <div class="nav-item dropdown">
@@ -196,7 +196,7 @@
 
 
             <!-- Sale & Revenue Start -->
-            <form action="exclui_clientes.php" method="POST">
+            <form action="exclui_agendas.php" method="POST">
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
                         <div class="col-sm-6 col-xl-3">
@@ -218,7 +218,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6 col-xl-3">
-                            <button disabled type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <button disabled type="submit" formaction="cad_ag_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Alterar</p>
@@ -251,16 +251,19 @@
                                 <thead class="tablesorter">
                                     <tr class="text-white">
                                         <th scope="col"><input class="form-check-input" type="checkbox" onclick="handleChange(this)"></th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Telefone</th>
-                                        <th scope="col">Cpf</th>
+                                        <th scope="col">Data</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col">Serviço</th>
+                                        <th scope="col">Horário</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Atendente</th>
                                         <th scope="col">Observações</th>
 
 
                                     </tr>
                                 </thead>
                                 <tbody><?php
-                                        echo "<h3>  Listagem de cliente </h3>";
+                                        echo "<h3>  Agenda </h3>";
                                         //1- realizando a conexao com o banco de dados(local,usuario,senha,nomeBanco)
 
                                         //$con=mysqli_connect("localhost","root","","bd_lavarapido");
@@ -268,7 +271,11 @@
 
                                         /*2- criando o comando sql para consulta  dos registros*/
 
-                                        $comandoSql = "select * from cliente";
+                                        $comandoSql = "select * from agenda
+                                        as A inner join cliente as C on
+                                        a.id_cliente = c.id_cliente inner join
+                                        servico as s on s.id_servico = a.id_servico inner join
+                                        funcionario as f on f.id_funcionario = a.id_funcionario";
 
 
                                         /*3- executando o comando sql */
@@ -277,20 +284,26 @@
 
                                         /*4- pegando os dados da consulta criada e exibindo */
                                         while ($dados = mysqli_fetch_assoc($resultado)) {
-                                            $id = $dados["id_cliente"];
-                                            $nome = $dados["nome_cliente"];
-                                            $fone = $dados["fone_cliente"];
-                                            $cpf = $dados["cpf_cliente"];
-                                            $obs = $dados["obs_cliente"];
+                                            $id = $dados["id_agenda"];
+                                            $data = $dados["data_agenda"];
+                                            $cliente = $dados["nome_cliente"];
+                                            $servico = $dados["nome_servico"];
+                                            $hora = $dados["horainicio_agenda"];
+                                            $status = $dados["status_agenda"];
+                                            $funcionario = $dados["nome_funcionario"];
+                                            $obs = $dados["obs_agenda"];
 
 
 
 
                                             echo "<tr>
                 <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox-table'></td>                       
-                <td>$nome</td>
-                <td>$fone</td>
-                <td>$cpf</td>
+                <td>$data</td>
+                <td>$cliente</td>
+                <td>$servico</td>
+                <td>$hora</td>
+                <td>$status</td>
+                <td>$funcionario</td>
                 <td>$obs</td>
                 
                 
@@ -478,112 +491,67 @@
                                 <div class="icon d-flex align-items-center justify-content-center">
                                     <img src="../global-assets/icone-formulario.png">
                                 </div>
-                                <h3 class="text-center mb-4">CADASTRAR CLIENTE</h3>
-                                <form action="cadastra_cliente_beauty.php" class="form" id="form" method="post">
+                                <h3 class="text-center mb-4">Agendamento</h3>
+                                <form action="cadastra_agenda_beauty.php" method="post" class="form" id="form">
                                     <div class="form-group" id="form-nome">
-                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-cpf">
-                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-fone">
-                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-obs">
-                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
+                                        <?php
+                                        include "funcoes_agenda.php";
+                                        listaClienteSelect();
+                                        ?>
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
 
+                                    <div class="form-group" id="form-funcionario">
+                                        <?php
+                                        funcionarioSelect();
+                                        ?>
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+
+                                    <div class="form-group" id="form-servico">
+                                        <?php
+                                        servicoSelect();
+                                        ?>
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+
+                                    <div class="form-group" id="form-data">
+                                        <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+
+                                    <div class="form-group" id="form-horario">
+                                        <input type="time" name="horario" id="horario" class="form-control rounded-left" placeholder="Horário">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+
+                                    <div class="form-group" id="form-obs">
+                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observações">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
                                     <div class="botaosubmit">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
+                                        <button type="submit" class="btn btn-primary rounded submit">Cadastrar</button>
                                     </div>
-
-                                    <!--div class="botaosubmit">
-                                        <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
-                                    </div-->
-
                                 </form>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <!-- End Modal -->
-            <!-- Modal -->
-            <div class="modal fade" id="modalAlterar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="login-wrap p-4 p-md-5">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <img src="../global-assets/icone-formulario.png">
-                                </div>
-                                <h3 class="text-center mb-4">ALTERAR CLIENTE</h3>
-                                <?php
-
-
-
-                                ?>
-                                <form action="altera_cliente.php" class="form" id="form" method="post">
-                                    <div class="form-group" id="form-nome">
-                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-cpf">
-                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-fone">
-                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-obs">
-                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-
-                                    <div class="botaosubmit">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
-                                    </div>
-
-                                    <!--div class="botaosubmit">
-                                        <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
-                                    </div-->
-
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- End Modal -->
+           
 
 
             <!-- Footer Start -->
@@ -625,7 +593,7 @@
     <script src="../global-assets/js-tela-admin/tablejs/jquery-latest.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/jquery.tablesorter.min.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
-    <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
+    <script src="../TelaCadastroAgenda/assets/js/scripts.js"></script>
 
 
 

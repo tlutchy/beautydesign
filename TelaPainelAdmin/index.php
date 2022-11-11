@@ -66,10 +66,10 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
+                    <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
                     <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clientes</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
+                    <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
+                    <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -185,7 +185,7 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Serviços Recentes</h6>
-                        <a href="">Mostrar Tudo</a>
+                        <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php">Mostrar Tudo</a>
                     </div>
                     <div class="table-responsive">
                         <table id="tablesorter" class="tablesorter table text-start align-middle table-bordered table-hover mb-0">
@@ -202,7 +202,7 @@
                                 </tr>
                             </thead>
                             <tbody><?php
-                                    echo "<h3>  Listagem de cliente </h3>";
+                                    echo "<h3>  Agenda de Hoje </h3>";
                                     //1- realizando a conexao com o banco de dados(local,usuario,senha,nomeBanco)
 
                                     //$con=mysqli_connect("localhost","root","","bd_lavarapido");

@@ -1,5 +1,5 @@
 <?php
-echo "<h3>  Listagem de Agendamentos </h3>";
+echo "<h3>  Listagem de Funcionários </h3>";
   //1- realizando a conexao com o banco de dados(local,usuario,senha,nomeBanco)
 
    //$con=mysqli_connect("localhost","root","","bd_lavarapido");

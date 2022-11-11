@@ -125,8 +125,8 @@
                 <div class="navbar-nav w-100">
                     <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
-                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Clientes</a>
-                    <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
+                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clientes</a>
+                    <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Serviços</a>
                     <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -196,7 +196,7 @@
 
 
             <!-- Sale & Revenue Start -->
-            <form action="exclui_clientes.php" method="POST">
+            <form action="exclui_servicos.php" method="POST">
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
                         <div class="col-sm-6 col-xl-3">
@@ -218,7 +218,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6 col-xl-3">
-                            <button disabled type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <button disabled type="submit" formaction="cad_serv_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Alterar</p>
@@ -251,16 +251,12 @@
                                 <thead class="tablesorter">
                                     <tr class="text-white">
                                         <th scope="col"><input class="form-check-input" type="checkbox" onclick="handleChange(this)"></th>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Telefone</th>
-                                        <th scope="col">Cpf</th>
-                                        <th scope="col">Observações</th>
-
-
+                                        <th scope="col">Serviço</th>
+                                        <th scope="col">Valor</th>
                                     </tr>
                                 </thead>
                                 <tbody><?php
-                                        echo "<h3>  Listagem de cliente </h3>";
+                                        echo "<h3>  Listagem de Serviços </h3>";
                                         //1- realizando a conexao com o banco de dados(local,usuario,senha,nomeBanco)
 
                                         //$con=mysqli_connect("localhost","root","","bd_lavarapido");
@@ -268,7 +264,7 @@
 
                                         /*2- criando o comando sql para consulta  dos registros*/
 
-                                        $comandoSql = "select * from cliente";
+                                        $comandoSql = "select * from servico";
 
 
                                         /*3- executando o comando sql */
@@ -277,23 +273,13 @@
 
                                         /*4- pegando os dados da consulta criada e exibindo */
                                         while ($dados = mysqli_fetch_assoc($resultado)) {
-                                            $id = $dados["id_cliente"];
-                                            $nome = $dados["nome_cliente"];
-                                            $fone = $dados["fone_cliente"];
-                                            $cpf = $dados["cpf_cliente"];
-                                            $obs = $dados["obs_cliente"];
-
-
-
-
+                                            $id = $dados["id_servico"];
+                                            $nome = $dados["nome_servico"];
+                                            $valor = $dados["valor"];
                                             echo "<tr>
                 <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox-table'></td>                       
                 <td>$nome</td>
-                <td>$fone</td>
-                <td>$cpf</td>
-                <td>$obs</td>
-                
-                
+                <td>$valor</td>
             </tr>";
                                         }
 
@@ -478,28 +464,16 @@
                                 <div class="icon d-flex align-items-center justify-content-center">
                                     <img src="../global-assets/icone-formulario.png">
                                 </div>
-                                <h3 class="text-center mb-4">CADASTRAR CLIENTE</h3>
-                                <form action="cadastra_cliente_beauty.php" class="form" id="form" method="post">
+                                <h3 class="text-center mb-4">Cadastrar Tipo de Serviço</h3>
+                                <form action="cadastra_servico_beauty.php" class="form" id="form" method="post">
                                     <div class="form-group" id="form-nome">
-                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
+                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Serviço">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
-                                    <div class="form-group" id="form-cpf">
-                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-fone">
-                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-obs">
-                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
+                                    <div class="form-group" id="form-valor">
+                                        <input type="number" name="valor" id="valor" class="form-control rounded-left" step="0.01" min="0.01" placeholder="Valor">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
@@ -522,68 +496,7 @@
                 </div>
             </div>
             <!-- End Modal -->
-            <!-- Modal -->
-            <div class="modal fade" id="modalAlterar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="login-wrap p-4 p-md-5">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <img src="../global-assets/icone-formulario.png">
-                                </div>
-                                <h3 class="text-center mb-4">ALTERAR CLIENTE</h3>
-                                <?php
-
-
-
-                                ?>
-                                <form action="altera_cliente.php" class="form" id="form" method="post">
-                                    <div class="form-group" id="form-nome">
-                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-cpf">
-                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-fone">
-                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-obs">
-                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-
-                                    <div class="botaosubmit">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
-                                    </div>
-
-                                    <!--div class="botaosubmit">
-                                        <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
-                                    </div-->
-
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- End Modal -->
+           
 
 
             <!-- Footer Start -->
@@ -625,7 +538,7 @@
     <script src="../global-assets/js-tela-admin/tablejs/jquery-latest.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/jquery.tablesorter.min.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
-    <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
+    <script src="../TelaCadastroServico/assets/js/scripts.js"></script>
 
 
 

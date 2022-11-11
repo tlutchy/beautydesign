@@ -218,7 +218,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6 col-xl-3">
-                            <button disabled type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <button type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Alterar</p>
@@ -233,7 +233,8 @@
                                         <p class="mb-2">Log Out</p>
                                         <h6 class="mb-0">$1234</h6>
                                     </div>
-                                </button></a>
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -538,30 +539,51 @@
                                 <h3 class="text-center mb-4">ALTERAR CLIENTE</h3>
                                 <?php
 
+                                if (isset($_POST['altera'])) {
+                                    $all_id = $_POST['checkbox_id'];
+                                    $cliId = implode(',', $all_id);
+                                    //echo $extrai_id;
+
+                                    //$comandoSql = "delete from cliente where id_cliente in($extrai_id)";
+                                    //$resultado = mysqli_query($con, $comandoSql);
+
+                                    //header("Location: frm_cad_cli_painel.php");
+                                }
+                                $comandoSql = "select * from cliente where id_cliente='$cliId'";
+                                $resultado = mysqli_query($con, $comandoSql);
+
+                                $dados = mysqli_fetch_assoc($resultado);
+
+                                $id_cli = $dados["id_cliente"];
+                                $nome_cli = $dados["nome_cliente"];
+                                $cpf_cli = $dados["cpf_cliente"];
+                                $fone_cli = $dados["fone_cliente"];
+                                $obs_cli = $dados["obs_cliente"];
 
 
                                 ?>
                                 <form action="altera_cliente.php" class="form" id="form" method="post">
+                                    <input name="id" id="id" value="<?php echo $id_cli ?>" hidden>
                                     <div class="form-group" id="form-nome">
-                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
+                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome" value="<?php echo $nome_cli ?>">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
                                     <div class="form-group" id="form-cpf">
-                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
+                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF" value="<?php echo $cpf_cli ?>">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
                                     <div class="form-group" id="form-fone">
-                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
+                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone" value="<?php echo $fone_cli ?>">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
                                     <div class="form-group" id="form-obs">
-                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
+                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação" value="<?php echo $obs_cli ?>">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
@@ -627,7 +649,11 @@
     <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
     <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
 
-
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('#modalAlterar').modal('show');
+        });
+    </script>
 
 </body>
 

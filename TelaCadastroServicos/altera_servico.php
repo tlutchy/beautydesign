@@ -6,13 +6,12 @@
     //2- pegando os dados vindos do formulário e armazenando em variáveis
     $id=$_POST["id"];
     $nome=$_POST["nome"];
-    $fone=$_POST["fone"];
-    $cpf=$_POST["cpf"];
-    $obs=$_POST["obs"];
+    $valor=$_POST["valor"];
+    
 
 
     //3- criando o comando sql para alteração de registro
-    $comandoSql="update cliente set nome_cliente = '$nome', fone_cliente = '$fone', cpf_cliente = '$cpf', obs_cliente = '$obs' where id_cliente = '$id'";
+    $comandoSql="update servico set nome_servico = '$nome', valor = '$valor' where id_servico = '$id'";
 
     //4- executando o comando sql
     $resultado=mysqli_query($con,$comandoSql);

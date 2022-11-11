@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Beauty Design - Cadastro de Agendamento</title>
+  <title>Inner Page - FlexStart Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -14,26 +14,38 @@
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
- <!-- Favicons -->
- <link href="../global-assets/favicon.png" rel="icon">
-  <link href="../global-assets/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="../global-assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../global-assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../global-assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../global-assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../global-assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="../global-assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="../TelaCadastroAgenda/css/style.css">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart - v1.10.1
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <!-- CSS do Login-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -47,9 +59,9 @@
       <div class="col-md-6 col-lg-5">
         <div class="login-wrap p-4 p-md-5">
           <div class="icon d-flex align-items-center justify-content-center">
-            <img src="../global-assets/icone-formulario.png">
+            <span class="fa fa-user-o"></span>
           </div>
-          <h3 class="text-center mb-4">CADASTRAR AGENDAMENTO</h3>
+          <h3 class="text-center mb-4">Agendamento</h3>
           <form action="cadastra_agenda_beauty.php" class="form" id="form" method="post">
             <div class="form-group" id="form-nome">
               <?php
@@ -104,7 +116,7 @@
               
             <div class="botaosubmit">
                 
-              <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
+              <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="Cadastrar">
             </div>
 
           </form>
@@ -114,82 +126,12 @@
     </div>
   </section>
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
-    <div class="footer-top"
-      style="background-image: url(../global-assets/textura-footer.png); background-repeat: no-repeat; background-size: cover;">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <img src="../global-assets/Logo Inteira BD Horizontal.png" alt="">
-            </a>
-            <p>Somos uma empresa especializada em Design, pronta para te deixar arrasando em todos os momentos.</p>
-            <div class="social-links mt-3">
-              <a href="https://www.facebook.com/jaque.sato.921/" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/ls.conte/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/thiago-lutchy-rico-silva-246a3b17a/" class="linkedin" target="_blank"><i
-                  class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Institucional</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="../TelaInstitucional/index.html" target="_blank">Página Inicial</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="../TelaInstitucional/index.html" target="_blank">Sobre</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="../TelaInstitucional/index.html" target="_blank">Serviços</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="../TelaInstitucional/index.html" target="_blank">Portfólio</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="../TelaInstitucional/index.html" target="_blank">Contato</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Beauty System</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Sobre o Sistema</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Suporte</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact text-md-start">
-            <h4>Formas de Contato</h4>
-            <p>
-              Av. dos Estudantes, 3278 <br>
-              Jd. Novo Aeroporto<br>
-              São José do Rio Preto - SP<br><br>
-              <strong>Telefone:</strong> (17) 3233-9266<br>
-              <strong>Email:</strong> beautydesign@gmail.com<br>
-            </p>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Beauty Design</span></strong> • Todos os direitos reservados
-      </div>
-      <div class="credits">
-        Desenvolvido por <a href="#">Team Beauty Design System</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <!-- Vendor JS Files -->
-  <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
-  <script src="../global-assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="../global-assets/vendor/aos/aos.js"></script>
-  <script src="../global-assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../global-assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../global-assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../global-assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="https://kit.fontawesome.com/f9e19193d6.js" crossorigin="anonymous"></script>
+  
+  
+  <script
+      src="https://kit.fontawesome.com/f9e19193d6.js"
+      crossorigin="anonymous">
+  </script>
 
   <script>
     $(document).ready(function() {
