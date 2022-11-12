@@ -1,4 +1,5 @@
 <?php
+include "../TelaLogin/protect.php";
 include_once "conexao_beauty.php";
 $comandoSql = "select * from agenda
 as A inner join cliente as C on
@@ -147,7 +148,7 @@ $resultado = mysqli_query($con, $comandoSql);
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -187,7 +188,7 @@ $resultado = mysqli_query($con, $comandoSql);
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['nome']; ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <!--a href="#" class="dropdown-item">My Profile</a-->
@@ -209,7 +210,7 @@ $resultado = mysqli_query($con, $comandoSql);
                         <h6 class="mb-0">Calendário</h6>
                         <!--a href="">Mostrar Tudo</a-->
                     </div>
-                    <div id='top' hidden>
+                    <div id='top'>
 
                         <div class='left'>
 

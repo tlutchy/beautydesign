@@ -6,15 +6,16 @@
 include "conexao_beauty.php";
 
 //2- pegar o valor vindo da url
-if (isset($_POST['multi-delete'])) {
+if(isset($_POST['multi-delete']))
+{
     $all_id = $_POST['checkbox_id'];
     $extrai_id = implode(',', $all_id);
     //echo $extrai_id;
 
-    $comandoSql = "delete from servico where id_servico in($extrai_id)";
-    $resultado = mysqli_query($con, $comandoSql);
+    $comandoSql="delete from funcionario where id_funcionario in($extrai_id)";
+    $resultado=mysqli_query($con,$comandoSql);
 
-    header("Location: frm_cad_serv_painel.php");
+    header("Location: frm_cad_func_painel.php");
 }
 
 
@@ -32,3 +33,4 @@ if($resultado==true){
     echo "Erro na exclusão";
 }
 */
+?>

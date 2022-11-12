@@ -8,19 +8,19 @@ $id = $_POST["id"];
 $nome = $_POST["nome"];
 $fone = $_POST["fone"];
 $cpf = $_POST["cpf"];
-$obs = $_POST["obs"];
+$senha = $_POST["senha"];
 
 
 //3- criando o comando sql para alteração de registro
-$comandoSql = "update cliente set nome_cliente = '$nome', fone_cliente = '$fone', cpf_cliente = '$cpf', obs_cliente = '$obs' where id_cliente = '$id'";
+$comandoSql = "update funcionario set nome_funcionario = '$nome', fone_funcionario = '$fone', cpf_funcionario = '$cpf', senha = '$senha' where id_funcionario = '$id'";
 
 //4- executando o comando sql
 $resultado = mysqli_query($con, $comandoSql);
 
 //5- verificando se o comando sql foi executado
 if ($resultado == true)
-    header("Location: frm_cad_cli_painel.php");
+    header("Location: frm_cad_func_painel.php");
 else
     echo "Erro na alteração";
 
-echo "<br> <a href=frm_cad_cli_painel.php> Listar Funcionários </a>";
+echo "<br> <a href=frm_cad_func_painel.php> Listar Funcionários </a>";

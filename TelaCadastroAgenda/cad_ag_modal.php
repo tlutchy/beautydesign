@@ -1,6 +1,6 @@
-<!--?php
-    include "protect.php";
-?-->
+<?php
+    include "../TelaLogin/protect.php";
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,26 +37,41 @@
     <script>
         var habilitaDelete = () => {
             var disabled = true;
+            let qtdeSelecionada = 0;
             var inputs = document.getElementById("tablesorter").querySelectorAll("input[id=checkbox-table]");
 
             inputs.forEach((check) => {
                 if (check.checked == true) {
+                    qtdeSelecionada++;
                     disabled = false;
                 }
             });
+            
+            if(qtdeSelecionada == 0){
+                disabled = true;
+            }else{
+                disabled = false;
+            }
 
             document.getElementById("multi-delete").disabled = disabled;
         };
 
         var habilitaAltera = () => {
             var disabled = true;
+            let qtdeSelecionada = 0;
             var inputs = document.getElementById("tablesorter").querySelectorAll("input[id=checkbox-table]");
 
             inputs.forEach((check) => {
                 if (check.checked == true) {
+                    qtdeSelecionada++;
                     disabled = false;
                 }
             });
+
+            
+            if(qtdeSelecionada > 1){
+                disabled = true;
+            }
 
             document.getElementById("altera").disabled = disabled;
         };
@@ -66,19 +81,9 @@
             inputs.forEach((check) => {
                 check.checked = obj.checked;
             });
-
+            habilitaDelete();
             habilitaAltera();
         };
-
-        var handleChange2 = (obj2) => {
-            var inputs = document.getElementById("tablesorter").querySelectorAll("input[id=checkbox-table]");
-            inputs.forEach((check) => {
-                check.checked = obj2.checked;
-            });
-
-            habilitaDelete();
-        };
-
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll("input[id=checkbox-table]").forEach((element, index, array) => {
                 element.addEventListener("change", (obj) => {
@@ -118,7 +123,7 @@
                         </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -127,16 +132,8 @@
                     <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Agendamentos</a>
                     <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clientes</a>
                     <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
+                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>Funcionários</a>
                     <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
                 </div>
             </nav>
         </div>
@@ -182,7 +179,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['nome']; ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <!--a href="#" class="dropdown-item">My Profile</a-->
@@ -218,7 +215,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6 col-xl-3">
-                            <button type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <button type="submit" formaction="cad_ag_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Alterar</p>
@@ -276,7 +273,7 @@
                                         as A inner join cliente as C on
                                         a.id_cliente = c.id_cliente inner join
                                         servico as s on s.id_servico = a.id_servico inner join
-                                        funcionario as f on f.id_funcionario = a.id_funcionario";
+                                        funcionario as f on f.id_funcionario = a.id_funcionario order by data_agenda";
 
 
                                         /*3- executando o comando sql */
@@ -598,6 +595,8 @@
                                 $funcionario_ag = $dados["nome_funcionario"];
                                 $obs_ag = $dados["obs_agenda"];
                                 $id_cliente = $dados["id_cliente"];
+                                $id_funcionario = $dados["id_funcionario"];
+                                $id_servico = $dados["id_servico"];
 
                                 ?>
                                 <form action="altera_agenda.php" class="form" id="form" method="post">
@@ -610,9 +609,49 @@
                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                             $id = $dados["id_cliente"];
                                             $nome = $dados["nome_cliente"];
-                                            if($id_cliente == $id){
+                                            if ($id_cliente == $id) {
                                                 echo "<option value='$id' selected>$nome</option>";
-                                            }else{
+                                            } else {
+                                                echo "<option value=$id>$nome</option>";
+                                            }
+                                        }
+                                        echo "</select>";
+                                        ?>
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-funcionario">
+                                        <?php
+                                        $comandoSql = "select * from funcionario";
+                                        $resultado = mysqli_query($con, $comandoSql);
+                                        echo "<select name='funcionario' id='funcionario' class='form-control rounded-left'>";
+                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                            $id = $dados["id_funcionario"];
+                                            $nome = $dados["nome_funcionario"];
+                                            if ($id_funcionario == $id) {
+                                                echo "<option value='$id' selected>$nome</option>";
+                                            } else {
+                                                echo "<option value=$id>$nome</option>";
+                                            }
+                                        }
+                                        echo "</select>";
+                                        ?>
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-servico">
+                                    <?php
+                                        $comandoSql = "select * from servico";
+                                        $resultado = mysqli_query($con, $comandoSql);
+                                        echo "<select name='servico' id='servico' class='form-control rounded-left'>";
+                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                            $id = $dados["id_servico"];
+                                            $nome = $dados["nome_servico"];
+                                            if ($id_servico == $id) {
+                                                echo "<option value='$id' selected>$nome</option>";
+                                            } else {
                                                 echo "<option value=$id>$nome</option>";
                                             }
                                         }

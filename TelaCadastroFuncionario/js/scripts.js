@@ -1,211 +1,84 @@
 const form = document.getElementById("form");
-const formnome = document.getElementById("form-nome");
-const formcpf = document.getElementById("form-cpf");
-const formfone = document.getElementById("form-fone");
-const formsenha = document.getElementById("form-senha");
-const formsenhaconf = document.getElementById("form-senhaconf");
-const nome = document.getElementById("nome");
-const cpf = document.getElementById("cpf");
-const fone = document.getElementById("fone");
-const senha = document.getElementById("senha");
-const senhaconf = document.getElementById("senhaconf");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const passwordConfirmation = document.getElementById("password-confirmation");
 
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-formnome.addEventListener("focusout", (e) => {
-  
-  checkInputsUsername();  
-});
-
-formcpf.addEventListener("focusout", (e) => {
-  
-  checkInputsCpf();
-});
-
-formfone.addEventListener("focusout", (e) => {
-  
-  checkInputsFone();
-});
-
-formsenha.addEventListener("focusout", (e) => {
-  
-  checkInputsSenha();
-});
-
-formsenhaconf.addEventListener("focusout", (e) => {
-  
-  checkInputsSenhaConf();
-});
-
-form.addEventListener('submit', (e) =>{
   checkInputs();
-  if(checkInputs()==false){
-    e.preventDefault();
-  }
 });
 
+function checkInputs() {
+  const usernameValue = username.value;
+  const emailValue = email.value;
+  const passwordValue = password.value;
+  const passwordConfirmationValue = passwordConfirmation.value;
 
-
-function checkInputs(){
-  const nomeValue = nome.value;
-  const cpfValue = cpf.value;
-  const foneValue = fone.value;
-  const senhaValue = senha.value;
-  const senhaconfValue = senhaconf.value;
-  flagnome = false;
-  flagcpf = false;
-  flagfone = false;
-  flagsenha = false;
-  flagsenhaconf = false;
-
-  if (nomeValue === ""){
-    setErrorFor(nome, "O nome do usuário é obrigatório");    
-  }else{
-    setSuccessFor(nome);
-    flagnome = true;
-  }
-
-  if (cpfValue === "") {
-    setErrorFor(cpf, "O CPF é obrigatório.");    
-  } else if (!testaCPF(cpfValue)) {
-    setErrorFor(cpf, "Por favor, insira um CPF válido.");    
-  } else {
-    setSuccessFor(cpf);
-    flagcpf = true;
-  }
-
-  if (foneValue === ""){
-    setErrorFor(fone, "O telefone do usuário é obrigatório");    
-  }else{
-    setSuccessFor(fone);
-    flagfone = true;
-  }
-
-  if (senhaValue === "") {
-    setErrorFor(senha, "A senha é obrigatória.");    
-  } else if (senhaValue.length < 7) {
-    setErrorFor(senha, "A senha precisa ter no mínimo 7 caracteres.");    
-  } else {
-    setSuccessFor(senha);
-    flagsenha = true;
-  }
-
-  if (senhaconfValue === "") {
-    setErrorFor(senhaconf, "A confirmação de senha é obrigatória.");    
-  } else if (senhaconfValue !== senhaValue) {
-    setErrorFor(senhaconf, "As senhas não conferem.");    
-  } else {
-    setSuccessFor(senhaconf);
-    flagsenhaconf = true;
-  }
-
-  if(flagnome==true && flagfone==true && flagcpf==true && flagsenha==true && flagsenhaconf==true){
-    return true;   
-  }else{    
-    return false;    
-  }
-
-}
-
-
-
-function checkInputsUsername() {
-  const nomeValue = nome.value;
-  
 
   //Validacao
-  if (nomeValue === "") {
-    setErrorFor(nome, "O nome de usuário é obrigatório.");
+  if (usernameValue === "") {
+    setErrorFor(username, "O nome de usuário é obrigatório.");
   } else {
-    setSuccessFor(nome);
-  }  
-}
+    setSuccessFor(username);
+  }
 
-function checkInputsCpf() {
-  const cpfValue = cpf.value;
-  
-
-  //Validacao
-  if (cpfValue === "") {
-    setErrorFor(cpf, "O CPF é obrigatório.");
-  } else if (!testaCPF(cpfValue)) {
-    setErrorFor(cpf, "Por favor, insira um CPF válido.");
+  if (emailValue === "") {
+    setErrorFor(email, "O email é obrigatório.");
+  } else if (!checkEmail(emailValue)) {
+    setErrorFor(email, "Por favor, insira um email válido.");
   } else {
-    setSuccessFor(cpf);
+    setSuccessFor(email);
+  }
+
+  if (passwordValue === "") {
+    setErrorFor(password, "A senha é obrigatória.");
+  } else if (passwordValue.length < 7) {
+    setErrorFor(password, "A senha precisa ter no mínimo 7 caracteres.");
+  } else {
+    setSuccessFor(password);
+  }
+
+  if (passwordConfirmationValue === "") {
+    setErrorFor(passwordConfirmation, "A confirmação de senha é obrigatória.");
+  } else if (passwordConfirmationValue !== passwordValue) {
+    setErrorFor(passwordConfirmation, "As senhas não conferem.");
+  } else {
+    setSuccessFor(passwordConfirmation);
+  }
+
+  const formControls = form.querySelectorAll(".form-control");
+
+  const formIsValid = [...formControls].every((formControl) => {
+    return formControl.className === "form-control success";
+  });
+
+  if (formIsValid) {
+    console.log("O formulário está 100% válido!");
   }
 }
 
-function checkInputsFone() {
-  const foneValue = fone.value;
-  
+function setErrorFor(input, message) {
+  const formControl = input.parentElement;
+  const small = formControl.querySelector("small");
 
-  //Validacao
-  if (foneValue === ""){
-    setErrorFor(fone, "O telefone do usuário é obrigatório");
-  }else{
-    setSuccessFor(fone);
-  }
-}
+  // Adiciona a mensagem de erro
+  small.innerText = message;
 
-function checkInputsSenha() {
-  const senhaValue = senha.value;  
-  
-  if (senhaValue === "") {
-    setErrorFor(senha, "A senha é obrigatória.");
-  } else if (senhaValue.length < 7) {
-    setErrorFor(senha, "A senha precisa ter no mínimo 7 caracteres.");
-  } else {
-    setSuccessFor(senha);
-  }
-}
-
-function checkInputsSenhaConf() {
-  const senhaValue = senha.value;  
-  const senhaconfValue = senhaconf.value;
-
-
-  if (senhaconfValue === "") {
-    setErrorFor(senhaconf, "A confirmação de senha é obrigatória.");
-  } else if (senhaconfValue !== senhaValue) {
-    setErrorFor(senhaconf, "As senhas não conferem.");
-  } else {
-    setSuccessFor(senhaconf);
-  }
-}
-
-function setErrorFor(input, message){
-
-  const formGroup = input.parentElement;
-  const small = formGroup.querySelector("small");
-
-  small.innerText = message;  
-
-  formGroup.className = "form-error";
+  // Adiciona a classe de erro
+  formControl.className = "form-control error";
 }
 
 function setSuccessFor(input) {
-  const formGroup = input.parentElement;
+  const formControl = input.parentElement;
 
   // Adicionar a classe de sucesso
-  formGroup.className = "form-success";
+  formControl.className = "form-control success";
 }
 
-function testaCPF(cpf) {
-  var Soma;
-  var Resto;
-  Soma = 0;
-if (cpf == "00000000000") return false;
-
-for (i=1; i<=9; i++) Soma = Soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
-Resto = (Soma * 10) % 11;
-
-  if ((Resto == 10) || (Resto == 11))  Resto = 0;
-  if (Resto != parseInt(cpf.substring(9, 10)) ) return false;
-
-Soma = 0;
-  for (i = 1; i <= 10; i++) Soma = Soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
-  Resto = (Soma * 10) % 11;
-
-  if ((Resto == 10) || (Resto == 11))  Resto = 0;
-  if (Resto != parseInt(cpf.substring(10, 11) ) ) return false;
-  return true;
+function checkEmail(email) {
+  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
 }

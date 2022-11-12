@@ -5,21 +5,24 @@ include "conexao_beauty.php";
 
 //2- pegando os dados vindos do formulário e armazenando em variáveis
 $id = $_POST["id"];
-$nome = $_POST["nome"];
-$fone = $_POST["fone"];
-$cpf = $_POST["cpf"];
+$cliente = $_POST["nome"];
+$funcionario = $_POST["funcionario"];
+$servico = $_POST["servico"];
+$data = $_POST["data"];
+$hora = $_POST["horario"];
 $obs = $_POST["obs"];
+$titulo = $_POST["nome"] . " " . $_POST["servico"];
 
 
 //3- criando o comando sql para alteração de registro
-$comandoSql = "update cliente set nome_cliente = '$nome', fone_cliente = '$fone', cpf_cliente = '$cpf', obs_cliente = '$obs' where id_cliente = '$id'";
+$comandoSql = "update agenda set titulo_agenda = '$titulo', id_cliente = '$cliente', id_funcionario = '$funcionario', id_servico = '$servico', data_agenda = '$data', horainicio_agenda = '$hora', obs_agenda = '$obs' where id_agenda = '$id'";
 
 //4- executando o comando sql
 $resultado = mysqli_query($con, $comandoSql);
 
 //5- verificando se o comando sql foi executado
 if ($resultado == true)
-    header("Location: frm_cad_cli_painel.php");
+    header("Location: frm_cad_ag_painel.php");
 else
     echo "Erro na alteração";
 

@@ -46,10 +46,10 @@
                     disabled = false;
                 }
             });
-            
-            if(qtdeSelecionada == 0){
+
+            if (qtdeSelecionada == 0) {
                 disabled = true;
-            }else{
+            } else {
                 disabled = false;
             }
 
@@ -68,8 +68,8 @@
                 }
             });
 
-            
-            if(qtdeSelecionada > 1){
+
+            if (qtdeSelecionada > 1) {
                 disabled = true;
             }
 
@@ -130,10 +130,10 @@
                 <div class="navbar-nav w-100">
                     <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
-                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Clientes</a>
+                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clientes</a>
                     <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
-                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>Funcionários</a>
-                    <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>                    
+                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link active"><i class="far fa-file-alt me-2"></i>Funcionários</a>
+                    <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
                 </div>
             </nav>
         </div>
@@ -193,7 +193,7 @@
 
 
             <!-- Sale & Revenue Start -->
-            <form action="exclui_clientes.php" method="POST">
+            <form action="exclui_funcionarios.php" method="POST">
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
                         <div class="col-sm-6 col-xl-3">
@@ -215,7 +215,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6 col-xl-3">
-                            <button type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <button disabled type="submit" formaction="cad_func_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Alterar</p>
@@ -230,8 +230,7 @@
                                         <p class="mb-2">Log Out</p>
                                         <h6 class="mb-0">$1234</h6>
                                     </div>
-                                </button>
-                            </a>
+                                </button></a>
                         </div>
                     </div>
                 </div>
@@ -241,7 +240,6 @@
                 <div class="container-fluid pt-4 px-4">
                     <div class="bg-secondary text-center rounded p-4">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h6 class="mb-0">Serviços Recentes</h6>
                             <!--a href="">Mostrar Tudo</a-->
                         </div>
                         <div class="table-responsive">
@@ -252,13 +250,13 @@
                                         <th scope="col">Nome</th>
                                         <th scope="col">Telefone</th>
                                         <th scope="col">Cpf</th>
-                                        <th scope="col">Observações</th>
+                                        <th scope="col">Senha</th>
 
 
                                     </tr>
                                 </thead>
                                 <tbody><?php
-                                        echo "<h3>  Listagem de cliente </h3>";
+                                        echo "<h3>  Listagem de Funcionários </h3>";
                                         //1- realizando a conexao com o banco de dados(local,usuario,senha,nomeBanco)
 
                                         //$con=mysqli_connect("localhost","root","","bd_lavarapido");
@@ -266,7 +264,7 @@
 
                                         /*2- criando o comando sql para consulta  dos registros*/
 
-                                        $comandoSql = "select * from cliente";
+                                        $comandoSql = "select * from funcionario";
 
 
                                         /*3- executando o comando sql */
@@ -275,11 +273,11 @@
 
                                         /*4- pegando os dados da consulta criada e exibindo */
                                         while ($dados = mysqli_fetch_assoc($resultado)) {
-                                            $id = $dados["id_cliente"];
-                                            $nome = $dados["nome_cliente"];
-                                            $fone = $dados["fone_cliente"];
-                                            $cpf = $dados["cpf_cliente"];
-                                            $obs = $dados["obs_cliente"];
+                                            $id = $dados["id_funcionario"];
+                                            $nome = $dados["nome_funcionario"];
+                                            $fone = $dados["fone_funcionario"];
+                                            $cpf = $dados["cpf_funcionario"];
+                                            $senha = $dados["senha"];
 
 
 
@@ -289,7 +287,7 @@
                 <td>$nome</td>
                 <td>$fone</td>
                 <td>$cpf</td>
-                <td>$obs</td>
+                <td>$senha</td>
                 
                 
             </tr>";
@@ -337,7 +335,54 @@
                 <!-- Widgets Start -->
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
-                        
+                        <!--div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-secondary rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <h6 class="mb-0">Messages</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pt-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div-->
                         <div class="col-sm-12 col-md-6 col-xl-4">
                             <div class="h-100 bg-secondary rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -429,8 +474,8 @@
                                 <div class="icon d-flex align-items-center justify-content-center">
                                     <img src="../global-assets/icone-formulario.png">
                                 </div>
-                                <h3 class="text-center mb-4">CADASTRAR CLIENTE</h3>
-                                <form action="cadastra_cliente_beauty.php" class="form" id="form" method="post">
+                                <h3 class="text-center mb-4">Criar uma conta</h3>
+                                <form action="cadastra_funcionario_beauty.php" class="form" id="form" method="post">
                                     <div class="form-group" id="form-nome">
                                         <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
                                         <i class="fas fa-exclamation-circle"></i>
@@ -449,8 +494,14 @@
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
-                                    <div class="form-group" id="form-obs">
-                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
+                                    <div class="form-group" id="form-senha">
+                                        <input type="password" name="senha" id="senha" class="form-control rounded-left" placeholder="Senha">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
+                                    <div class="form-group" id="form-senhaconf">
+                                        <input type="password" id="senhaconf" class="form-control rounded-left" placeholder="Confirmar senha">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
@@ -489,51 +540,30 @@
                                 <h3 class="text-center mb-4">ALTERAR CLIENTE</h3>
                                 <?php
 
-                                if (isset($_POST['altera'])) {
-                                    $all_id = $_POST['checkbox_id'];
-                                    $cliId = implode(',', $all_id);
-                                    //echo $extrai_id;
-
-                                    //$comandoSql = "delete from cliente where id_cliente in($extrai_id)";
-                                    //$resultado = mysqli_query($con, $comandoSql);
-
-                                    //header("Location: frm_cad_cli_painel.php");
-                                }
-                                $comandoSql = "select * from cliente where id_cliente='$cliId'";
-                                $resultado = mysqli_query($con, $comandoSql);
-
-                                $dados = mysqli_fetch_assoc($resultado);
-
-                                $id_cli = $dados["id_cliente"];
-                                $nome_cli = $dados["nome_cliente"];
-                                $cpf_cli = $dados["cpf_cliente"];
-                                $fone_cli = $dados["fone_cliente"];
-                                $obs_cli = $dados["obs_cliente"];
 
 
                                 ?>
-                                <form action="altera_cliente.php" class="form" id="form" method="post">
-                                    <input name="id" id="id" value="<?php echo $id_cli ?>" hidden>
+                                <form action="altera_funcionario.php" class="form" id="form" method="post">
                                     <div class="form-group" id="form-nome">
-                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome" value="<?php echo $nome_cli ?>">
+                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
                                     <div class="form-group" id="form-cpf">
-                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF" value="<?php echo $cpf_cli ?>">
+                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
                                     <div class="form-group" id="form-fone">
-                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone" value="<?php echo $fone_cli ?>">
+                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
                                     <div class="form-group" id="form-obs">
-                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação" value="<?php echo $obs_cli ?>">
+                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
@@ -599,11 +629,7 @@
     <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
     <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
 
-    <script type="text/javascript">
-        $(window).load(function() {
-            $('#modalAlterar').modal('show');
-        });
-    </script>
+
 
 </body>
 

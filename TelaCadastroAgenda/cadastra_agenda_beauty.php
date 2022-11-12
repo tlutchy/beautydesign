@@ -19,9 +19,7 @@ $resultado=mysqli_query($con, $comandoSql);
 
 //verificando se o comando sql foi executado
 if($resultado==true){
-    echo "Cadastrado com sucesso!";
-    echo "<br><a href=frm_cadastra_agenda.php>Voltar</a>";
-    echo "<br><a href=lista_agenda_beauty.php>Listagem de agendamentos</a>";
+    header("Location: frm_cad_ag_painel.php");
     //echo "<br><a href=lista_funcionario_beauty_tabela.php>Listagem de funcionário em Tabela</a>";
 }else
     echo "Erro no cadastro";
