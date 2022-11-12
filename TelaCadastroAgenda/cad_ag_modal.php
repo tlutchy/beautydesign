@@ -597,6 +597,7 @@
                                 $status_ag = $dados["status_agenda"];
                                 $funcionario_ag = $dados["nome_funcionario"];
                                 $obs_ag = $dados["obs_agenda"];
+                                $id_cliente = $dados["id_cliente"];
 
                                 ?>
                                 <form action="altera_agenda.php" class="form" id="form" method="post">
@@ -609,9 +610,9 @@
                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                             $id = $dados["id_cliente"];
                                             $nome = $dados["nome_cliente"];
-                                            if ($nome == $cliente_ag) {
-                                                $nome = $cliente_ag;
-                                                
+                                            if($id_cliente == $id){
+                                                echo "<option value='$id' selected>$nome</option>";
+                                            }else{
                                                 echo "<option value=$id>$nome</option>";
                                             }
                                         }

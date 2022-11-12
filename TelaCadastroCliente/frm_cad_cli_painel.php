@@ -37,26 +37,41 @@
     <script>
         var habilitaDelete = () => {
             var disabled = true;
+            let qtdeSelecionada = 0;
             var inputs = document.getElementById("tablesorter").querySelectorAll("input[id=checkbox-table]");
 
             inputs.forEach((check) => {
                 if (check.checked == true) {
+                    qtdeSelecionada++;
                     disabled = false;
                 }
             });
+            
+            if(qtdeSelecionada == 0){
+                disabled = true;
+            }else{
+                disabled = false;
+            }
 
             document.getElementById("multi-delete").disabled = disabled;
         };
 
         var habilitaAltera = () => {
             var disabled = true;
+            let qtdeSelecionada = 0;
             var inputs = document.getElementById("tablesorter").querySelectorAll("input[id=checkbox-table]");
 
             inputs.forEach((check) => {
                 if (check.checked == true) {
+                    qtdeSelecionada++;
                     disabled = false;
                 }
             });
+
+            
+            if(qtdeSelecionada > 1){
+                disabled = true;
+            }
 
             document.getElementById("altera").disabled = disabled;
         };
@@ -66,19 +81,9 @@
             inputs.forEach((check) => {
                 check.checked = obj.checked;
             });
-
+            habilitaDelete();
             habilitaAltera();
         };
-
-        var handleChange2 = (obj2) => {
-            var inputs = document.getElementById("tablesorter").querySelectorAll("input[id=checkbox-table]");
-            inputs.forEach((check) => {
-                check.checked = obj2.checked;
-            });
-
-            habilitaDelete();
-        };
-
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll("input[id=checkbox-table]").forEach((element, index, array) => {
                 element.addEventListener("change", (obj) => {
