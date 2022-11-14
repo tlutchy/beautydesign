@@ -132,7 +132,7 @@
                     <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
                     <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Clientes</a>
                     <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
-                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link"><i class="far fa-file-alt me-2"></i>Funcionários</a>
+                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1'){echo "hidden";} ?>><i class="far fa-file-alt me-2"></i>Funcionários</a>
                     <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>                    
                 </div>
             </nav>

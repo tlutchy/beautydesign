@@ -309,3 +309,80 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 background-color: #8dbdd8;
 }
+
+.form-group {
+    margin-bottom: 0.05rem;
+    position: relative;
+}
+
+.form-group input {
+    display: block;
+
+}
+
+.form-success input {
+    display: block;
+    border-color: #2ecc71;
+}
+
+.form-error input {
+    display: block;
+    border-color: #e74c3c;
+}
+
+.form-group label {
+
+    margin-bottom: 1rem;
+}
+
+.form-group small {
+    position: absolute;
+    visibility: hidden;
+    left: -35px;
+}
+
+.form-success small {
+    visibility: hidden;
+    position: absolute;
+    left: -35px;
+}
+
+.form-error small {
+    visibility: visible;
+    position: relative;
+    left: -35px;
+    color: #e74c3c;
+}
+
+.form-group i {
+    position: relative;
+    top: -55px;
+    right: -90%;
+    visibility: hidden;
+}
+
+
+.form-success i.fa-check-circle {
+    color: #2ecc71;
+    position: relative;
+    top: -40px;
+    right: -92%;
+    visibility: visible;
+}
+
+
+.form-error i.fa-check-circle {
+    visibility: hidden;
+}
+
+.form-success i.fa-exclamation-circle {
+    visibility: hidden;
+}
+
+.form-error i.fa-exclamation-circle {
+    color: #e74c3c;
+    position: relative;
+    top: -40px;
+    right: -96%;
+    visibility: visible;
+}

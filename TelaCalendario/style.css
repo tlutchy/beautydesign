@@ -126,3 +126,10 @@ body {
     right: -96%;
     visibility: visible;
 }
+
+.visevent{
+    display: block;
+}
+.formedit{
+    display: none;
+}

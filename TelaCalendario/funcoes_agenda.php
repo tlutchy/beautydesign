@@ -32,15 +32,15 @@ function servicoSelect(){
  /*3- executando o comando sql */
   $resultado=mysqli_query($con,$comandoSql);
  
- echo "<select name='servico' id='servico' class='form-control rounded-left'>";
+ echo "<select name='serv' id='serv' class='form-control'>";
  
  
  /*4- pegando os dados da consulta criada e exibindo */
    while($dados=mysqli_fetch_assoc($resultado)){
-     $id=$dados["id_servico"];
-     $nome=$dados["nome_servico"];
+     $id_serv=$dados["id_servico"];
+     $nome_serv=$dados["nome_servico"];
      
- echo "<option value=$id>$nome</option>";
+ echo "<option value=$id_serv>$nome_serv</option>";
  
   }
  echo "</select>";

@@ -1,5 +1,5 @@
 <?php
-    include "../TelaLogin/protect.php";
+include "../TelaLogin/protect.php";
 ?>
 
 <!DOCTYPE html>
@@ -251,6 +251,7 @@
                                         <th scope="col">Telefone</th>
                                         <th scope="col">Cpf</th>
                                         <th scope="col">Senha</th>
+                                        <th scope="col">Adm</th>
 
 
                                     </tr>
@@ -278,6 +279,12 @@
                                             $fone = $dados["fone_funcionario"];
                                             $cpf = $dados["cpf_funcionario"];
                                             $senha = $dados["senha"];
+                                            $adm = $dados["admin"];
+                                            if($adm == "1"){
+                                                $imagem = "<img src='../global-assets/certo.png'>";
+                                            }else{
+                                                $imagem = "<img src='../global-assets/errado.png'>";
+                                            };
 
 
 
@@ -288,6 +295,7 @@
                 <td>$fone</td>
                 <td>$cpf</td>
                 <td>$senha</td>
+                <td>$imagem</td>
                 
                 
             </tr>";
@@ -560,6 +568,7 @@
                                 $cpf_func = $dados["cpf_funcionario"];
                                 $fone_func = $dados["fone_funcionario"];
                                 $senha_func = $dados["senha"];
+                                $admin_func = $dados["admin"];
 
 
                                 ?>
@@ -588,6 +597,10 @@
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="admin" id="admin"<?php if($admin_func==1) echo "checked=checked"; ?>>
+                                        <small>Admin</small>
                                     </div>
 
                                     <div class="botaosubmit">

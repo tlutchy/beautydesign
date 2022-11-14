@@ -1,6 +1,6 @@
-create database beautydesign;
+create database beautydesign
 
-use beautydesign;
+use beautydesign
 
 create table tiposervico(
 	id_tiposervico int primary key auto_increment,
@@ -29,7 +29,8 @@ create table funcionario(
 	nome_funcionario varchar(45),
 	fone_funcionario varchar(45),
 	cpf_funcionario varchar(45),
-	senha varchar(45)	
+	senha varchar(45),
+	admin boolean not null
 	);
 
 create table agenda(

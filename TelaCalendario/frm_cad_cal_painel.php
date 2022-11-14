@@ -1,10 +1,12 @@
 <?php
 include "../TelaLogin/protect.php";
 include_once "conexao_beauty.php";
+include "funcoes_agenda.php";
 $comandoSql = "select * from agenda
 as A inner join cliente as C on
 a.id_cliente = c.id_cliente inner join
-servico as s on s.id_servico = a.id_servico";
+servico as s on s.id_servico = a.id_servico inner join
+funcionario as f on f.id_funcionario = a.id_funcionario";
 $resultado = mysqli_query($con, $comandoSql);
 ?>
 
@@ -49,7 +51,6 @@ $resultado = mysqli_query($con, $comandoSql);
     <script src='../TelaCalendario/lib/main.js'></script>
     <script src='js/theme-chooser.js'></script>
     <script src='../TelaCalendario/lib/locales/pt-br.js'></script>
-    <script src="../TelaCalendario/scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
@@ -91,6 +92,11 @@ $resultado = mysqli_query($con, $comandoSql);
                                     title: '<?php echo $dados['nome_cliente'] . " - " . $dados['nome_servico']; ?>',
                                     color: '<?php echo $dados['corstatus_agenda']; ?>',
                                     start: '<?php echo $dados['data_agenda'] . " " . $dados['horainicio_agenda']; ?>',
+                                    cliente: '<?php echo $dados['nome_cliente']; ?>',
+                                    servico: '<?php echo $dados['nome_servico']; ?>',
+                                    hora: '<?php echo $dados['horainicio_agenda']; ?>',
+                                    funcionario: '<?php echo $dados['nome_funcionario']; ?>',
+                                    obs: '<?php echo $dados['obs_agenda']; ?>',
 
                                 },
                             <?php
@@ -102,9 +108,18 @@ $resultado = mysqli_query($con, $comandoSql);
                         eventClick: function(info) {
 
                             info.jsEvent.preventDefault();
-                            $('#janelamodal #cliente').text(info.event.title);
-                            $('#janelamodal #servico').text(info.event.color);
-                            $('#janelamodal #horario').text(info.event.start.toLocaleString());
+                            $('#janelamodal #id').text(info.event.id);
+                            $('#janelamodal #id').val(info.event.id);
+                            $('#janelamodal #cliente').text(info.event.extendedProps.cliente);
+                            $('#janelamodal #nome').val(info.event.extendedProps.cliente);
+                            $('#janelamodal #func').text(info.event.extendedProps.funcionario);
+                            $('#janelamodal #funcionario').val(info.event.extendedProps.funcionario);
+                            $('#janelamodal #servico').text(info.event.extendedProps.servico);
+                            $('#janelamodal #serv').val(info.event.extendedProps.servico);
+                            $('#janelamodal #hora').text(info.event.extendedProps.hora);
+                            $('#janelamodal #horario').val(info.event.extendedProps.hora);
+                            $('#janelamodal #obsv').text(info.event.extendedProps.obs);
+                            $('#janelamodal #obs').val(info.event.extendedProps.obs);
                             $('#janelamodal').modal('show')
                         }
                     });
@@ -157,16 +172,9 @@ $resultado = mysqli_query($con, $comandoSql);
                     <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
                     <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clientes</a>
                     <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
+                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1'){echo "hidden";} ?>><i class="far fa-file-alt me-2"></i>Funcionários</a>
                     <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    <a aria-label="Chat on WhatsApp" href="https://wa.me/5517996030791"> <img alt="Chat on WhatsApp" src="WhatsAppButtonGreenLarge.png" />WhatsApp</a>
                 </div>
             </nav>
         </div>
@@ -210,7 +218,7 @@ $resultado = mysqli_query($con, $comandoSql);
                         <h6 class="mb-0">Calendário</h6>
                         <!--a href="">Mostrar Tudo</a-->
                     </div>
-                    <div id='top'>
+                    <div id='top' hidden>
 
                         <div class='left'>
 
@@ -226,28 +234,7 @@ $resultado = mysqli_query($con, $comandoSql);
                             <div data-theme-system="bootstrap,bootstrap5" class='selector' style='display:none'>
                                 Theme Name:
                                 <select>
-                                    <option value='' selected>Default</option>
-                                    <option value='cerulean'>Cerulean</option>
-                                    <option value='cosmo'>Cosmo</option>
-                                    <option value='cyborg'>Cyborg</option>
-                                    <option value='darkly'>Darkly</option>
-                                    <option value='flatly'>Flatly</option>
-                                    <option value='journal'>Journal</option>
-                                    <option value='litera'>Litera</option>
-                                    <option value='lumen'>Lumen</option>
-                                    <option value='lux'>Lux</option>
-                                    <option value='materia'>Materia</option>
-                                    <option value='minty'>Minty</option>
-                                    <option value='pulse'>Pulse</option>
-                                    <option value='sandstone'>Sandstone</option>
-                                    <option value='simplex'>Simplex</option>
-                                    <option value='sketchy'>Sketchy</option>
-                                    <option value='slate'>Slate</option>
-                                    <option value='solar'>Solar</option>
-                                    <option value='spacelab'>Spacelab</option>
-                                    <option value='superhero'>Superhero</option>
-                                    <option value='united'>United</option>
-                                    <option value='yeti'>Yeti</option>
+                                    <option value='cerulean' selected>Cerulean</option>
                                 </select>
                             </div>
 
@@ -279,27 +266,97 @@ $resultado = mysqli_query($con, $comandoSql);
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <dl class="row">
-                                        <dt class="col-sm-3">Cliente: </dt>
-                                        <dd class="col-sm-9" id="cliente"></dd>
+                                    <div class="visevent">
+                                        <dl class="row">
+                                            <dt class="col-sm-3" hidden>Id: </dt>
+                                            <dd class="col-sm-9" id="id" hidden></dd>
 
-                                        <dt class="col-sm-3">Serviço: </dt>
-                                        <dd class="col-sm-9" id="servico"></dd>
+                                            <dt class="col-sm-3">Cliente: </dt>
+                                            <dd class="col-sm-9" id="cliente"></dd>
 
-                                        <dt class="col-sm-3">Horário: </dt>
-                                        <dd class="col-sm-9" id="horario"></dd>
-                                    </dl>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                            <dt class="col-sm-3">Atendente: </dt>
+                                            <dd class="col-sm-9" id="func"></dd>
+
+                                            <dt class="col-sm-3">Serviço: </dt>
+                                            <dd class="col-sm-9" id="servico"></dd>
+
+                                            <dt class="col-sm-3">Horário: </dt>
+                                            <dd class="col-sm-9" id="hora"></dd>
+
+                                            <dt class="col-sm-3">Observações: </dt>
+                                            <dd class="col-sm-9" id="obsv"></dd>
+                                        </dl>
+                                        <button class="btn btn-warning btn-canc-vis">Editar</button>
+                                    </div>
+                                    <div class="formedit">
+                                        <form action="" method="post" class="editevent" id="editevent">
+                                            <div class="form-group" id="form-nome">
+                                                <?php
+                                                $comandoSql = "select * from cliente";
+                                                $resultado = mysqli_query($con, $comandoSql);
+                                                echo "<select name='nome' id='nome' class='form-control rounded-left'>";
+                                                while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                    $id = $dados["id_cliente"];
+                                                    $nome = $dados["nome_cliente"];
+                                                    if ($id_cliente == $id) {
+                                                        echo "<option value='$id' selected>$nome</option>";
+                                                    } else {
+                                                        echo "<option value=$id>$nome</option>";
+                                                    }
+                                                }
+                                                echo "</select>";
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-funcionario">
+                                                <?php
+                                                funcionarioSelect();
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-servico">
+                                                <?php
+                                                servicoSelect();
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-data">
+                                                <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data" onkeypress="DataHora(event, this)">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-horario">
+                                                <input type="time" name="horario" id="horario" class="form-control rounded-left" placeholder="Horário">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-obs">
+                                                <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observações">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="botaosubmit">
+                                                <button type="button" class="btn btn-primary btn-canc-edit">Cancelar</button>
+                                                <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="janelaModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="janelamodal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -312,10 +369,9 @@ $resultado = mysqli_query($con, $comandoSql);
                                             <img src="../global-assets/icone-formulario.png">
                                         </div>
                                         <h3 class="text-center mb-4">Agendamento</h3>
-                                        <form action="cadastra_agenda_beauty.php" method="post" class="form" id="form">
+                                        <form action="../TelaCalendario/cadastra_agenda_beauty.php" method="post" class="form" id="form">
                                             <div class="form-group" id="form-nome">
                                                 <?php
-                                                include "funcoes_agenda.php";
                                                 listaClienteSelect();
                                                 ?>
                                                 <i class="fas fa-exclamation-circle"></i>
@@ -342,7 +398,7 @@ $resultado = mysqli_query($con, $comandoSql);
                                             </div>
 
                                             <div class="form-group" id="form-data">
-                                                <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data">
+                                                <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data" onkeypress="DataHora(event, this)">
                                                 <i class="fas fa-exclamation-circle"></i>
                                                 <i class="fas fa-check-circle"></i>
                                                 <small>Mensagem de erro</small>
@@ -363,7 +419,7 @@ $resultado = mysqli_query($con, $comandoSql);
                                             </div>
                                             <div class="botaosubmit">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                                <button type="submit" class="btn btn-primary rounded submit">Cadastrar</button>
+                                                <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
                                             </div>
                                         </form>
                                     </div>
@@ -416,9 +472,17 @@ $resultado = mysqli_query($con, $comandoSql);
     <!-- Template Javascript -->
     <script src="../global-assets/js-tela-admin/paineljs/painelmain.js"></script>
 
+    <script>
+        $('.btn-canc-vis').on("click", function() {
+            $('.visevent').slideToggle();
+            $('.formedit').slideToggle();
+        })
 
-
-
+        $('.btn-canc-edit').on("click", function() {
+            $('.formedit').slideToggle();
+            $('.visevent').slideToggle();
+        })        
+    </script>
 
 </body>
 

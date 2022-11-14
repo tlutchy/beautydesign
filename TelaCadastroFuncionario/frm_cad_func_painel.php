@@ -56,6 +56,18 @@
             document.getElementById("multi-delete").disabled = disabled;
         };
 
+        var validaSenha = () => {
+            var valorSenha = document.getElementById("senha").value;
+            if(valorSenha == ""){
+                alert("Digite a senha");
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        
+
         var habilitaAltera = () => {
             var disabled = true;
             let qtdeSelecionada = 0;
@@ -251,6 +263,7 @@
                                         <th scope="col">Telefone</th>
                                         <th scope="col">Cpf</th>
                                         <th scope="col">Senha</th>
+                                        <th scope="col">Adm</th>
 
 
                                     </tr>
@@ -278,6 +291,12 @@
                                             $fone = $dados["fone_funcionario"];
                                             $cpf = $dados["cpf_funcionario"];
                                             $senha = $dados["senha"];
+                                            $adm = $dados["admin"];
+                                            if($adm == "1"){
+                                                $imagem = "<img src='../global-assets/certo.png'>";
+                                            }else{
+                                                $imagem = "<img src='../global-assets/errado.png'>";
+                                            };
 
 
 
@@ -288,6 +307,7 @@
                 <td>$fone</td>
                 <td>$cpf</td>
                 <td>$senha</td>
+                <td>$imagem</td>
                 
                 
             </tr>";
@@ -506,7 +526,10 @@
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
-
+                                    <div>
+                                        <input type="checkbox" name="admin" id="admin">                                        
+                                        <small>Admin</small>
+                                    </div>
                                     <div class="botaosubmit">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                         <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
@@ -524,68 +547,7 @@
                 </div>
             </div>
             <!-- End Modal -->
-            <!-- Modal -->
-            <div class="modal fade" id="modalAlterar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="login-wrap p-4 p-md-5">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <img src="../global-assets/icone-formulario.png">
-                                </div>
-                                <h3 class="text-center mb-4">ALTERAR CLIENTE</h3>
-                                <?php
-
-
-
-                                ?>
-                                <form action="altera_funcionario.php" class="form" id="form" method="post">
-                                    <div class="form-group" id="form-nome">
-                                        <input type="text" name="nome" id="nome" class="form-control rounded-left" placeholder="Nome">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-cpf">
-                                        <input type="text" name="cpf" id="cpf" class="form-control rounded-left" placeholder="CPF">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-fone">
-                                        <input type="text" name="fone" id="fone" class="form-control rounded-left" placeholder="Telefone">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-                                    <div class="form-group" id="form-obs">
-                                        <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observação">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <i class="fas fa-check-circle"></i>
-                                        <small>Mensagem de erro</small>
-                                    </div>
-
-                                    <div class="botaosubmit">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
-                                    </div>
-
-                                    <!--div class="botaosubmit">
-                                        <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
-                                    </div-->
-
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- End Modal -->
+           
 
 
             <!-- Footer Start -->
@@ -628,6 +590,8 @@
     <script src="../global-assets/js-tela-admin/tablejs/jquery.tablesorter.min.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
     <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
+
+    
 
 
 

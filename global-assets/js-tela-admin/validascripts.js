@@ -2,13 +2,11 @@ const form = document.getElementById("form");
 const formnome = document.getElementById("form-nome");
 const formcpf = document.getElementById("form-cpf");
 const formfone = document.getElementById("form-fone");
-const formchave = document.getElementById("form-chave");
-const formchaveconf = document.getElementById("form-chaveconf");
 const nome = document.getElementById("nome");
 const cpf = document.getElementById("cpf");
 const fone = document.getElementById("fone");
-const chave = document.getElementById("chave");
-const chaveconf = document.getElementById("chaveconf");
+const obs = document.getElementById("obs");
+
 
 
 formnome.addEventListener("focusout", (e) => {
@@ -26,15 +24,6 @@ formfone.addEventListener("focusout", (e) => {
   checkInputsFone();
 });
 
-formchave.addEventListener("focusout", (e) => {
-  
-  checkInputsSenha();
-});
-
-formchaveconf.addEventListener("focusout", (e) => {
-  
-  checkInputsSenhaConf();
-});
 
 form.addEventListener('submit', (e) =>{
   checkInputs();
@@ -48,14 +37,11 @@ form.addEventListener('submit', (e) =>{
 function checkInputs(){
   const nomeValue = nome.value;
   const cpfValue = cpf.value;
-  const foneValue = fone.value;
-  const chaveValue = chave.value;
-  const chaveconfValue = chaveconf.value;
+  const foneValue = fone.value;  
   flagnome = false;
   flagcpf = false;
   flagfone = false;
-  flagchave = false;
-  flagchaveconf = false;
+  
 
   if (nomeValue === ""){
     setErrorFor(nome, "O nome do usuário é obrigatório");    
@@ -80,25 +66,8 @@ function checkInputs(){
     flagfone = true;
   }
 
-  if (chaveValue === "") {
-    setErrorFor(chave, "A senha é obrigatória.");    
-  } else if (chaveValue.length < 7) {
-    setErrorFor(chave, "A senha precisa ter no mínimo 7 caracteres.");    
-  } else {
-    setSuccessFor(chave);
-    flagchave = true;
-  }
 
-  if (chaveconfValue === "") {
-    setErrorFor(chaveconf, "A confirmação de senha é obrigatória.");    
-  } else if (chaveconfValue !== chaveValue) {
-    setErrorFor(chaveconf, "As senha não conferem.");    
-  } else {
-    setSuccessFor(chaveconf);
-    flagchaveconf = true;
-  }
-
-  if(flagnome==true && flagfone==true && flagcpf==true && flagchave==true && flagchaveconf==true){
+  if(flagnome==true && flagfone==true && flagcpf==true){
     return true;   
   }else{    
     return false;    
@@ -114,7 +83,7 @@ function checkInputsUsername() {
 
   //Validacao
   if (nomeValue === "") {
-    setErrorFor(nome, "O nome de usuário é obrigatório.");
+    setErrorFor(nome, "O nome do cliente é obrigatório.");
   } else {
     setSuccessFor(nome);
   }  
@@ -140,37 +109,13 @@ function checkInputsFone() {
 
   //Validacao
   if (foneValue === ""){
-    setErrorFor(fone, "O telefone do usuário é obrigatório");
+    setErrorFor(fone, "O telefone do cliente é obrigatório");
   }else{
     setSuccessFor(fone);
   }
 }
 
-function checkInputsSenha() {
-  const chaveValue = chave.value;  
-  
-  if (chaveValue === "") {
-    setErrorFor(chave, "A senha é obrigatória.");
-  } else if (chaveValue.length < 4) {
-    setErrorFor(chave, "A senha precisa ter no mínimo 4 caracteres.");
-  } else {
-    setSuccessFor(chave);
-  }
-}
 
-function checkInputsSenhaConf() {
-  const chaveValue = chave.value;  
-  const chaveconfValue = chaveconf.value;
-
-
-  if (chaveconfValue === "") {
-    setErrorFor(chaveconf, "A confirmação de senha é obrigatória.");
-  } else if (chaveconfValue !== chaveValue) {
-    setErrorFor(chaveconf, "As senhas não conferem.");
-  } else {
-    setSuccessFor(chaveconf);
-  }
-}
 
 function setErrorFor(input, message){
 

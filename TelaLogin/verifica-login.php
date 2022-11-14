@@ -15,6 +15,7 @@ $senha=$_POST["senha"];
   while($dados=mysqli_fetch_assoc($resultado)){
     $id=$dados["id_funcionario"];
     $nome=$dados["nome_funcionario"];
+    $admin=$dados["admin"];  
   }
   
   $quantidade = $resultado->num_rows;
@@ -28,6 +29,7 @@ $senha=$_POST["senha"];
 
     $_SESSION['id'] = $id;
     $_SESSION['nome'] = $nome;
+    $_SESSION['admin'] = $admin;
 
     header("Location: /tcc/TelaPainelAdmin/index.php");
 
