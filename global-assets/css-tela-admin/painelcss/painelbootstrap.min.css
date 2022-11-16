@@ -3069,9 +3069,8 @@ fieldset:disabled .btn {
 
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
-    color: #fff;
-    background-color: #c81313;
-    border-color: #bc1212;
+    color: #141414;
+    background-color: #DEABC5;
     box-shadow: 0 0 0 .25rem rgba(238, 57, 57, 0.5)
 }
 
@@ -5989,7 +5988,6 @@ fieldset:disabled .btn {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1rem;
-    border-bottom: 1px solid #000;
     border-top-left-radius: calc(.3rem - 1px);
     border-top-right-radius: calc(.3rem - 1px)
 }

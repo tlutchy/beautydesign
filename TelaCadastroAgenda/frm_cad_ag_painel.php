@@ -7,7 +7,7 @@ include "../TelaLogin/protect.php";
 
 <head>
     <meta charset="utf-8">
-    <title>System Beauty - Tela Inicial</title>
+    <title>System Beauty</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -112,11 +112,11 @@ include "../TelaLogin/protect.php";
         <!-- Spinner End -->
 
 
-                <!-- Sidebar Start -->
-                <div class="sidebar pb-3">
+        <!-- Sidebar Start -->
+        <div class="sidebar pb-3">
             <nav class="navbar navbar-dark">
                 <a href="index.php" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px"></h3>
+                    <h3 class="text-primary"><img src="../global-assets/Logo Inteira BD Horizontal.png" class="fa fa-user-edit" width="180px"></h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -126,9 +126,9 @@ include "../TelaLogin/protect.php";
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
-                        <?php 
-                        if ($_SESSION['admin'] == '1'){
-                        echo "<span>Admin</span>";
+                        <?php
+                        if ($_SESSION['admin'] == '1') {
+                            echo "<span>Admin</span>";
                         }
                         ?>
                     </div>
@@ -138,7 +138,7 @@ include "../TelaLogin/protect.php";
                     <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link active"><i class="fa-solid fa-address-book me-2"></i>Agendamentos</a>
                     <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa-solid fa-user me-2"></i>Clientes</a>
                     <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa-solid fa-briefcase me-2"></i></i>Serviços</a>
-                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1'){echo "hidden";} ?>><i class="fa-solid fa-address-card me-2"></i>Funcionários</a>
+                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1') { echo "hidden"; } ?>><i class="fa-solid fa-address-card me-2"></i>Funcionários</a>
                     <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Calendário</a>
                 </div>
         </div>
@@ -179,33 +179,18 @@ include "../TelaLogin/protect.php";
         <form action="exclui_agendas.php" method="POST">
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
+
                     <div class="col-sm-6 col-xl-3">
-                    <button type="button" class="ms-2 btn-header" data-bs-toggle="modal" data-bs-target="#modalNovo"><i class="fa-sharp fa-solid fa-circle-plus icon-button"></i>Novo</button>
+                        <button type="button" class="ms-2 btn-header" data-bs-toggle="modal" data-bs-target="#modalNovo"><i class="fa-sharp fa-solid fa-circle-plus icon-button"></i>Novo</button>
                     </div>
+
                     <div class="col-sm-6 col-xl-3">
-                        <button disabled type="submit" id="multi-delete" name="multi-delete" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Deletar</p>
-                            </div>
-                        </button>
+                        <button disabled type="submit" id="multi-delete" name="multi-delete" class="ms-2 btn-header"><i class="fa-solid fa-trash icon-button"></i>Deletar</button>
                     </div>
+
                     <div class="col-sm-6 col-xl-3">
-                        <button disabled type="submit" formaction="cad_ag_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-area fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Alterar</p>
-                            </div>
-                        </button>
+                        <button disabled type="submit" formaction="cad_ag_modal.php" id="altera" name="altera" class="ms-2 btn-header"><i class="fa-solid fa-pen"></i>Alterar</button>
                     </div>
-<!--                     <div class="col-sm-6 col-xl-3">
-                        <a href="/tcc/TelaLogin/logout.php"><button type="button" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-pie fa-3x text-primary"></i>
-                                <div class="ms-3">
-                                    <p class="mb-2">Log Out</p>
-                                </div>
-                            </button></a>
-                    </div> -->
                 </div>
             </div>
             <!-- Sale & Revenue End -->
@@ -214,8 +199,7 @@ include "../TelaLogin/protect.php";
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Serviços Recentes</h6>
-                        <!--a href="">Mostrar Tudo</a-->
+                        <h3 class="mb-0">Agenda</h3>
                     </div>
                     <div class="table-responsive">
                         <table id="tablesorter" class="tablesorter table text-start align-middle table-bordered table-hover mb-0">
@@ -234,7 +218,6 @@ include "../TelaLogin/protect.php";
                                 </tr>
                             </thead>
                             <tbody><?php
-                                    echo "<h3>  Agenda </h3>";
                                     //1- realizando a conexao com o banco de dados(local,usuario,senha,nomeBanco)
 
                                     //$con=mysqli_connect("localhost","root","","bd_lavarapido");
@@ -263,7 +246,7 @@ include "../TelaLogin/protect.php";
                                         $status = $dados["status_agenda"];
                                         $funcionario = $dados["nome_funcionario"];
                                         $obs = $dados["obs_agenda"];
-                                        $data = implode("/",array_reverse(explode("-",$data)));
+                                        $data = implode("/", array_reverse(explode("-", $data)));
                                         echo "<tr>
                 <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox-table'></td>                       
                 <td>$data</td>
@@ -293,7 +276,7 @@ include "../TelaLogin/protect.php";
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Calender</h6>
+                                <h6 class="mb-0">Calendário</h6>
                                 <a href="" class="mostrarTodos">Mostrar todos</a>
                             </div>
                             <div id="calender"></div>
@@ -306,7 +289,7 @@ include "../TelaLogin/protect.php";
                                 <a href="" class="mostrarTodos">Mostrar todos</a>
                             </div>
                             <div class="d-flex mb-2">
-                                <input class="form-control bg-dark border-0" type="text" placeholder="Digite sua tarefa">
+                                <input class="form-control border-0" type="text" placeholder="Digite sua tarefa">
                                 <button type="button" class="btn btn-primary ms-2">Adicionar</button>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-2">

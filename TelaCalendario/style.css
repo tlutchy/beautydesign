@@ -1,3 +1,13 @@
+/********** Template CSS **********/
+:root {
+    --primary: #F7BEDB;
+    --hoverPrimary: #DEABC5;
+    --secondary: #ebebeb;
+    --hoverSecondary: #dbdbdb;
+    --light: #141414;
+    --dark: #fff;
+}
+
 body {
     margin: 0;
     padding: 0;
