@@ -9,10 +9,13 @@ $nome = $_POST["nome"];
 $fone = $_POST["fone"];
 $cpf = $_POST["cpf"];
 $senha = $_POST["senha"];
-
+if(isset($_POST["admin"]))
+    $admin=1;
+else
+    $admin=0;
 
 //3- criando o comando sql para alteração de registro
-$comandoSql = "update funcionario set nome_funcionario = '$nome', fone_funcionario = '$fone', cpf_funcionario = '$cpf', senha = '$senha' where id_funcionario = '$id'";
+$comandoSql = "update funcionario set nome_funcionario = '$nome', fone_funcionario = '$fone', cpf_funcionario = '$cpf', senha = '$senha', admin='$admin' where id_funcionario = '$id'";
 
 //4- executando o comando sql
 $resultado = mysqli_query($con, $comandoSql);

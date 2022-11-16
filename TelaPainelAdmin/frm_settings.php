@@ -63,7 +63,7 @@ include "../TelaLogin/protect.php";
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
                         <div class="position-relative">
-                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle" src="https://www.kindpng.com/picc/m/226-2261322_pink-human-icon-hd-png-download.png" alt="" style="width: 40px; height: 40px;">
                             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                             </div>
                         </div>
@@ -77,7 +77,7 @@ include "../TelaLogin/protect.php";
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link active"><i class="fa-solid fa-house me-2"></i>Painel</a>
+                        <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa-solid fa-house me-2"></i>Painel</a>
                         <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa-solid fa-address-book me-2"></i>Agendamentos</a>
                         <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa-solid fa-user me-2"></i>Clientes</a>
                         <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa-solid fa-briefcase me-2"></i></i>Serviços</a>
@@ -106,7 +106,7 @@ include "../TelaLogin/protect.php";
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="https://www.kindpng.com/picc/m/226-2261322_pink-human-icon-hd-png-download.png" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex mostrarTodos"><?php echo $_SESSION['nome']; ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">

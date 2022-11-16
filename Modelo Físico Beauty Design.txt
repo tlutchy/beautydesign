@@ -19,6 +19,8 @@ create table cliente(
 create table tarefas(
 	id_tarefas int primary key auto_increment,
 	desc_tarefa varchar(255)
+	id_funcionario int,
+	constraint tarefas_funcionario foreign key (id_funcionario) references funcionario (id_funcionario)
 	);
 
 create table funcionario(
@@ -27,9 +29,7 @@ create table funcionario(
 	fone_funcionario varchar(45),
 	cpf_funcionario varchar(45),
 	senha varchar(45),
-	admin boolean not null
-	id_tarefas int,
-	constraint funcionario_tarefas foreign key (id_tarefas) references tarefas (id_tarefas)
+	admin boolean not null		
 	);
 
 create table agenda(

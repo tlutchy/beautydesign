@@ -121,12 +121,12 @@ include "../TelaLogin/protect.php";
             <!-- Sidebar Start -->
             <div class="sidebar pb-3">
                 <nav class="navbar navbar-dark">
-                    <a href="index.php" class="navbar-brand mx-4 mb-3">
+                    <a href="../TelaPainelAdmin/index.php" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-primary"><img src="../global-assets/Logo Inteira BD Horizontal.png" class="fa fa-user-edit" width="180px"></h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
                         <div class="position-relative">
-                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle" src="https://www.kindpng.com/picc/m/226-2261322_pink-human-icon-hd-png-download.png" alt="" style="width: 40px; height: 40px;">
                             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                             </div>
                         </div>
@@ -159,7 +159,7 @@ include "../TelaLogin/protect.php";
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="../TelaPainelAdmin/index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px"></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -169,7 +169,7 @@ include "../TelaLogin/protect.php";
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="https://www.kindpng.com/picc/m/226-2261322_pink-human-icon-hd-png-download.png" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex mostrarTodos"><?php echo $_SESSION['nome']; ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
@@ -184,7 +184,7 @@ include "../TelaLogin/protect.php";
 
 
             <!-- Sale & Revenue Start -->
-            <form action="exclui_agendas.php" method="POST">
+            <form action="exclui_clientes.php" method="POST">
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
 
@@ -197,7 +197,7 @@ include "../TelaLogin/protect.php";
                         </div>
 
                         <div class="col-sm-6 col-xl-3">
-                            <button disabled type="submit" formaction="cad_ag_modal.php" id="altera" name="altera" class="ms-2 btn-header"><i class="fa-solid fa-pen"></i>Alterar</button>
+                            <button disabled type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="ms-2 btn-header"><i class="fa-solid fa-pen"></i>Alterar</button>
                         </div>
                     </div>
                 </div>
@@ -275,75 +275,49 @@ include "../TelaLogin/protect.php";
                             <div class="h-100 bg-secondary rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <h6 class="mb-0">Calendário</h6>
-                                    <a href="" class="mostrarTodos">Mostrar todos</a>
+                                    <a href="../TelaCalendario/frm_cad_cal_painel.php" class="mostrarTodos">Mostrar todos</a>
                                 </div>
                                 <div id="calender"></div>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-4">
-                            <div class="h-100 bg-secondary rounded p-4">
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">Lista de Tarefas</h6>
-                                    <a href="" class="mostrarTodos">Mostrar todos</a>
-                                </div>
+                        <div class="h-100 bg-secondary rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Lista de Tarefas</h6>
+                                <a class="mostrarTodos" href="">Mostrar todos</a>
+                            </div>
+                            <form action="cadastra_tarefas.php" method="post">
+                                <?php $idUser = $_SESSION['id'];
+                                $comandoSqltarefa = "select * from tarefas where id_funcionario = $idUser";
+                                $resultado = mysqli_query($con, $comandoSqltarefa);
+                                ?>
                                 <div class="d-flex mb-2">
-                                    <input class="form-control border-0" type="text" placeholder="Digite sua tarefa">
-                                    <button type="button" class="btn btn-primary ms-2">Adicionar</button>
+                                    <input class="form-control" id="functarefa" name="functarefa" type="text" hidden value="<?php echo $idUser; ?>">
+                                    <input class="form-control" id="tarefas" name="tarefas" type="text" placeholder="Digite sua tarefa">
+                                    <button type="submit" class="btn ms-2">Adicionar</button>
                                 </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                <?php
+                                while ($dados = mysqli_fetch_assoc($resultado)) {
+                                    $id_tarefas = $dados["id_tarefas"];
+                                    $desc = $dados["desc_tarefa"];
+                                    $idFuncTarefa = $dados["id_funcionario"];
+                                ?>
+                                    <div class="d-flex align-items-center border-bottom py-2">
+                                        <!--input class="form-check-input m-0" name="idtarefas" id="idtarefas" type="checkbox"-->
+                                        <input class="form-check-input m-0" name="idtarefas" id="idtarefas" type="text" value="<?php echo $id_tarefas; ?>" hidden>
+                                        <div class="w-100 ms-3">
+                                            <div class="d-flex w-100 align-items-center justify-content-between">
+                                                <span><?php echo $desc; ?></span>
+                                                <button type="submit" formaction="exclui_tarefas.php" class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox" checked>
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span><del>Short task goes here...</del></span>
-                                            <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center pt-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <?php
+                                }
+                                ?>
+                            </form>
                         </div>
-                        <div class="col-md-6 col-xl-4">
-                            <div class="bg-secondary rounded h-100 p-4">
-                                <h6 class="mb-4">Relatório</h6>
-                                <canvas id="worldwide-sales"></canvas>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-- Widgets End -->
             </form>

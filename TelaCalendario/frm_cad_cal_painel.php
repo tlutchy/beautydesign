@@ -82,8 +82,8 @@ $resultado = mysqli_query($con, $comandoSql);
                         // showNonCurrentDates: false,
                         select: function(info) {
                             //alert('data selecionada: ' + info.startStr.toLocaleString());
-                            $('#janelamodal2').modal('show');
-                            $('#janelamodal2 #data').val(info.start.toLocaleString());
+                            //$('#janelamodal2').modal('show');
+                            //$('#janelamodal2 #data').val(info.start.toLocaleString());
                         },
                         events: [
 
@@ -161,7 +161,7 @@ $resultado = mysqli_query($con, $comandoSql);
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
                         <div class="position-relative">
-                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle" src="https://www.kindpng.com/picc/m/226-2261322_pink-human-icon-hd-png-download.png" alt="" style="width: 40px; height: 40px;">
                             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                             </div>
                         </div>
@@ -203,7 +203,7 @@ $resultado = mysqli_query($con, $comandoSql);
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="https://www.kindpng.com/picc/m/226-2261322_pink-human-icon-hd-png-download.png" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex mostrarTodos"><?php echo $_SESSION['nome']; ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
@@ -295,7 +295,7 @@ $resultado = mysqli_query($con, $comandoSql);
                                             <dt class="col-sm-3">Observações: </dt>
                                             <dd class="col-sm-9" id="obsv"></dd>
                                         </dl>
-                                        <button class="btn btn-warning btn-canc-vis">Editar</button>
+                                        <button class="btn btn-warning" data-bs-dismiss="modal">OK</button>
                                     </div>
                                     <div class="formedit">
                                         <form action="altera_agenda.php" method="post" class="editevent" id="editevent">

@@ -1,5 +1,5 @@
 <?php
-    include "../TelaLogin/protect.php";
+include "../TelaLogin/protect.php";
 ?>
 
 <!DOCTYPE html>
@@ -7,22 +7,24 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <title>System Beauty</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../global-assets/favicon.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!-- Libraries Stylesheet -->
     <link href="../global-assets/css-tela-admin/painellib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
@@ -46,10 +48,10 @@
                     disabled = false;
                 }
             });
-            
-            if(qtdeSelecionada == 0){
+
+            if (qtdeSelecionada == 0) {
                 disabled = true;
-            }else{
+            } else {
                 disabled = false;
             }
 
@@ -68,8 +70,8 @@
                 }
             });
 
-            
-            if(qtdeSelecionada > 1){
+
+            if (qtdeSelecionada > 1) {
                 disabled = true;
             }
 
@@ -96,49 +98,58 @@
         })
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                document.getElementById("content-start").style.display = "";
+                document.getElementById("container-spinner").style.display = "none";
+            }, 1000)
+        })
+    </script>
+
 
 </head>
 
 <body>
-    <div class="container-fluid position-relative d-flex p-0">
-        <!-- Spinner Start -->
-<!--         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div> -->
-        <!-- Spinner End -->
+    <!-- Spinner Start -->
+    <div id="container-spinner" class="container-spinner"><span class="loader"></span></div>
+    <!-- Spinner End -->
 
+    <div id="content-start" style="display: none;">
+        <div class="container-fluid position-relative d-flex p-0">
 
-        <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-secondary navbar-dark">
-                <a href="../TelaPainelAdmin/index.php" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px">Beauty Design</h3>
-                </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+            <!-- Sidebar Start -->
+            <div class="sidebar pb-3">
+                <nav class="navbar navbar-dark">
+                    <a href="../TelaPainelAdmin/index.php" class="navbar-brand mx-4 mb-3">
+                        <h3 class="text-primary"><img src="../global-assets/Logo Inteira BD Horizontal.png" class="fa fa-user-edit" width="180px"></h3>
+                    </a>
+                    <div class="d-flex align-items-center ms-4 mb-4">
+                        <div class="position-relative">
+                            <img class="rounded-circle" src="https://www.kindpng.com/picc/m/226-2261322_pink-human-icon-hd-png-download.png" alt="" style="width: 40px; height: 40px;">
+                            <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                            </div>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
+                            <?php
+                            if ($_SESSION['admin'] == '1') {
+                                echo "<span>Admin</span>";
+                            }
+                            ?>
                         </div>
                     </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
-                        <?php 
-                        if ($_SESSION['admin'] == '1'){
-                        echo "<span>Admin</span>";                
-                        }
-                        ?>
+                    <div class="navbar-nav w-100">
+                        <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa-solid fa-house me-2"></i>Painel</a>
+                        <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa-solid fa-address-book me-2"></i>Agendamentos</a>
+                        <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link active"><i class="fa-solid fa-user me-2"></i>Clientes</a>
+                        <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa-solid fa-briefcase me-2"></i></i>Serviços</a>
+                        <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1') {
+                                                                                                                    echo "hidden";
+                                                                                                                } ?>><i class="fa-solid fa-address-card me-2"></i>Funcionários</a>
+                        <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa-solid fa-calendar-days me-2"></i>Calendário</a>
                     </div>
-                </div>
-                <div class="navbar-nav w-100">
-                    <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
-                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Clientes</a>
-                    <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
-                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1'){echo "hidden";} ?>><i class="far fa-file-alt me-2"></i>Funcionários</a>
-                    <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>                    
-                </div>
+            </div>
             </nav>
         </div>
         <!-- Sidebar End -->
@@ -158,13 +169,13 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['nome']; ?></span>
+                            <img class="rounded-circle me-lg-2" src="https://www.kindpng.com/picc/m/226-2261322_pink-human-icon-hd-png-download.png" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex mostrarTodos"><?php echo $_SESSION['nome']; ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <!--a href="#" class="dropdown-item">My Profile</a-->
-                            <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Settings</a>
-                            <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Log Out</a>
+                            <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Configurações</a>
+                            <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Sair</a>
                         </div>
                     </div>
                 </div>
@@ -176,42 +187,17 @@
             <form action="exclui_clientes.php" method="POST">
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
+
                         <div class="col-sm-6 col-xl-3">
-                            <button type="button" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4" data-bs-toggle="modal" data-bs-target="#modalNovo">
-                                <i class="fa fa-chart-line fa-3x text-primary"></i>
-                                <div class="ms-3">
-                                    <p class="mb-2">Novo</p>
-                                    <h6 class="mb-0">$1234</h6>
-                                </div>
-                            </button>
+                            <button type="button" class="ms-2 btn-header" data-bs-toggle="modal" data-bs-target="#modalNovo"><i class="fa-sharp fa-solid fa-circle-plus icon-button"></i>Novo</button>
                         </div>
+
                         <div class="col-sm-6 col-xl-3">
-                            <button disabled type="submit" id="multi-delete" name="multi-delete" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                                <div class="ms-3">
-                                    <p class="mb-2">Deletar</p>
-                                    <h6 class="mb-0">$1234</h6>
-                                </div>
-                            </button>
+                            <button disabled type="submit" id="multi-delete" name="multi-delete" class="ms-2 btn-header"><i class="fa-solid fa-trash icon-button"></i>Deletar</button>
                         </div>
+
                         <div class="col-sm-6 col-xl-3">
-                            <button type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-area fa-3x text-primary"></i>
-                                <div class="ms-3">
-                                    <p class="mb-2">Alterar</p>
-                                    <h6 class="mb-0">$1234</h6>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                            <a href="/tcc/TelaLogin/logout.php"><button type="button" class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                                    <i class="fa fa-chart-pie fa-3x text-primary"></i>
-                                    <div class="ms-3">
-                                        <p class="mb-2">Log Out</p>
-                                        <h6 class="mb-0">$1234</h6>
-                                    </div>
-                                </button>
-                            </a>
+                            <button disabled type="submit" formaction="cad_cli_modal.php" id="altera" name="altera" class="ms-2 btn-header"><i class="fa-solid fa-pen"></i>Alterar</button>
                         </div>
                     </div>
                 </div>
@@ -221,8 +207,7 @@
                 <div class="container-fluid pt-4 px-4">
                     <div class="bg-secondary text-center rounded p-4">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h6 class="mb-0">Serviços Recentes</h6>
-                            <!--a href="">Mostrar Tudo</a-->
+                            <h3 class="mb-0">Listagem de Cliente</h3>
                         </div>
                         <div class="table-responsive">
                             <table id="tablesorter" class="tablesorter table text-start align-middle table-bordered table-hover mb-0">
@@ -238,7 +223,6 @@
                                     </tr>
                                 </thead>
                                 <tbody><?php
-                                        echo "<h3>  Listagem de cliente </h3>";
                                         //1- realizando a conexao com o banco de dados(local,usuario,senha,nomeBanco)
 
                                         //$con=mysqli_connect("localhost","root","","bd_lavarapido");
@@ -265,14 +249,14 @@
 
 
                                             echo "<tr>
-                <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox-table'></td>                       
-                <td>$nome</td>
-                <td>$fone</td>
-                <td>$cpf</td>
-                <td>$obs</td>
-                
-                
-            </tr>";
+        <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox-table'></td>                       
+        <td>$nome</td>
+        <td>$fone</td>
+        <td>$cpf</td>
+        <td>$obs</td>
+        
+        
+    </tr>";
                                         }
 
                                         ?>
@@ -287,12 +271,11 @@
                 <!-- Widgets Start -->
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
-                        
                         <div class="col-sm-12 col-md-6 col-xl-4">
                             <div class="h-100 bg-secondary rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">Calender</h6>
-                                    <a href="">Show All</a>
+                                    <h6 class="mb-0">Calendário</h6>
+                                    <a href="../TelaCalendario/frm_cad_cal_painel.php" class="mostrarTodos">Mostrar todos</a>
                                 </div>
                                 <div id="calender"></div>
                             </div>
@@ -300,66 +283,42 @@
                         <div class="col-sm-12 col-md-6 col-xl-4">
                             <div class="h-100 bg-secondary rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">To Do List</h6>
-                                    <a href="">Show All</a>
+                                    <h6 class="mb-0">Lista de Tarefas</h6>
+                                    <a class="mostrarTodos" href="">Mostrar todos</a>
                                 </div>
-                                <div class="d-flex mb-2">
-                                    <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
-                                    <button type="button" class="btn btn-primary ms-2">Add</button>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
+                                <form action="cadastra_tarefas.php" method="post">
+                                    <?php $idUser = $_SESSION['id'];
+                                    $comandoSqltarefa = "select * from tarefas where id_funcionario = $idUser";
+                                    $resultado = mysqli_query($con, $comandoSqltarefa);
+                                    ?>
+                                    <div class="d-flex mb-2">
+                                        <input class="form-control" id="functarefa" name="functarefa" type="text" hidden value="<?php echo $idUser; ?>">
+                                        <input class="form-control" id="tarefas" name="tarefas" type="text" placeholder="Digite sua tarefa">
+                                        <button type="submit" class="btn ms-2">Adicionar</button>
                                     </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    <?php
+                                    while ($dados = mysqli_fetch_assoc($resultado)) {
+                                        $id_tarefas = $dados["id_tarefas"];
+                                        $desc = $dados["desc_tarefa"];
+                                        $idFuncTarefa = $dados["id_funcionario"];
+                                    ?>
+                                        <div class="d-flex align-items-center border-bottom py-2">
+                                            <!--input class="form-check-input m-0" name="idtarefas" id="idtarefas" type="checkbox"-->
+                                            <input class="form-check-input m-0" name="idtarefas" id="idtarefas" type="text" value="<?php echo $id_tarefas; ?>" hidden>
+                                            <div class="w-100 ms-3">
+                                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                                    <span><?php echo $desc; ?></span>
+                                                    <button type="submit" formaction="exclui_tarefas.php" class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox" checked>
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span><del>Short task goes here...</del></span>
-                                            <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center border-bottom py-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center pt-2">
-                                    <input class="form-check-input m-0" type="checkbox">
-                                    <div class="w-100 ms-3">
-                                        <div class="d-flex w-100 align-items-center justify-content-between">
-                                            <span>Short task goes here...</span>
-                                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </form>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-4">
-                            <div class="bg-secondary rounded h-100 p-4">
-                                <h6 class="mb-4">Multiple Bar Chart</h6>
-                                <canvas id="worldwide-sales"></canvas>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- Widgets End -->
@@ -371,7 +330,6 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -407,13 +365,9 @@
                                     </div>
 
                                     <div class="botaosubmit">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
+                                        <button type="submit" class="btn btn-primary rounded submit">Cadastrar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                     </div>
-
-                                    <!--div class="botaosubmit">
-                                        <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
-                                    </div-->
 
                                 </form>
                             </div>
