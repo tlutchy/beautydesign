@@ -1,36 +1,3 @@
-/*!
- * Bootstrap v5.0.0 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
-:root {
-    --bs-blue: #0d6efd;
-    --bs-indigo: #6610f2;
-    --bs-purple: #6f42c1;
-    --bs-pink: #d63384;
-    --bs-red: #dc3545;
-    --bs-orange: #fd7e14;
-    --bs-yellow: #ffc107;
-    --bs-green: #198754;
-    --bs-teal: #20c997;
-    --bs-cyan: #0dcaf0;
-    --bs-white: #fff;
-    --bs-gray: #6c757d;
-    --bs-gray-dark: #343a40;
-    --bs-primary: #EB1616;
-    --bs-secondary: #191C24;
-    --bs-success: #198754;
-    --bs-info: #0dcaf0;
-    --bs-warning: #ffc107;
-    --bs-danger: #dc3545;
-    --bs-light: #6C7293;
-    --bs-dark: #000;
-    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))
-}
-
 *,
 *::before,
 *::after {
@@ -45,12 +12,11 @@
 
 body {
     margin: 0;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #6C7293;
-    background-color: white;
+    color: #141414;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
@@ -81,10 +47,10 @@ h6,
 .h6 {
     margin-top: 0;
     margin-bottom: .5rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-weight: 700;
     line-height: 1.2;
-    color: #fff
+    color: #141414;
 }
 
 h1,
@@ -231,13 +197,22 @@ sup {
     top: -.5em
 }
 
+.mostrarTodos{
+    color: #362825;
+    transition: font-weight 0.15s ease-in-out;    
+}
+
+.mostrarTodos:hover{
+    font-weight: 600;    
+}
+
 a {
-    color: #EB1616;
+    color: #000;
     text-decoration: none
 }
 
 a:hover {
-    color: #bc1212
+    color: rgb(49, 49, 49);
 }
 
 a:not([href]):not([class]),
@@ -250,7 +225,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: var(--bs-font-monospace);
+    font-family: "Raleway", sans-serif;
     font-size: 1em;
     direction: ltr
         /* rtl:ignore */
@@ -351,7 +326,7 @@ select,
 optgroup,
 textarea {
     margin: 0;
-    font-family: inherit;
+    font-family: "Raleway", sans-serif;
     font-size: inherit;
     line-height: inherit
 }
@@ -2235,9 +2210,9 @@ progress {
     font-weight: 400;
     line-height: 1.5;
     color: #6C7293;
-    background-color: white;
+    background-color: #DBDBDB;
     background-clip: padding-box;
-    border: 1px solid #000;
+    border: 1px solid #bbbbbb;
     appearance: none;
     border-radius: 5px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
@@ -2488,7 +2463,7 @@ textarea.form-control-lg {
     height: 1em;
     margin-top: .25em;
     vertical-align: top;
-    background-color: #000;
+    background-color: #DBDBDB;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -2516,8 +2491,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input:checked {
-    background-color: #EB1616;
-    border-color: #EB1616
+    background-color: #DEABC5;
+    border-color: #DEABC5;
 }
 
 .form-check-input:checked[type="checkbox"] {
@@ -3044,7 +3019,7 @@ textarea.form-control.is-invalid {
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
-    color: #6C7293;
+    color: #787878;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
@@ -3081,15 +3056,15 @@ fieldset:disabled .btn {
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #EB1616;
-    border-color: #EB1616
+    color: #141414;
+    background-color: #F7BEDB;
+    border-color: #F7BEDB;
 }
 
 .btn-primary:hover {
-    color: #fff;
-    background-color: #c81313;
-    border-color: #bc1212
+    color: #141414;
+    background-color: #DEABC5;
+    border-color: #DEABC5;
 }
 
 .btn-check:focus+.btn-primary,
@@ -3850,7 +3825,6 @@ fieldset:disabled .btn {
     z-index: 1000;
     display: none;
     min-width: 10rem;
-    padding: .5rem 0;
     margin: 0;
     font-size: 1rem;
     color: #6C7293;
@@ -4118,7 +4092,7 @@ fieldset:disabled .btn {
 .dropdown-item {
     display: block;
     width: 100%;
-    padding: .25rem 1rem;
+    padding: 0.5rem 1rem;
     clear: both;
     font-weight: 400;
     color: #212529;
@@ -6250,7 +6224,7 @@ fieldset:disabled .btn {
     z-index: 1080;
     display: block;
     margin: 0;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -6377,7 +6351,7 @@ fieldset:disabled .btn {
     z-index: 1070;
     display: block;
     max-width: 276px;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -7272,7 +7246,7 @@ fieldset:disabled .btn {
 }
 
 .border {
-    border: 1px solid #000 !important
+    border: 1px solid !important;
 }
 
 .border-0 {
@@ -8168,7 +8142,7 @@ fieldset:disabled .btn {
 }
 
 .font-monospace {
-    font-family: var(--bs-font-monospace) !important
+    font-family: "Raleway", sans-serif !important;
 }
 
 .fs-1 {
@@ -8289,7 +8263,7 @@ fieldset:disabled .btn {
 }
 
 .text-primary {
-    color: #EB1616 !important
+    color: #000 !important;
 }
 
 .text-secondary {
@@ -8321,7 +8295,7 @@ fieldset:disabled .btn {
 }
 
 .text-white {
-    color: #fff !important
+    color: #141414 !important
 }
 
 .text-body {
@@ -8349,7 +8323,8 @@ fieldset:disabled .btn {
 }
 
 .bg-secondary {
-    background-color: #191C24 !important
+    background-color: #ebebeb !important;
+    box-shadow: 7px 9px 20px -6px rgba(0,0,0,0.21);
 }
 
 .bg-success {
@@ -8413,6 +8388,7 @@ fieldset:disabled .btn {
 }
 
 .rounded {
+    border-color: #F7BEDB;
     border-radius: 5px !important
 }
 

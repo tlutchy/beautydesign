@@ -2,13 +2,13 @@ const form = document.getElementById("form");
 const formnome = document.getElementById("form-nome");
 const formcpf = document.getElementById("form-cpf");
 const formfone = document.getElementById("form-fone");
-const formchave = document.getElementById("form-chave");
-const formchaveconf = document.getElementById("form-chaveconf");
+const formsenha = document.getElementById("form-senha");
+const formsenhaconf = document.getElementById("form-senhaconf");
 const nome = document.getElementById("nome");
 const cpf = document.getElementById("cpf");
 const fone = document.getElementById("fone");
-const chave = document.getElementById("chave");
-const chaveconf = document.getElementById("chaveconf");
+const senha = document.getElementById("senha");
+const senhaconf = document.getElementById("senhaconf");
 
 
 formnome.addEventListener("focusout", (e) => {
@@ -26,12 +26,12 @@ formfone.addEventListener("focusout", (e) => {
   checkInputsFone();
 });
 
-formchave.addEventListener("focusout", (e) => {
-  
+formsenha.addEventListener("focusout", (e) => {
+  debugger;
   checkInputsSenha();
 });
 
-formchaveconf.addEventListener("focusout", (e) => {
+formsenhaconf.addEventListener("focusout", (e) => {
   
   checkInputsSenhaConf();
 });
@@ -49,13 +49,13 @@ function checkInputs(){
   const nomeValue = nome.value;
   const cpfValue = cpf.value;
   const foneValue = fone.value;
-  const chaveValue = chave.value;
-  const chaveconfValue = chaveconf.value;
+  const senhaValue = senha.value;
+  const senhaconfValue = senhaconf.value;
   flagnome = false;
   flagcpf = false;
   flagfone = false;
-  flagchave = false;
-  flagchaveconf = false;
+  flagsenha = false;
+  flagsenhaconf = false;
 
   if (nomeValue === ""){
     setErrorFor(nome, "O nome do usuário é obrigatório");    
@@ -80,25 +80,25 @@ function checkInputs(){
     flagfone = true;
   }
 
-  if (chaveValue === "") {
-    setErrorFor(chave, "A senha é obrigatória.");    
-  } else if (chaveValue.length < 7) {
-    setErrorFor(chave, "A senha precisa ter no mínimo 7 caracteres.");    
+  if (senhaValue === "") {
+    setErrorFor(senha, "A senha é obrigatória.");    
+  } else if (senhaValue.length < 7) {
+    setErrorFor(senha, "A senha precisa ter no mínimo 7 caracteres.");    
   } else {
-    setSuccessFor(chave);
-    flagchave = true;
+    setSuccessFor(senha);
+    flagsenha = true;
   }
 
-  if (chaveconfValue === "") {
-    setErrorFor(chaveconf, "A confirmação de senha é obrigatória.");    
-  } else if (chaveconfValue !== chaveValue) {
-    setErrorFor(chaveconf, "As senha não conferem.");    
+  if (senhaconfValue === "") {
+    setErrorFor(senhaconf, "A confirmação de senha é obrigatória.");    
+  } else if (senhaconfValue !== senhaValue) {
+    setErrorFor(senhaconf, "As senha não conferem.");    
   } else {
-    setSuccessFor(chaveconf);
-    flagchaveconf = true;
+    setSuccessFor(senhaconf);
+    flagsenhaconf = true;
   }
 
-  if(flagnome==true && flagfone==true && flagcpf==true && flagchave==true && flagchaveconf==true){
+  if(flagnome==true && flagfone==true && flagcpf==true && flagsenha==true && flagsenhaconf==true){
     return true;   
   }else{    
     return false;    
@@ -147,28 +147,30 @@ function checkInputsFone() {
 }
 
 function checkInputsSenha() {
-  const chaveValue = chave.value;  
+  debugger;
+  const senhaValue = senha.value;  
   
-  if (chaveValue === "") {
-    setErrorFor(chave, "A senha é obrigatória.");
-  } else if (chaveValue.length < 4) {
-    setErrorFor(chave, "A senha precisa ter no mínimo 4 caracteres.");
+  if (senhaValue === "") {
+    setErrorFor(senha, "A senha é obrigatória.");
+  } else if (senhaValue.length < 4) {
+    setErrorFor(senha, "A senha precisa ter no mínimo 4 caracteres.");
   } else {
-    setSuccessFor(chave);
+    setSuccessFor(senha);
   }
 }
 
 function checkInputsSenhaConf() {
-  const chaveValue = chave.value;  
-  const chaveconfValue = chaveconf.value;
+  debugger;
+  const senhaValue = senha.value;  
+  const senhaconfValue = senhaconf.value;
 
 
-  if (chaveconfValue === "") {
-    setErrorFor(chaveconf, "A confirmação de senha é obrigatória.");
-  } else if (chaveconfValue !== chaveValue) {
-    setErrorFor(chaveconf, "As senhas não conferem.");
+  if (senhaconfValue === "") {
+    setErrorFor(senhaconf, "A confirmação de senha é obrigatória.");
+  } else if (senhaconfValue !== senhaValue) {
+    setErrorFor(senhaconf, "As senhas não conferem.");
   } else {
-    setSuccessFor(chaveconf);
+    setSuccessFor(senhaconf);
   }
 }
 

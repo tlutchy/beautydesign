@@ -58,24 +58,78 @@ if(!isset($_SESSION['id'])){
 
   
 
+  <!-- ======= Footer ======= -->
+  <footer id='footer' class='footer'>
+
+    <div class='footer-top'
+      style='background-image: url(../global-assets/textura-footer.png); background-repeat: no-repeat; background-size: cover;'>
+      <div class='container'>
+        <div class='row gy-4'>
+          <div class='col-lg-5 col-md-12 footer-info'>
+            <a href='index.html' class='logo d-flex align-items-center'>
+              <img src='../global-assets/Logo Inteira BD Horizontal.png' alt=''>
+            </a>
+            <p>Somos uma empresa especializada em Design, pronta para te deixar arrasando em todos os momentos.</p>
+            <div class='social-links mt-3'>
+              <a href='https://www.facebook.com/jaque.sato.921/' class='facebook'><i class='bi bi-facebook' target='_blank'></i></a>
+              <a href='https://www.instagram.com/ls.conte/' class='instagram'><i class='bi bi-instagram' target='_blank'></i></a>
+              <a href='https://www.linkedin.com/in/thiago-lutchy-rico-silva-246a3b17a/' class='linkedin' target='_blank'><i
+                  class='bi bi-linkedin'></i></a>
+            </div>
+          </div>
+
+          <div class='col-lg-2 col-6 footer-links'>
+            <h4>Institucional</h4>
+            <ul>
+              <li><i class='bi bi-chevron-right'></i> <a href='#hero' target='_blank'>Página Inicial</a></li>
+              <li><i class='bi bi-chevron-right'></i> <a href='#about' target='_blank'>Sobre</a></li>
+              <li><i class='bi bi-chevron-right'></i> <a href='#services' target='_blank'>Serviços</a></li>
+              <li><i class='bi bi-chevron-right'></i> <a href='#portfolio' target='_blank'>Portfólio</a></li>
+              <li><i class='bi bi-chevron-right'></i> <a href='#contato' target='_blank'>Contato</a></li>
+            </ul>
+          </div>
+
+          <div class='col-lg-2 col-6 footer-links'>
+            <h4>Beauty System</h4>
+            <ul>
+              <li><i class='bi bi-chevron-right' target='_blank'></i> <a href='#'>Sobre o Sistema</a></li>
+              <li><i class='bi bi-chevron-right' target='_blank'></i> <a href='#'>Suporte</a></li>
+            </ul>
+          </div>
+
+          <div class='col-lg-3 col-md-12 footer-contact text-md-start'>
+            <h4>Formas de Contato</h4>
+            <p>
+              Av. dos Estudantes, 3278 <br>
+              Jd. Novo Aeroporto<br>
+              São José do Rio Preto - SP<br><br>
+              <strong>Telefone:</strong> (17) 3233-9266<br>
+              <strong>Email:</strong> beautydesign@gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <div class='container'>
       <div class='copyright'>
         &copy; Copyright <strong><span>Beauty Design</span></strong> • Todos os direitos reservados
       </div>
       <div class='credits'>
-        Desenvolvido por <a href='#'>Team Beauty Design System</a>
+        Desenvolvido por <a href='#'>Team Beauty Design System</a> <!-- Levar para a página *Sobre o Sistema* -->
       </div>
     </div>
   </footer><!-- End Footer -->
 
   <!-- Vendor JS Files -->
-  <script src='../TelaCadastroCliente/assets/js/scripts.js'></script>
-  <script src='../global-assets/vendor/purecounter/purecounter_vanilla.js'></script>
-  <script src='../global-assets/vendor/aos/aos.js'></script>
-  <script src='../global-assets/vendor/bootstrap/js/bootstrap.bundle.min.js'></script>
-  <script src='../global-assets/vendor/glightbox/js/glightbox.min.js'></script>
-  <script src='../global-assets/vendor/isotope-layout/isotope.pkgd.min.js'></script>
-  <script src='../global-assets/vendor/swiper/swiper-bundle.min.js'></script>
+  <script src='assets/vendor/purecounter/purecounter_vanilla.js'></script>
+  <script src='assets/vendor/aos/aos.js'></script>
+  <script src='assets/vendor/bootstrap/js/bootstrap.bundle.min.js'></script>
+  <script src='assets/vendor/glightbox/js/glightbox.min.js'></script>
+  <script src='assets/vendor/isotope-layout/isotope.pkgd.min.js'></script>
+  <script src='assets/vendor/swiper/swiper-bundle.min.js'></script>
 
   <!-- Template Main JS File -->
   <script src='assets/js/main.js'></script>

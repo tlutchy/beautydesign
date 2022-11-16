@@ -1,19 +1,12 @@
 /********** Template CSS **********/
 :root {
-    --primary: #EB1616;
-    --secondary: #191C24;
-    --light: #6C7293;
-    --dark: #000000;
+    --primary: #F7BEDB;
+    --hoverPrimary: #DEABC5;
+    --secondary: #ebebeb;
+    --hoverSecondary: #dbdbdb;
+    --light: #141414;
+    --dark: #fff;
 }
-
-.back-to-top {
-    position: fixed;
-    display: none;
-    right: 45px;
-    bottom: 45px;
-    z-index: 99;
-}
-
 
 /*** Spinner ***/
 #spinner {
@@ -73,7 +66,36 @@
     overflow-y: auto;
     background: var(--secondary);
     transition: 0.5s;
+    box-shadow: 7px 9px 20px -6px rgba(0, 0, 0, 0.21);
     z-index: 999;
+}
+
+.icon-button {
+    font-size: 20px;
+}
+
+.btn-header {
+    display: flex;
+    color: #141414;
+    background-color: #F7BEDB;
+    border-color: #F7BEDB;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 400;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.btn-header:hover {
+    background-color: var(--hoverPrimary) !important;
 }
 
 .content {
@@ -130,9 +152,9 @@
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
-    background: var(--dark);
-    border-color: var(--primary);
+    color: var(--light);
+    background: var(--hoverSecondary);
+    border-color: var(--hoverPrimary);
 }
 
 .sidebar .navbar .navbar-nav .nav-link i {
@@ -143,6 +165,7 @@
     justify-content: center;
     background: var(--dark);
     border-radius: 40px;
+    color: var(--primary);
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover i,
@@ -185,7 +208,8 @@
 
 .content .navbar .navbar-nav .nav-link:hover,
 .content .navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
+    font-weight: 500;
+    color: rgb(49, 49, 49);
 }
 
 .content .navbar .sidebar-toggler,
@@ -205,7 +229,7 @@
 
 .content .navbar .dropdown-item:hover,
 .content .navbar .dropdown-item.active {
-    background: var(--dark);
+    background: var(--hoverSecondary);
 }
 
 .content .navbar .dropdown-toggle::after {
@@ -249,7 +273,7 @@
 
 .bootstrap-datetimepicker-widget table td.active,
 .bootstrap-datetimepicker-widget table td.active:hover {
-    background: var(--primary);
+    background: var(--hoverPrimary);
 }
 
 .bootstrap-datetimepicker-widget table td.today::before {
@@ -289,25 +313,29 @@
 }
 
 table.tablesorter thead tr .header {
-	background-image: url(bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	cursor: pointer;
+    background-image: url(bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
 }
+
 table.tablesorter tbody td {
-	
-	padding: 4px;	
-	vertical-align: top;
+
+    padding: 4px;
+    vertical-align: top;
 }
 
 table.tablesorter thead tr .headerSortUp {
-	background-image: url(asc.gif);
+    background-image: url(asc.gif);
 }
+
 table.tablesorter thead tr .headerSortDown {
-	background-image: url(desc.gif);
+    background-image: url(desc.gif);
 }
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-background-color: #8dbdd8;
+
+table.tablesorter thead tr .headerSortDown,
+table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
 }
 
 .form-group {
@@ -361,6 +389,9 @@ background-color: #8dbdd8;
     visibility: hidden;
 }
 
+.fa {
+    color: var(--primary);
+}
 
 .form-success i.fa-check-circle {
     color: #2ecc71;

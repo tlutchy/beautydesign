@@ -589,7 +589,7 @@
     <script src="../global-assets/js-tela-admin/tablejs/jquery-latest.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/jquery.tablesorter.min.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
-    <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
+    <script src="../TelaCadastroFuncionario/scripts.js"></script>
 
     
 
