@@ -34,20 +34,17 @@ $resultado = mysqli_query($con, $comandoSql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- for Bootstrap 4 -->
-    <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+
 
     <!-- Libraries Stylesheet -->
     <link href="../global-assets/css-tela-admin/painellib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
-    <link href="../global-assets/css-tela-admin/painellib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../global-assets/css-tela-admin/painelcss/painelbootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="../global-assets/css-tela-admin/painelcss/painelstyle.css" rel="stylesheet">
     <link href='../TelaCalendario/lib/main.css' rel='stylesheet' />
     <link href='../TelaCalendario/style.css' rel='stylesheet' />
-    <link href='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css' rel='stylesheet' />
+    <link href="../global-assets/css-tela-admin/painelcss/painelstyle.css" rel="stylesheet">
+    <link href="../global-assets/css-tela-admin/painelcss/painelbootstrap.min.css" rel="stylesheet">
     <script src='../TelaCalendario/lib/main.js'></script>
     <script src='js/theme-chooser.js'></script>
     <script src='../TelaCalendario/lib/locales/pt-br.js'></script>
@@ -57,7 +54,11 @@ $resultado = mysqli_query($con, $comandoSql);
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
+            setTimeout(() => {
+                document.getElementById("content-start").style.display = "";
+                document.getElementById("container-spinner").style.display = "none";
+
+                var calendarEl = document.getElementById('calendar');
             var calendar;
 
             initThemeChooser({
@@ -139,385 +140,378 @@ $resultado = mysqli_query($con, $comandoSql);
                 }
 
             });
+            }, 1000)
 
         });
-    </script>
-
-
-
+    </script>    
 </head>
 
 <body>
-    <div class="container-fluid position-relative d-flex p-0">
-        <!-- Spinner Start -->
-        <!--         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div> -->
-        <!-- Spinner End -->
+    <!-- Spinner Start -->
+    <div id="container-spinner" class="container-spinner"><span class="loader"></span></div>
+    <!-- Spinner End -->
 
-
-        <!-- Sidebar Start -->
-        <div class="sidebar pb-3">
-            <nav class="navbar navbar-dark">
-                <a href="index.php" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><img src="../global-assets/Logo Inteira BD Horizontal.png" class="fa fa-user-edit" width="180px"></h3>
-                </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
-                        </div>
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
-                        <?php
-                        if ($_SESSION['admin'] == '1') {
-                            echo "<span>Admin</span>";
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="navbar-nav w-100">
-                    <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa-solid fa-house me-2"></i>Painel</a>
-                    <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa-solid fa-address-book me-2"></i>Agendamentos</a>
-                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa-solid fa-user me-2"></i>Clientes</a>
-                    <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa-solid fa-briefcase me-2"></i></i>Serviços</a>
-                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1') {
-                                                                                                                echo "hidden";
-                                                                                                            } ?>><i class="fa-solid fa-address-card me-2"></i>Funcionários</a>
-                    <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link active"><i class="fa-solid fa-calendar-days me-2"></i>Calendário</a>
-                </div>
-        </div>
-        </nav>
-    </div>
-    <!-- Sidebar End -->
-
-
-    <!-- Content Start -->
-    <div class="content">
-        <!-- Navbar Start -->
-        <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-            <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
-                <h2 class="text-primary mb-0"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px"></h2>
-            </a>
-            <a href="#" class="sidebar-toggler flex-shrink-0">
-                <i class="fa fa-bars"></i>
-            </a>
-
-            <div class="navbar-nav align-items-center ms-auto">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <span class="d-none d-lg-inline-flex mostrarTodos"><?php echo $_SESSION['nome']; ?></span>
+    <div id="content-start" style="display: none;">
+        <div class="container-fluid position-relative d-flex p-0">
+            <!-- Sidebar Start -->
+            <div class="sidebar pb-3">
+                <nav class="navbar navbar-dark">
+                    <a href="index.php" class="navbar-brand mx-4 mb-3">
+                        <h3 class="text-primary"><img src="../global-assets/Logo Inteira BD Horizontal.png" class="fa fa-user-edit" width="180px"></h3>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <!--a href="#" class="dropdown-item">My Profile</a-->
-                        <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Configurações</a>
-                        <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Sair</a>
+                    <div class="d-flex align-items-center ms-4 mb-4">
+                        <div class="position-relative">
+                            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                            </div>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
+                            <?php
+                            if ($_SESSION['admin'] == '1') {
+                                echo "<span>Admin</span>";
+                            }
+                            ?>
+                        </div>
                     </div>
-                </div>
+                    <div class="navbar-nav w-100">
+                        <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa-solid fa-house me-2"></i>Painel</a>
+                        <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa-solid fa-address-book me-2"></i>Agendamentos</a>
+                        <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa-solid fa-user me-2"></i>Clientes</a>
+                        <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa-solid fa-briefcase me-2"></i></i>Serviços</a>
+                        <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1') {
+                                                                                                                    echo "hidden";
+                                                                                                                } ?>><i class="fa-solid fa-address-card me-2"></i>Funcionários</a>
+                        <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link active"><i class="fa-solid fa-calendar-days me-2"></i>Calendário</a>
+                    </div>
             </div>
-        </nav>
-        <!-- Navbar End -->
+            </nav>
+        </div>
+        <!-- Sidebar End -->
 
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px"></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
 
-
-
-        <!-- Recent Sales Start -->
-        <div class="container-fluid pt-4 px-4">
-            <div class="bg-secondary text-center rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h3 class="mb-0">Calendário</h3>
-                </div>
-                <div id='top' hidden>
-
-                    <div class='left'>
-
-                        <div id='theme-system-selector' class='selector'>
-                            Theme System:
-                            <select>
-                                <option value='bootstrap5' selected>Bootstrap 5</option>
-                                <option value='bootstrap'>Bootstrap 4</option>
-                                <option value='standard'>unthemed</option>
-                            </select>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex mostrarTodos"><?php echo $_SESSION['nome']; ?></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Configurações</a>
+                            <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Sair</a>
                         </div>
-
-                        <div data-theme-system="bootstrap,bootstrap5" class='selector' style='display:none'>
-                            Theme Name:
-                            <select>
-                                <option value='cerulean' selected>Cerulean</option>
-                            </select>
-                        </div>
-
-                        <span id='loading' style='display:none'>loading theme...</span>
-
                     </div>
-
-                    <div class='right'>
-                        <span class='credits' data-credit-id='bootstrap-standard' style='display:none'>
-                            <a href='https://getbootstrap.com/docs/3.3/' target='_blank'>Theme by Bootstrap</a>
-                        </span>
-                        <span class='credits' data-credit-id='bootstrap-custom' style='display:none'>
-                            <a href='https://bootswatch.com/' target='_blank'>Theme by Bootswatch</a>
-                        </span>
-                    </div>
-
-                    <div class='clear'></div>
                 </div>
+            </nav>
+            <!-- Navbar End -->
 
-                <div id='calendar'></div>
 
-                <div class="modal fade" id="janelamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Agenda</h5>
-                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+
+
+            <!-- Recent Sales Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h3 class="mb-0">Calendário</h3>
+                    </div>
+                    <div id='top' hidden>
+
+                        <div class='left'>
+
+                            <div id='theme-system-selector' class='selector'>
+                                Theme System:
+                                <select>
+                                    <option value='bootstrap5' selected>Bootstrap 5</option>
+                                    <option value='bootstrap'>Bootstrap 4</option>
+                                    <option value='standard'>unthemed</option>
+                                </select>
                             </div>
-                            <div class="modal-body">
-                                <div class="visevent">
-                                    <dl class="row">
-                                        <dt class="col-sm-3" hidden>Id: </dt>
-                                        <dd class="col-sm-9" id="id" hidden></dd>
 
-                                        <dt class="col-sm-3">Cliente: </dt>
-                                        <dd class="col-sm-9" id="cliente"></dd>
+                            <div data-theme-system="bootstrap,bootstrap5" class='selector' style='display:none'>
+                                Theme Name:
+                                <select>
+                                    <option value='cerulean' selected>Cerulean</option>
+                                </select>
+                            </div>
 
-                                        <dt class="col-sm-3">Atendente: </dt>
-                                        <dd class="col-sm-9" id="func"></dd>
+                            <span id='loading' style='display:none'>loading theme...</span>
 
-                                        <dt class="col-sm-3">Serviço: </dt>
-                                        <dd class="col-sm-9" id="serv"></dd>
+                        </div>
 
-                                        <dt class="col-sm-3">Horário: </dt>
-                                        <dd class="col-sm-9" id="hora"></dd>
+                        <div class='right'>
+                            <span class='credits' data-credit-id='bootstrap-standard' style='display:none'>
+                                <a href='https://getbootstrap.com/docs/3.3/' target='_blank'>Theme by Bootstrap</a>
+                            </span>
+                            <span class='credits' data-credit-id='bootstrap-custom' style='display:none'>
+                                <a href='https://bootswatch.com/' target='_blank'>Theme by Bootswatch</a>
+                            </span>
+                        </div>
 
-                                        <dt class="col-sm-3">Status: </dt>
-                                        <dd class="col-sm-9" id="estado"></dd>
+                        <div class='clear'></div>
+                    </div>
 
-                                        <dt class="col-sm-3">Observações: </dt>
-                                        <dd class="col-sm-9" id="obsv"></dd>
-                                    </dl>
-                                    <button class="btn btn-warning btn-canc-vis">Editar</button>
+                    <div id='calendar'></div>
+
+                    <div class="modal fade" id="janelamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Agenda</h5>
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="formedit">
-                                    <form action="altera_agenda.php" method="post" class="editevent" id="editevent">
-                                        <input type="text" name="id_banco" id="id_banco" hidden>
-                                        <div class="form-group" id="form-nome">
-                                            Valor Atual Cliente
-                                            <input type="text" name="nomeatual" id="nomeatual" class="form-control rounded-left" placeholder="Observações" disabled>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-nome">
-                                            Novo valor Cliente
-                                            <?php
-                                            listaClienteSelect()
-                                            ?>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-nome">
-                                            Valor Atual Atendente
-                                            <input type="text" name="funcatual" id="funcatual" class="form-control rounded-left" disabled>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-funcionario">
-                                            Novo Valor Atendente
-                                            <?php
-                                            funcionarioSelect();
-                                            ?>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-nome">
-                                            Valor Atual Serviço
-                                            <input type="text" name="servicoatual" id="servicoatual" class="form-control rounded-left" disabled>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-servico">
-                                            Novo Valor Serviço
-                                            <?php
-                                            servicoSelect();
-                                            ?>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-data">
-                                            Valor Atual Data
-                                            <input type="date" name="dataatual" id="dataatual" class="form-control rounded-left" disabled>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-data">
-                                            Novo Valor Data
-                                            <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data">
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-horario">
-                                            Valor Atual Hora
-                                            <input type="time" name="horaatual" id="horaatual" class="form-control rounded-left" disabled>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-horario">
-                                            Novo Valor Hora
-                                            <input type="time" name="horario" id="horario" class="form-control rounded-left">
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-estado">
-                                            Valor Atual Status
-                                            <input type="text" name='statusatual' id='statusatual' class='form-control rounded-left' disabled>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-estado">
-                                            Novo Valor Status
-                                            <select name='status' id='status' class='form-control rounded-left'>
-                                                <option value='' selected>Selecione...</option>
-                                                <option value='Agendado'>Agendado</option>
-                                                <option value='Concluído'>Concluído</option>
-                                                <option value='Cancelado'>Cancelado</option>
-                                            </select>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-obs">
-                                            Valor Atual Obs
-                                            <input type="text" name="atual" id="obsatual" class="form-control rounded-left" disabled>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="form-group" id="form-obs">
-                                            Novo valor Obs
-                                            <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observações">
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="botaosubmit">
-                                            <button type="button" class="btn btn-primary btn-canc-edit">Cancelar</button>
-                                            <input type="submit" class="btn btn-primary rounded submit" value="Salvar">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                <div class="modal-body">
+                                    <div class="visevent">
+                                        <dl class="row">
+                                            <dt class="col-sm-3" hidden>Id: </dt>
+                                            <dd class="col-sm-9" id="id" hidden></dd>
 
-                <!-- Modal -->
-                <div class="modal fade" id="janelamodal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="login-wrap p-4 p-md-5">
-                                    <div class="icon d-flex align-items-center justify-content-center">
-                                        <img src="../global-assets/icone-formulario.png">
+                                            <dt class="col-sm-3">Cliente: </dt>
+                                            <dd class="col-sm-9" id="cliente"></dd>
+
+                                            <dt class="col-sm-3">Atendente: </dt>
+                                            <dd class="col-sm-9" id="func"></dd>
+
+                                            <dt class="col-sm-3">Serviço: </dt>
+                                            <dd class="col-sm-9" id="serv"></dd>
+
+                                            <dt class="col-sm-3">Horário: </dt>
+                                            <dd class="col-sm-9" id="hora"></dd>
+
+                                            <dt class="col-sm-3">Status: </dt>
+                                            <dd class="col-sm-9" id="estado"></dd>
+
+                                            <dt class="col-sm-3">Observações: </dt>
+                                            <dd class="col-sm-9" id="obsv"></dd>
+                                        </dl>
+                                        <button class="btn btn-warning btn-canc-vis">Editar</button>
                                     </div>
-                                    <h3 class="text-center mb-4">Agendamento</h3>
-                                    <form action="../TelaCalendario/cadastra_agenda_beauty.php" method="post" class="form" id="form">
-                                        <div class="form-group" id="form-nome">
-                                            <?php
-                                            listaClienteSelect();
-                                            ?>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
+                                    <div class="formedit">
+                                        <form action="altera_agenda.php" method="post" class="editevent" id="editevent">
+                                            <input type="text" name="id_banco" id="id_banco" hidden>
+                                            <div class="form-group" id="form-nome">
+                                                Valor Atual Cliente
+                                                <input type="text" name="nomeatual" id="nomeatual" class="form-control rounded-left" placeholder="Observações" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-nome">
+                                                Novo valor Cliente
+                                                <?php
+                                                listaClienteSelect()
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-nome">
+                                                Valor Atual Atendente
+                                                <input type="text" name="funcatual" id="funcatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-funcionario">
+                                                Novo Valor Atendente
+                                                <?php
+                                                funcionarioSelect();
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-nome">
+                                                Valor Atual Serviço
+                                                <input type="text" name="servicoatual" id="servicoatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-servico">
+                                                Novo Valor Serviço
+                                                <?php
+                                                servicoSelect();
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-data">
+                                                Valor Atual Data
+                                                <input type="date" name="dataatual" id="dataatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-data">
+                                                Novo Valor Data
+                                                <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-horario">
+                                                Valor Atual Hora
+                                                <input type="time" name="horaatual" id="horaatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-horario">
+                                                Novo Valor Hora
+                                                <input type="time" name="horario" id="horario" class="form-control rounded-left">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-estado">
+                                                Valor Atual Status
+                                                <input type="text" name='statusatual' id='statusatual' class='form-control rounded-left' disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-estado">
+                                                Novo Valor Status
+                                                <select name='status' id='status' class='form-control rounded-left'>
+                                                    <option value='' selected>Selecione...</option>
+                                                    <option value='Agendado'>Agendado</option>
+                                                    <option value='Concluído'>Concluído</option>
+                                                    <option value='Cancelado'>Cancelado</option>
+                                                </select>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-obs">
+                                                Valor Atual Obs
+                                                <input type="text" name="atual" id="obsatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-obs">
+                                                Novo valor Obs
+                                                <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observações">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="botaosubmit">
+                                                <input type="submit" class="btn btn-primary rounded submit" value="Salvar">
+                                                <button type="button" class="btn btn-secondary btn-canc-edit">Cancelar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                        <div class="form-group" id="form-funcionario">
-                                            <?php
-                                            funcionarioSelect();
-                                            ?>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
+                    <!-- Modal -->
+                    <div class="modal fade" id="janelamodal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="login-wrap p-4 p-md-5">
+                                        <div class="icon d-flex align-items-center justify-content-center">
+                                            <img src="../global-assets/icone-formulario.png">
                                         </div>
+                                        <h3 class="text-center mb-4">Agendamento</h3>
+                                        <form action="../TelaCalendario/cadastra_agenda_beauty.php" method="post" class="form" id="form">
+                                            <div class="form-group" id="form-nome">
+                                                <?php
+                                                listaClienteSelect();
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
 
-                                        <div class="form-group" id="form-servico">
-                                            <?php
-                                            servicoSelect();
-                                            ?>
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
+                                            <div class="form-group" id="form-funcionario">
+                                                <?php
+                                                funcionarioSelect();
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
 
-                                        <div class="form-group" id="form-data">
-                                            <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data" onkeypress="DataHora(event, this)">
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
+                                            <div class="form-group" id="form-servico">
+                                                <?php
+                                                servicoSelect();
+                                                ?>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
 
-                                        <div class="form-group" id="form-horario">
-                                            <input type="time" name="horario" id="horario" class="form-control rounded-left" placeholder="Horário">
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
+                                            <div class="form-group" id="form-data">
+                                                <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data" onkeypress="DataHora(event, this)">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
 
-                                        <div class="form-group" id="form-obs">
-                                            <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observações">
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            <i class="fas fa-check-circle"></i>
-                                            <small>Mensagem de erro</small>
-                                        </div>
-                                        <div class="botaosubmit">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                            <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
-                                        </div>
-                                    </form>
+                                            <div class="form-group" id="form-horario">
+                                                <input type="time" name="horario" id="horario" class="form-control rounded-left" placeholder="Horário">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+
+                                            <div class="form-group" id="form-obs">
+                                                <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observações">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="botaosubmit">
+                                                <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Recent Sales End -->
+            <!-- Recent Sales End -->
 
-        <!-- Footer Start -->
-        <div class="container-fluid pt-4 px-4">
-            <div class="bg-secondary rounded-top p-4">
-                <div class="row">
-                    <div class="col-12 col-sm-6 text-center text-sm-start">
-                        &copy; <a style="font-weight: 500;">System Beauty Design</a>, Todos os direitos reservados.
-                    </div>
-                    <div class="col-12 col-sm-6 text-center text-sm-end">
-                        Ir para <a href="../TelaInstitucional/index.html" style="font-weight: 500;">Site Institucional</a>
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a style="font-weight: 500;">System Beauty Design</a>, Todos os direitos reservados.
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            Ir para <a href="../TelaInstitucional/index.html" style="font-weight: 500;">Site Institucional</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Footer End -->
         </div>
-        <!-- Footer End -->
+        <!-- Content End -->
     </div>
-    <!-- Content End -->
 
 
 

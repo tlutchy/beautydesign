@@ -9,6 +9,17 @@
 }
 
 /*** Spinner ***/
+
+.container-spinner{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
 .loader {
     animation: rotate 1s infinite;
     height: 50px;
@@ -400,6 +411,14 @@ table.tablesorter thead tr .headerSortUp {
     background-color: #8dbdd8;
 }
 
+.label-settings {
+    margin-bottom: 0.5rem !important;
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    font-weight: 600;
+}
+
 .form-group {
     margin-bottom: 0.05rem;
     position: relative;
@@ -421,7 +440,6 @@ table.tablesorter thead tr .headerSortUp {
 }
 
 .form-group label {
-
     margin-bottom: 1rem;
 }
 

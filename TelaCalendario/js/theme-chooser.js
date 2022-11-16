@@ -93,14 +93,14 @@ function initThemeChooser(settings) {
   function generateStylesheetUrl(themeSystem, themeName) {
     if (themeSystem === 'bootstrap') {
       if (themeName) {
-        return 'https://bootswatch.com/4/' + themeName + '/bootstrap.min.css';
+/*         return 'https://bootswatch.com/4/' + themeName + '/bootstrap.min.css'; */
       }
       else { // the default bootstrap theme
         return 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
       }
     } else if (themeSystem === 'bootstrap5') {
       if (themeName) {
-        return 'https://bootswatch.com/5/' + themeName + '/bootstrap.min.css';
+ /*        return 'https://bootswatch.com/5/' + themeName + '/bootstrap.min.css'; */
       }
       else { // the default bootstrap theme
         return 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css';

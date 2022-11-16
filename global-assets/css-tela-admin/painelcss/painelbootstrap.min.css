@@ -3079,9 +3079,9 @@ fieldset:disabled .btn {
 .btn-primary:active,
 .btn-primary.active,
 .show>.btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #bc1212;
-    border-color: #b01111
+    color: #141414;
+    background-color: #DEABC5;
+    border-color: #DEABC5;
 }
 
 .btn-check:checked+.btn-primary:focus,
@@ -3094,21 +3094,21 @@ fieldset:disabled .btn {
 
 .btn-primary:disabled,
 .btn-primary.disabled {
-    color: #fff;
-    background-color: #EB1616;
-    border-color: #EB1616
+    color: #141414;
+    background-color: #DEABC5;
+    border-color: #DEABC5;
 }
 
 .btn-secondary {
     color: #fff;
-    background-color: #191C24;
-    border-color: #191C24
+    background-color: #362825;
+    border-color: #362825;
 }
 
 .btn-secondary:hover {
     color: #fff;
-    background-color: #15181f;
-    border-color: #14161d
+    background-color: #241a18;
+    border-color: #241a18;
 }
 
 .btn-check:focus+.btn-secondary,
@@ -3235,15 +3235,15 @@ fieldset:disabled .btn {
 }
 
 .btn-warning {
-    color: #000;
-    background-color: #ffc107;
-    border-color: #ffc107
+    color: #141414;
+    background-color: #F7BEDB;
+    border-color: #F7BEDB;
 }
 
 .btn-warning:hover {
-    color: #000;
-    background-color: #ffca2c;
-    border-color: #ffc720
+    color: #141414;
+    background-color: #DEABC5;
+    border-color: #DEABC5;
 }
 
 .btn-check:focus+.btn-warning,

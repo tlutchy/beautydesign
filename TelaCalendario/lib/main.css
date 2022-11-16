@@ -1,3 +1,12 @@
+/********** Template CSS **********/
+:root {
+  --primary: #F7BEDB;
+  --hoverPrimary: #DEABC5;
+  --secondary: #ebebeb;
+  --hoverSecondary: #dbdbdb;
+  --light: #141414;
+  --dark: #fff;
+}
 
 /* classes attached to <body> */
 /* TODO: make fc-event selector work when calender in shadow DOM */
@@ -689,10 +698,6 @@ A HORIZONTAL event
     background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
   }
 
-
-:root {
-  --fc-daygrid-event-dot-width: 8px;
-}
 /* help things clear margins of inner content */
 .fc-daygrid-day-frame,
 .fc-daygrid-day-events,
@@ -1317,12 +1322,7 @@ A VERTICAL event
     border-top-color: transparent;
     border-bottom-color: transparent;
   }
-
-
-:root {
-  --fc-list-event-dot-width: 10px;
-  --fc-list-event-hover-bg-color: #f5f5f5;
-}
+  
 .fc-theme-standard .fc-list {
     border: 1px solid #ddd;
     border: 1px solid var(--fc-border-color, #ddd);

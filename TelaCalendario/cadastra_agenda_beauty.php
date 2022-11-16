@@ -4,11 +4,11 @@ include "conexao_beauty.php";
 
 $cliente=$_POST["nome"];
 $funcionario=$_POST["funcionario"];
-$servico=$_POST["serv"];
+$servico=$_POST["servico"];
 $data=$_POST["data"];
 $horario=$_POST["horario"];
 $obs=$_POST["obs"];
-$titulo=$_POST["nome"]." ".$_POST["serv"];
+$titulo=$_POST["nome"]." ".$_POST["servico"];
 
 
 $comandoSql = "insert into agenda (titulo_agenda, id_cliente, id_funcionario, id_servico, data_agenda, horainicio_agenda, obs_agenda, status_agenda, corstatus_agenda)
