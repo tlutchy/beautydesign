@@ -17,7 +17,7 @@ formnome.addEventListener("focusout", (e) => {
 });
 
 formcpf.addEventListener("focusout", (e) => {
-  
+  checkInputsSenha
   checkInputsCpf();
 });
 
@@ -27,7 +27,7 @@ formfone.addEventListener("focusout", (e) => {
 });
 
 formsenha.addEventListener("focusout", (e) => {
-  debugger;
+  
   checkInputsSenha();
 });
 
@@ -147,7 +147,6 @@ function checkInputsFone() {
 }
 
 function checkInputsSenha() {
-  debugger;
   const senhaValue = senha.value;  
   
   if (senhaValue === "") {
@@ -160,7 +159,6 @@ function checkInputsSenha() {
 }
 
 function checkInputsSenhaConf() {
-  debugger;
   const senhaValue = senha.value;  
   const senhaconfValue = senhaconf.value;
 

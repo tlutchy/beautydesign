@@ -4,7 +4,7 @@
 include "conexao_beauty.php";
 
 //2- pegando os dados vindos do formulário e armazenando em variáveis
-$id = $_POST["id"];
+$id = $_POST["id_banco"];
 $cliente = $_POST["nome"];
 $funcionario = $_POST["funcionario"];
 $servico = $_POST["servico"];
@@ -31,7 +31,7 @@ $resultado = mysqli_query($con, $comandoSql);
 
 //5- verificando se o comando sql foi executado
 if ($resultado == true)
-    header("Location: frm_cad_ag_painel.php");
+    header("Location: frm_cad_cal_painel.php");
 else
     echo "Erro na alteração";
 

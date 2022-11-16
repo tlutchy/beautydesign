@@ -2,18 +2,10 @@ create database beautydesign
 
 use beautydesign
 
-create table tiposervico(
-	id_tiposervico int primary key auto_increment,
-	nome_tiposervico varchar(45),
-	descricao_tiposervico varchar (255)
-	);
-
 create table servico(
 	id_servico int primary key auto_increment,
 	nome_servico varchar(45),
-	valor decimal (10,2),
-	id_tiposervico int,	
-	constraint servico_tipo foreign key (id_tiposervico) references tiposervico (id_tiposervico)
+	valor decimal (10,2)	
 	);
 
 create table cliente(
@@ -24,6 +16,11 @@ create table cliente(
 	obs_cliente varchar(45)
 	);
 
+create table tarefas(
+	id_tarefas int primary key auto_increment,
+	desc_tarefa varchar(255)
+	);
+
 create table funcionario(
 	id_funcionario int primary key auto_increment,
 	nome_funcionario varchar(45),
@@ -31,6 +28,8 @@ create table funcionario(
 	cpf_funcionario varchar(45),
 	senha varchar(45),
 	admin boolean not null
+	id_tarefas int,
+	constraint funcionario_tarefas foreign key (id_tarefas) references tarefas (id_tarefas)
 	);
 
 create table agenda(
@@ -49,3 +48,6 @@ create table agenda(
 	constraint agenda_servico foreign key (id_servico) references servico (id_servico),
 	constraint agenda_cliente foreign key (id_cliente) references cliente (id_cliente)
 	);
+	
+
+insert into funcionario (nome_funcionario, senha, admin) values ('admin', '1234', '1');

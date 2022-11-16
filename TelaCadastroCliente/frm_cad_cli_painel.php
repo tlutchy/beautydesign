@@ -124,7 +124,11 @@ include "../TelaLogin/protect.php";
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
-                        <span>Admin</span>
+                        <?php 
+                        if ($_SESSION['admin'] == '1'){
+                        echo "<span>Admin</span>";                
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -183,7 +187,7 @@ include "../TelaLogin/protect.php";
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <!--a href="#" class="dropdown-item">My Profile</a-->
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Settings</a>
                             <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>

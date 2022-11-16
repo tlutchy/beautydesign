@@ -102,7 +102,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                         <!--a href="#" class="dropdown-item">My Profile</a-->
-                        <a href="#" class="dropdown-item">Configurações</a>
+                        <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Settings</a>
                         <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Sair</a>
                     </div>
                 </div>
@@ -159,10 +159,7 @@
                                     $status = $dados["status_agenda"];
                                     $funcionario = $dados["nome_funcionario"];
                                     $obs = $dados["obs_agenda"];
-
-
-
-
+                                    $data = implode("/",array_reverse(explode("-",$data)));
                                     echo "<tr>                                  
                 <td>$data</td>
                 <td>$cliente</td>
@@ -173,10 +170,7 @@
                 <td>$obs</td>                
             </tr>";
                                 }
-                                //<td><center><a href=frm_altera_cliente.php?id=$id> <img src='imagens/editar.png' width='30'></a></center></td>
-                                //<td><center><a href=exclui_cliente.php?id=$id> <img src='imagens/excluir.png' width='30'></a></center></td>
-                                //echo "<a href=frm_cliente.php> Novo </a>";
-                                //echo "<br><a href=index.php>Página Inicial</a>";
+                                
                                 ?>
                             </tr>
                         </tbody>
@@ -188,8 +182,7 @@
 
         <!-- Widgets Start -->
         <div class="container-fluid pt-4 px-4">
-            <div class="row g-4">
-                
+            <div class="row g-4">                
                 <div class="col-sm-12 col-md-6 col-xl-4">
                     <div class="h-100 bg-secondary rounded p-4">
                         <div class="d-flex align-items-center justify-content-between mb-4">
@@ -284,6 +277,36 @@
     </div>
     <!-- Content End -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="modalSenha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Usuário Novo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <center>
+                        <h6>Você ainda não possui uma senha definida. Deseja definí-la agora?</h6>
+                    </center>
+
+
+
+                    <div class="botaosubmit">
+                        <a href="../TelaPainelAdmin/frm_settings.php"><button type="button" class="btn btn-primary">SIM</button></a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NÃO</button>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -301,6 +324,24 @@
     <script src="../global-assets/js-tela-admin/tablejs/jquery.tablesorter.min.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <?php
+
+    $id = $_SESSION['id'];
+    $comandoSql = "select * from funcionario where id_funcionario='$id'";
+    $resultado = mysqli_query($con, $comandoSql);
+    while ($dados = mysqli_fetch_assoc($resultado)) {
+        $senha = $dados["senha"];
+
+        if ($senha == "") {
+            echo "<script type='text/javascript'>
+        $(window).load(function() {
+            $('#modalSenha').modal('show');
+        });
+    </script>";
+        }
+    }
+    ?>
 
 
 </body>

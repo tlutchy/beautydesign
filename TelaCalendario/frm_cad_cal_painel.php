@@ -85,6 +85,8 @@ $resultado = mysqli_query($con, $comandoSql);
                             $('#janelamodal2 #data').val(info.start.toLocaleString());
                         },
                         events: [
+
+                    
                             <?php
                             while ($dados = mysqli_fetch_array($resultado)) {
                             ?> {
@@ -92,11 +94,14 @@ $resultado = mysqli_query($con, $comandoSql);
                                     title: '<?php echo $dados['nome_cliente'] . " - " . $dados['nome_servico']; ?>',
                                     color: '<?php echo $dados['corstatus_agenda']; ?>',
                                     start: '<?php echo $dados['data_agenda'] . " " . $dados['horainicio_agenda']; ?>',
+                                    dia: '<?php echo $dados['data_agenda']; ?>',
                                     cliente: '<?php echo $dados['nome_cliente']; ?>',
                                     servico: '<?php echo $dados['nome_servico']; ?>',
                                     hora: '<?php echo $dados['horainicio_agenda']; ?>',
                                     funcionario: '<?php echo $dados['nome_funcionario']; ?>',
                                     obs: '<?php echo $dados['obs_agenda']; ?>',
+                                    status: '<?php echo $dados['status_agenda']; ?>',
+
 
                                 },
                             <?php
@@ -109,17 +114,20 @@ $resultado = mysqli_query($con, $comandoSql);
 
                             info.jsEvent.preventDefault();
                             $('#janelamodal #id').text(info.event.id);
-                            $('#janelamodal #id').val(info.event.id);
+                            $('#janelamodal #estado').text(info.event.extendedProps.status);
+                            $('#janelamodal #statusatual').val(info.event.extendedProps.status);
+                            $('#janelamodal #id_banco').val(info.event.id);
+                            $('#janelamodal #dataatual').val(info.event.extendedProps.dia.toLocaleString());
                             $('#janelamodal #cliente').text(info.event.extendedProps.cliente);
-                            $('#janelamodal #nome').val(info.event.extendedProps.cliente);
+                            $('#janelamodal #nomeatual').val(info.event.extendedProps.cliente);
                             $('#janelamodal #func').text(info.event.extendedProps.funcionario);
-                            $('#janelamodal #funcionario').val(info.event.extendedProps.funcionario);
-                            $('#janelamodal #servico').text(info.event.extendedProps.servico);
-                            $('#janelamodal #serv').val(info.event.extendedProps.servico);
+                            $('#janelamodal #funcatual').val(info.event.extendedProps.funcionario);
+                            $('#janelamodal #serv').text(info.event.extendedProps.servico);
+                            $('#janelamodal #servicoatual').val(info.event.extendedProps.servico);
                             $('#janelamodal #hora').text(info.event.extendedProps.hora);
-                            $('#janelamodal #horario').val(info.event.extendedProps.hora);
+                            $('#janelamodal #horaatual').val(info.event.extendedProps.hora);
                             $('#janelamodal #obsv').text(info.event.extendedProps.obs);
-                            $('#janelamodal #obs').val(info.event.extendedProps.obs);
+                            $('#janelamodal #obsatual').val(info.event.extendedProps.obs);
                             $('#janelamodal').modal('show')
                         }
                     });
@@ -164,7 +172,11 @@ $resultado = mysqli_query($con, $comandoSql);
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
-                        <span>Admin</span>
+                        <?php 
+                        if ($_SESSION['admin'] == '1'){
+                        echo "<span>Admin</span>";                
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -172,7 +184,9 @@ $resultado = mysqli_query($con, $comandoSql);
                     <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Agendamentos</a>
                     <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clientes</a>
                     <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
-                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1'){echo "hidden";} ?>><i class="far fa-file-alt me-2"></i>Funcionários</a>
+                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1') {
+                                                                                                                echo "hidden";
+                                                                                                            } ?>><i class="far fa-file-alt me-2"></i>Funcionários</a>
                     <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
                     <a aria-label="Chat on WhatsApp" href="https://wa.me/5517996030791"> <img alt="Chat on WhatsApp" src="WhatsAppButtonGreenLarge.png" />WhatsApp</a>
                 </div>
@@ -200,7 +214,7 @@ $resultado = mysqli_query($con, $comandoSql);
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <!--a href="#" class="dropdown-item">My Profile</a-->
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Settings</a>
                             <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
@@ -278,10 +292,13 @@ $resultado = mysqli_query($con, $comandoSql);
                                             <dd class="col-sm-9" id="func"></dd>
 
                                             <dt class="col-sm-3">Serviço: </dt>
-                                            <dd class="col-sm-9" id="servico"></dd>
+                                            <dd class="col-sm-9" id="serv"></dd>
 
                                             <dt class="col-sm-3">Horário: </dt>
                                             <dd class="col-sm-9" id="hora"></dd>
+
+                                            <dt class="col-sm-3">Status: </dt>
+                                            <dd class="col-sm-9" id="estado"></dd>
 
                                             <dt class="col-sm-3">Observações: </dt>
                                             <dd class="col-sm-9" id="obsv"></dd>
@@ -289,28 +306,33 @@ $resultado = mysqli_query($con, $comandoSql);
                                         <button class="btn btn-warning btn-canc-vis">Editar</button>
                                     </div>
                                     <div class="formedit">
-                                        <form action="" method="post" class="editevent" id="editevent">
+                                        <form action="altera_agenda.php" method="post" class="editevent" id="editevent">
+                                            <input type="text" name="id_banco" id="id_banco" hidden>
                                             <div class="form-group" id="form-nome">
+                                                Valor Atual Cliente
+                                                <input type="text" name="nomeatual" id="nomeatual" class="form-control rounded-left" placeholder="Observações" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-nome">
+                                                Novo valor Cliente
                                                 <?php
-                                                $comandoSql = "select * from cliente";
-                                                $resultado = mysqli_query($con, $comandoSql);
-                                                echo "<select name='nome' id='nome' class='form-control rounded-left'>";
-                                                while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                    $id = $dados["id_cliente"];
-                                                    $nome = $dados["nome_cliente"];
-                                                    if ($id_cliente == $id) {
-                                                        echo "<option value='$id' selected>$nome</option>";
-                                                    } else {
-                                                        echo "<option value=$id>$nome</option>";
-                                                    }
-                                                }
-                                                echo "</select>";
+                                                listaClienteSelect()
                                                 ?>
                                                 <i class="fas fa-exclamation-circle"></i>
                                                 <i class="fas fa-check-circle"></i>
                                                 <small>Mensagem de erro</small>
                                             </div>
+                                            <div class="form-group" id="form-nome">
+                                                Valor Atual Atendente
+                                                <input type="text" name="funcatual" id="funcatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
                                             <div class="form-group" id="form-funcionario">
+                                                Novo Valor Atendente
                                                 <?php
                                                 funcionarioSelect();
                                                 ?>
@@ -318,7 +340,15 @@ $resultado = mysqli_query($con, $comandoSql);
                                                 <i class="fas fa-check-circle"></i>
                                                 <small>Mensagem de erro</small>
                                             </div>
+                                            <div class="form-group" id="form-nome">
+                                                Valor Atual Serviço
+                                                <input type="text" name="servicoatual" id="servicoatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
                                             <div class="form-group" id="form-servico">
+                                                Novo Valor Serviço
                                                 <?php
                                                 servicoSelect();
                                                 ?>
@@ -327,18 +357,61 @@ $resultado = mysqli_query($con, $comandoSql);
                                                 <small>Mensagem de erro</small>
                                             </div>
                                             <div class="form-group" id="form-data">
-                                                <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data" onkeypress="DataHora(event, this)">
+                                                Valor Atual Data
+                                                <input type="date" name="dataatual" id="dataatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-data">
+                                                Novo Valor Data
+                                                <input type="date" name="data" id="data" class="form-control rounded-left" placeholder="Data">
                                                 <i class="fas fa-exclamation-circle"></i>
                                                 <i class="fas fa-check-circle"></i>
                                                 <small>Mensagem de erro</small>
                                             </div>
                                             <div class="form-group" id="form-horario">
-                                                <input type="time" name="horario" id="horario" class="form-control rounded-left" placeholder="Horário">
+                                                Valor Atual Hora
+                                                <input type="time" name="horaatual" id="horaatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-horario">
+                                                Novo Valor Hora
+                                                <input type="time" name="horario" id="horario" class="form-control rounded-left">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-estado">
+                                                Valor Atual Status
+                                                <input type="text" name='statusatual' id='statusatual' class='form-control rounded-left' disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-estado">
+                                                Novo Valor Status
+                                                <select name='status' id='status' class='form-control rounded-left'>
+                                                    <option value='' selected>Selecione...</option>
+                                                    <option value='Agendado'>Agendado</option>
+                                                    <option value='Concluído'>Concluído</option>
+                                                    <option value='Cancelado'>Cancelado</option>
+                                                </select>
                                                 <i class="fas fa-exclamation-circle"></i>
                                                 <i class="fas fa-check-circle"></i>
                                                 <small>Mensagem de erro</small>
                                             </div>
                                             <div class="form-group" id="form-obs">
+                                                Valor Atual Obs
+                                                <input type="text" name="atual" id="obsatual" class="form-control rounded-left" disabled>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <i class="fas fa-check-circle"></i>
+                                                <small>Mensagem de erro</small>
+                                            </div>
+                                            <div class="form-group" id="form-obs">
+                                                Novo valor Obs
                                                 <input type="text" name="obs" id="obs" class="form-control rounded-left" placeholder="Observações">
                                                 <i class="fas fa-exclamation-circle"></i>
                                                 <i class="fas fa-check-circle"></i>
@@ -346,7 +419,7 @@ $resultado = mysqli_query($con, $comandoSql);
                                             </div>
                                             <div class="botaosubmit">
                                                 <button type="button" class="btn btn-primary btn-canc-edit">Cancelar</button>
-                                                <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
+                                                <input type="submit" class="btn btn-primary rounded submit" value="Salvar">
                                             </div>
                                         </form>
                                     </div>
@@ -481,7 +554,7 @@ $resultado = mysqli_query($con, $comandoSql);
         $('.btn-canc-edit').on("click", function() {
             $('.formedit').slideToggle();
             $('.visevent').slideToggle();
-        })        
+        })
     </script>
 
 </body>

@@ -1,5 +1,5 @@
 <?php
-    include "../TelaLogin/protect.php";
+include "../TelaLogin/protect.php";
 ?>
 
 <!DOCTYPE html>
@@ -46,10 +46,10 @@
                     disabled = false;
                 }
             });
-            
-            if(qtdeSelecionada == 0){
+
+            if (qtdeSelecionada == 0) {
                 disabled = true;
-            }else{
+            } else {
                 disabled = false;
             }
 
@@ -68,8 +68,8 @@
                 }
             });
 
-            
-            if(qtdeSelecionada > 1){
+
+            if (qtdeSelecionada > 1) {
                 disabled = true;
             }
 
@@ -109,8 +109,92 @@
         </div>
         <!-- Spinner End -->
 
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="../TelaPainelAdmin/index.php" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px">Beauty Design</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0"><?php echo $_SESSION['nome']; ?></h6>
+                        <?php
+                        if ($_SESSION['admin'] == '1') {
+                            echo "<span>Admin</span>";
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="../TelaPainelAdmin/index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="../TelaCadastroAgenda/frm_cad_ag_painel.php" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Agendamentos</a>
+                    <a href="../TelaCadastroCliente/frm_cad_cli_painel.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clientes</a>
+                    <a href="../TelaCadastroServicos/frm_cad_serv_painel.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Serviços</a>
+                    <a href="../TelaCadastroFuncionario/frm_cad_func_painel.php" class="nav-item nav-link" <?php if ($_SESSION['admin'] != '1') {
+                                                                                                                echo "hidden";
+                                                                                                            } ?>><i class="far fa-file-alt me-2"></i>Funcionários</a>
+                    <a href="../TelaCalendario/frm_cad_cal_painel.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Calendário</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
 
 
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="../TelaPainelAdmin/index.php" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><img src="../global-assets/icone-formulario.png" class="fa fa-user-edit" width="40px"></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+
+                <div class="navbar-nav align-items-center ms-auto">
+                    <!--div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div-->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['nome']; ?></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <!--a href="#" class="dropdown-item">My Profile</a-->
+                            <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Settings</a>
+                            <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
 
 
             <!-- Sale & Revenue Start -->
@@ -211,10 +295,7 @@
                                             $status = $dados["status_agenda"];
                                             $funcionario = $dados["nome_funcionario"];
                                             $obs = $dados["obs_agenda"];
-
-
-
-
+                                            $data = implode("/", array_reverse(explode("-", $data)));
                                             echo "<tr>
                 <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox-table'></td>                       
                 <td>$data</td>
@@ -239,86 +320,13 @@
                 <!-- Recent Sales End -->
 
 
-                <!-- Sales Chart Start -->
-                <!--div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Worldwide Sales</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="worldwide-sales"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Salse & Revenue</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="salse-revenue"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div-->
-                <!-- Sales Chart End -->
-
-
 
 
 
                 <!-- Widgets Start -->
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
-                        <!--div class="col-sm-12 col-md-6 col-xl-4">
-                        <div class="h-100 bg-secondary rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                <h6 class="mb-0">Messages</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div-->
+
                         <div class="col-sm-12 col-md-6 col-xl-4">
                             <div class="h-100 bg-secondary rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -563,7 +571,7 @@
                                         <small>Mensagem de erro</small>
                                     </div>
                                     <div class="form-group" id="form-servico">
-                                    <?php
+                                        <?php
                                         $comandoSql = "select * from servico";
                                         $resultado = mysqli_query($con, $comandoSql);
                                         echo "<select name='servico' id='servico' class='form-control rounded-left'>";
@@ -588,7 +596,17 @@
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
-
+                                    <div class="form-group" id="form-status">
+                                        <select name='status' id='status' class='form-control rounded-left'>
+                                            <option value=''>Selecione...</option>
+                                            <option value="Agendado" <?php if ($status_ag == "Agendado") echo "selected=selected" ?>>Agendado</option>
+                                            <option value="Concluído" <?php if ($status_ag == "Concluído") echo "selected=selected" ?>>Concluído</option>
+                                            <option value="Cancelado" <?php if ($status_ag == "Cancelado") echo "selected=selected" ?>>Cancelado</option>
+                                        </select>
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <i class="fas fa-check-circle"></i>
+                                        <small>Mensagem de erro</small>
+                                    </div>
                                     <div class="form-group" id="form-horario">
                                         <input type="time" name="horario" id="horario" class="form-control rounded-left" placeholder="Horário" value="<?php echo $hora_ag ?>">
                                         <i class="fas fa-exclamation-circle"></i>

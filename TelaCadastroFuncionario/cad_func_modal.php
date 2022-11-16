@@ -183,7 +183,7 @@ include "../TelaLogin/protect.php";
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <!--a href="#" class="dropdown-item">My Profile</a-->
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Settings</a>
                             <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
@@ -250,7 +250,6 @@ include "../TelaLogin/protect.php";
                                         <th scope="col">Nome</th>
                                         <th scope="col">Telefone</th>
                                         <th scope="col">Cpf</th>
-                                        <th scope="col">Senha</th>
                                         <th scope="col">Adm</th>
 
 
@@ -278,23 +277,18 @@ include "../TelaLogin/protect.php";
                                             $nome = $dados["nome_funcionario"];
                                             $fone = $dados["fone_funcionario"];
                                             $cpf = $dados["cpf_funcionario"];
-                                            $senha = $dados["senha"];
+                                            //$senha = $dados["senha"];
                                             $adm = $dados["admin"];
-                                            if($adm == "1"){
+                                            if ($adm == "1") {
                                                 $imagem = "<img src='../global-assets/certo.png'>";
-                                            }else{
+                                            } else {
                                                 $imagem = "<img src='../global-assets/errado.png'>";
                                             };
-
-
-
-
                                             echo "<tr>
                 <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox-table'></td>                       
                 <td>$nome</td>
                 <td>$fone</td>
-                <td>$cpf</td>
-                <td>$senha</td>
+                <td>$cpf</td>                
                 <td>$imagem</td>
                 
                 
@@ -502,7 +496,7 @@ include "../TelaLogin/protect.php";
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
-                                    <div class="form-group" id="form-senha">
+                                    <!--div class="form-group" id="form-senha">
                                         <input type="password" name="senha" id="senha" class="form-control rounded-left" placeholder="Senha">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
@@ -513,17 +507,12 @@ include "../TelaLogin/protect.php";
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
-                                    </div>
+                                    </div-->
 
                                     <div class="botaosubmit">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                         <input type="submit" class="btn btn-primary rounded submit" value="Cadastrar">
                                     </div>
-
-                                    <!--div class="botaosubmit">
-                                        <input type="submit" class="btn btn-primary rounded submit p-3 px-5" value="CADASTRAR">
-                                    </div-->
-
                                 </form>
                             </div>
                         </div>
@@ -567,7 +556,7 @@ include "../TelaLogin/protect.php";
                                 $nome_func = $dados["nome_funcionario"];
                                 $cpf_func = $dados["cpf_funcionario"];
                                 $fone_func = $dados["fone_funcionario"];
-                                $senha_func = $dados["senha"];
+                                //$senha_func = $dados["senha"];
                                 $admin_func = $dados["admin"];
 
 
@@ -592,14 +581,14 @@ include "../TelaLogin/protect.php";
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
-                                    <div class="form-group" id="form-obs">
+                                    <!--div class="form-group" id="form-obs">
                                         <input type="text" name="senha" id="senha" class="form-control rounded-left" placeholder="Observação" value="<?php echo $senha_func ?>">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
-                                    </div>
+                                    </div-->
                                     <div>
-                                        <input type="checkbox" name="admin" id="admin"<?php if($admin_func==1) echo "checked=checked"; ?>>
+                                        <input type="checkbox" name="admin" id="admin" <?php if ($admin_func == 1) echo "checked=checked"; ?>>
                                         <small>Admin</small>
                                     </div>
 
@@ -662,6 +651,8 @@ include "../TelaLogin/protect.php";
     <script src="../global-assets/js-tela-admin/tablejs/jquery.tablesorter.min.js"></script>
     <script src="../global-assets/js-tela-admin/tablejs/tablescripts.js"></script>
     <script src="../TelaCadastroCliente/assets/js/scripts.js"></script>
+    
+    
     <script type="text/javascript">
         $(window).load(function() {
             $('#modalAlterar').modal('show');

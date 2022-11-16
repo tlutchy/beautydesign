@@ -11,9 +11,9 @@ $obs=$_POST["obs"];
 $titulo=$_POST["nome"]." ".$_POST["serv"];
 
 
-$comandoSql = "insert into agenda (titulo_agenda, id_cliente, id_funcionario, id_servico, data_agenda, horainicio_agenda, obs_agenda)
+$comandoSql = "insert into agenda (titulo_agenda, id_cliente, id_funcionario, id_servico, data_agenda, horainicio_agenda, obs_agenda, status_agenda, corstatus_agenda)
 values
-('$titulo', '$cliente', '$funcionario', '$servico', '$data', '$horario', '$obs')";
+('$titulo', '$cliente', '$funcionario', '$servico', '$data', '$horario', '$obs', 'Agendado', '#FF0')";
 
 $resultado=mysqli_query($con, $comandoSql);
 

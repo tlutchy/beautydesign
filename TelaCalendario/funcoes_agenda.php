@@ -10,6 +10,7 @@ include "conexao_beauty.php";
  $resultado=mysqli_query($con,$comandoSql);
 
 echo "<select name='nome' id='nome' class='form-control rounded-left'>";
+echo "<option selected=selected>Selecione...</option>";
 
 
 /*4- pegando os dados da consulta criada e exibindo */
@@ -32,7 +33,8 @@ function servicoSelect(){
  /*3- executando o comando sql */
   $resultado=mysqli_query($con,$comandoSql);
  
- echo "<select name='serv' id='serv' class='form-control'>";
+ echo "<select name='servico' id='servico' class='form-control'>";
+ echo "<option selected=selected>Selecione...</option>";
  
  
  /*4- pegando os dados da consulta criada e exibindo */
@@ -57,7 +59,7 @@ function servicoSelect(){
   $resultado=mysqli_query($con,$comandoSql);
  
  echo "<select name='funcionario' id='funcionario' class='form-control rounded-left'>";
- 
+ echo "<option selected=selected>Selecione...</option>";
  
  /*4- pegando os dados da consulta criada e exibindo */
    while($dados=mysqli_fetch_assoc($resultado)){

@@ -1,5 +1,6 @@
 <?php
     include "../TelaLogin/protect.php";
+    include "protect2.php";
 ?>
 
 <!DOCTYPE html>
@@ -163,31 +164,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
 
-                <div class="navbar-nav align-items-center ms-auto">
-                    <!--div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div-->
+                <div class="navbar-nav align-items-center ms-auto">                   
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
@@ -195,7 +172,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <!--a href="#" class="dropdown-item">My Profile</a-->
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Settings</a>
                             <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
@@ -261,8 +238,7 @@
                                         <th scope="col"><input class="form-check-input" type="checkbox" onclick="handleChange(this)"></th>
                                         <th scope="col">Nome</th>
                                         <th scope="col">Telefone</th>
-                                        <th scope="col">Cpf</th>
-                                        <th scope="col">Senha</th>
+                                        <th scope="col">Cpf</th>                                        
                                         <th scope="col">Adm</th>
 
 
@@ -289,8 +265,7 @@
                                             $id = $dados["id_funcionario"];
                                             $nome = $dados["nome_funcionario"];
                                             $fone = $dados["fone_funcionario"];
-                                            $cpf = $dados["cpf_funcionario"];
-                                            $senha = $dados["senha"];
+                                            $cpf = $dados["cpf_funcionario"];                                            
                                             $adm = $dados["admin"];
                                             if($adm == "1"){
                                                 $imagem = "<img src='../global-assets/certo.png'>";
@@ -306,7 +281,6 @@
                 <td>$nome</td>
                 <td>$fone</td>
                 <td>$cpf</td>
-                <td>$senha</td>
                 <td>$imagem</td>
                 
                 
@@ -320,89 +294,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- Recent Sales End -->
-
-
-                <!-- Sales Chart Start -->
-                <!--div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Worldwide Sales</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="worldwide-sales"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Salse & Revenue</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="salse-revenue"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div-->
-                <!-- Sales Chart End -->
-
-
-
-
+                <!-- Recent Sales End -->  
 
                 <!-- Widgets Start -->
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
-                        <!--div class="col-sm-12 col-md-6 col-xl-4">
-                        <div class="h-100 bg-secondary rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                <h6 class="mb-0">Messages</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div-->
+                        
                         <div class="col-sm-12 col-md-6 col-xl-4">
                             <div class="h-100 bg-secondary rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -514,7 +411,7 @@
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
                                     </div>
-                                    <div class="form-group" id="form-senha">
+                                    <!--div class="form-group" id="form-senha">
                                         <input type="password" name="senha" id="senha" class="form-control rounded-left" placeholder="Senha">
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
@@ -525,7 +422,7 @@
                                         <i class="fas fa-exclamation-circle"></i>
                                         <i class="fas fa-check-circle"></i>
                                         <small>Mensagem de erro</small>
-                                    </div>
+                                    </div-->
                                     <div>
                                         <input type="checkbox" name="admin" id="admin">                                        
                                         <small>Admin</small>

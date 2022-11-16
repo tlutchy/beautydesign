@@ -166,7 +166,7 @@ include "../TelaLogin/protect.php";
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                         <!--a href="#" class="dropdown-item">My Profile</a-->
-                        <a href="#" class="dropdown-item">Configurações</a>
+                        <a href="../TelaPainelAdmin/frm_settings.php" class="dropdown-item">Configurações</a>
                         <a href="/tcc/TelaLogin/logout.php" class="dropdown-item">Sair</a>
                     </div>
                 </div>
@@ -263,10 +263,7 @@ include "../TelaLogin/protect.php";
                                         $status = $dados["status_agenda"];
                                         $funcionario = $dados["nome_funcionario"];
                                         $obs = $dados["obs_agenda"];
-
-
-
-
+                                        $data = implode("/",array_reverse(explode("-",$data)));
                                         echo "<tr>
                 <td><input class='form-check-input' value='$id' type='checkbox' name='checkbox_id[]' id='checkbox-table'></td>                       
                 <td>$data</td>
