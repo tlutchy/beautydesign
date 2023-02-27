@@ -1,6 +1,6 @@
-create database beautydesign
+create database beautydesign;
 
-use beautydesign
+use beautydesign;
 
 create table servico(
 	id_servico int primary key auto_increment,
@@ -16,13 +16,6 @@ create table cliente(
 	obs_cliente varchar(45)
 	);
 
-create table tarefas(
-	id_tarefas int primary key auto_increment,
-	desc_tarefa varchar(255)
-	id_funcionario int,
-	constraint tarefas_funcionario foreign key (id_funcionario) references funcionario (id_funcionario)
-	);
-
 create table funcionario(
 	id_funcionario int primary key auto_increment,
 	nome_funcionario varchar(45),
@@ -30,6 +23,13 @@ create table funcionario(
 	cpf_funcionario varchar(45),
 	senha varchar(45),
 	admin boolean not null		
+	);
+
+create table tarefas(
+	id_tarefas int primary key auto_increment,
+	desc_tarefa varchar(255),
+	id_funcionario int,
+	constraint tarefas_funcionario foreign key (id_funcionario) references funcionario (id_funcionario)
 	);
 
 create table agenda(
